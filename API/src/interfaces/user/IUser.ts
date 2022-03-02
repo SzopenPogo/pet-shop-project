@@ -14,7 +14,7 @@ export interface IUser extends Document {
   _id: string;
   generateAuthToken(): Promise<string>;
   clearTokens(): Promise<void>;
-  createInactiveMessage(): {
+  createInactiveMessage(message: string): {
     status: number;
     message: string;
     email: string;
@@ -25,9 +25,10 @@ export interface IUser extends Document {
     status: number;
     message: string;
   }>;
+  setInactive(): Promise<void>;
+  setActive(): Promise<void>;
 }
 
 export interface IUserStatics extends Model<IUser> {
   findByCredentials(email: string, password: string): Promise<IUser>;
-  setInactive(_id: string): Promise<IUser>;
 }

@@ -8,8 +8,8 @@ const userLogin = async (req: Request, res: Response) => {
     const { email, password } = req.body as IUserReqData;
     const user = await User.findByCredentials(email, password);
 
-    if (!user.isActive) {
-      const errorMessage = user.createInactiveMessage();
+    if (!user.isActive && user.adminNote) {
+      const errorMessage = user.createInactiveMessage('Banned');
       return res.status(errorMessage.status).send(errorMessage);
     }
 
@@ -18,6 +18,10 @@ const userLogin = async (req: Request, res: Response) => {
     if (user.adminKey) {
       // TODO: Check admin key !!!
       user.isAdmin = true;
+    }
+
+    if (user.isAdmin && !user.adminKey) {
+      user.isAdmin = false;
     }
 
     const userResponseData = {

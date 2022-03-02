@@ -9,6 +9,11 @@ import userGetAll from "../controllers/userControllers/actions/userGetAll";
 import userGetById from "../controllers/userControllers/actions/userGetById";
 import userEdit from "../controllers/userControllers/actions/userEdit";
 import userEditById from "../controllers/userControllers/actions/userEditById";
+import userDeactivate from "../controllers/userControllers/actions/userDeactivate";
+import userActivate from "../controllers/userControllers/actions/userActivate";
+import authInactive from "../middleware/authInactive";
+import userBan from "../controllers/userControllers/actions/userBan";
+import userUnban from "../controllers/userControllers/actions/userUnBan";
 
 const userRouter = Router();
 
@@ -53,5 +58,25 @@ userRouter.patch('/edit/me', auth, userEdit);
 // DESCRIPTION: Edit user by id
 // ACCESS: PRIVATE, ADMIN
 userRouter.patch('/edit/:id', auth, authAdmin, userEditById);
+
+// TYPE: POST /deactivate/me
+// DESCRIPTION: Deactivate user
+// ACCESS: PRIVATE
+userRouter.post('/deactivate/me', auth, userDeactivate);
+
+// TYPE: POST /activate/me
+// DESCRIPTION: Activate user
+// ACCESS: PRIVATE
+userRouter.post('/activate/me', authInactive, userActivate);
+
+// TYPE: POST /ban/id
+// DESCRIPTION: Ban user
+// ACCESS: PRIVATE, ADMIN
+userRouter.post('/ban/:id', auth, authAdmin, userBan);
+
+// TYPE: POST /unban/id
+// DESCRIPTION: Unban user
+// ACCESS: PRIVATE, ADMIN
+userRouter.post('/unban/:id', auth, authAdmin, userUnban);
 
 export default userRouter;

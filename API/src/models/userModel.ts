@@ -105,22 +105,6 @@ userSchema.statics.findByCredentials = async (email: string, password: string) =
   return user;
 }
 
-//STATICS
-//setInactive
-userSchema.statics.setInactive = async (_id: string) => {
-  const user = await User.findById(_id);
-
-  if (!user) {
-    throw new Error('User not found');
-  }
-
-  user.isActive = false;
-  await user.clearTokens();
-  await user.save();
-
-  return user;
-}
-
 //METHODS
 //generateAuthToken
 userSchema.methods.generateAuthToken = async function (this: IUser) {
@@ -145,11 +129,11 @@ userSchema.methods.clearTokens = async function (this: IUser) {
 
 //METHODS
 //createInactiveMessage
-userSchema.methods.createInactiveMessage = function (this: IUser) {
+userSchema.methods.createInactiveMessage = function (this: IUser, message: string) {
   const user = this;
 
   return {
-    ...createErrorMessage(401, 'Banned'),
+    ...createErrorMessage(401, message),
     email: user.email,
     isActive: user.isActive,
     adminNote: user.adminNote
@@ -196,6 +180,24 @@ userSchema.methods.editUserData = async function (
   const infoMessage = createInfoMessage(200, 'Data updated');
   
   return infoMessage;
+}
+
+//METHODS
+//setInactive
+userSchema.methods.setInactive = async function (this: IUser) {
+  const user = this;
+  user.isActive = false;
+  await user.clearTokens();
+  await user.save();
+}
+
+//METHODS
+//setActive
+userSchema.methods.setActive = async function (this: IUser) {
+  const user = this;
+  user.isActive = true;
+  user.adminNote = '';
+  await user.save();
 }
 
 //PRE
