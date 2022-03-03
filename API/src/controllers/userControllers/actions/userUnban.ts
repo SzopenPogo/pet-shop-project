@@ -12,6 +12,11 @@ const userUnban = async (req: Request, res: Response) => {
       return res.status(errorMessage.status).send(errorMessage);
     }
 
+    if (user.isActive && !user.adminNote) {
+      const errorMessage = createErrorMessage(400, 'User is not banned');
+      return res.status(errorMessage.status).send(errorMessage);
+    }
+
     await user.setActive();
     
     const infoMessage = createInfoMessage(200, `${user.email} is now unbanned`)

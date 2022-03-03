@@ -89,6 +89,22 @@ userSchema.methods.toJSON = function () {
   return userObject;
 }
 
+//VIRTUAL
+//Admin
+userSchema.virtual('adminRef', {
+  ref: 'Admin',
+  localField: '_id',
+  foreignField: 'userId'
+});
+
+//VIRTUAL
+//Address
+userSchema.virtual('addressRef', {
+  ref: 'Address',
+  localField: '_id',
+  foreignField: 'userId'
+})
+
 //STATICS
 //findByCredentials
 userSchema.statics.findByCredentials = async (email: string, password: string) => {

@@ -10,6 +10,11 @@ const userActivate = async (req: IAuthRequest, res: Response) => {
       return res.status(errorMessage.status).send(errorMessage);
     }
 
+    if (req.user.isActive) {
+      const errorMessage = createErrorMessage(400, 'User is already active');
+      return res.status(errorMessage.status).send(errorMessage);
+    }
+
     await req.user.setActive();
     
     const infoMessage = createInfoMessage(200, 'User activated');

@@ -13,7 +13,7 @@ import userDeactivate from "../controllers/userControllers/actions/userDeactivat
 import userActivate from "../controllers/userControllers/actions/userActivate";
 import authInactive from "../middleware/authInactive";
 import userBan from "../controllers/userControllers/actions/userBan";
-import userUnban from "../controllers/userControllers/actions/userUnBan";
+import userUnban from "../controllers/userControllers/actions/userUnban";
 
 const userRouter = Router();
 

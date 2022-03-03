@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { IUserReqData } from "../../../interfaces/user/IUserReqData";
+import Admin from "../../../models/adminModel";
 import User from "../../../models/userModel";
 import { createErrorMessage } from "../../../utils/messages/createErrorMessage";
 
@@ -16,12 +17,20 @@ const userLogin = async (req: Request, res: Response) => {
     const token = await user.generateAuthToken();
 
     if (user.adminKey) {
-      // TODO: Check admin key !!!
-      user.isAdmin = true;
+      const admin = Admin.findOne({ userId: user._id, adminKey: user.adminKey });
+
+      if (!admin) {
+        user.isAdmin = false;
+      } else {
+        user.isAdmin = true;
+      }
+
+      await user.save();
     }
 
     if (user.isAdmin && !user.adminKey) {
       user.isAdmin = false;
+      await user.save();
     }
 
     const userResponseData = {

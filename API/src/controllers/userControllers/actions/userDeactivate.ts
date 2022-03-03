@@ -2,6 +2,7 @@ import { Response } from "express";
 import { IAuthRequest } from "../../../interfaces/user/IUserAuthRequest";
 import { createErrorMessage } from "../../../utils/messages/createErrorMessage";
 import bcryptjs from 'bcryptjs';
+import Admin from "../../../models/adminModel";
 
 const userDeactivate = async (req: IAuthRequest, res: Response) => {
   try {
@@ -15,6 +16,14 @@ const userDeactivate = async (req: IAuthRequest, res: Response) => {
     if (!isPasswordValid) {
       const errorMessage = createErrorMessage(400, 'Invalid current password');
       return res.status(errorMessage.status).send(errorMessage);
+    }
+
+    if (req.user.adminKey) {
+      const removeAdmin = await Admin.deleteAdmin(req.user);
+
+      if (removeAdmin.status >= 400) {
+        return res.status(removeAdmin.status).send(removeAdmin);
+      }
     }
 
     await req.user.setInactive();

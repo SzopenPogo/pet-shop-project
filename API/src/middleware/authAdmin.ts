@@ -15,13 +15,15 @@ const authAdmin = async (req: IAuthRequest, res: Response, next: NextFunction) =
         await req.user.save();
       }
 
-      throw new Error();
+      throw new Error('User is not a Admin');
     }
 
     if (!req.user.isAdmin) {
       req.user.isAdmin = true;
       await req.user.save();
     }
+
+    req.user = await req.user.populate('adminRef');
 
     next();
   } catch (error) {
