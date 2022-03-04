@@ -6,6 +6,8 @@ import connectDatabase from "./config/database";
 import userRouter from "./routes/userRouter";
 import adminRouter from "./routes/adminRouter";
 import addressRouter from "./routes/addressRouter";
+import categoryRouter from "./routes/categoryRouter";
+import subcategoryRouter from "./routes/subcategoryRouter";
 
 const app = express();
 connectDatabase();
@@ -19,10 +21,20 @@ app.use('/user', userRouter);
 // ADMIN | add, remove, setAdminLevel
 app.use('/admin', adminRouter);
 
-// ADDRESS | add, remove, editById
+// ADDRESS | add, get, getById, delete, editById
 app.use('/address', addressRouter);
+
+// CATEGORY | create, get, getById, edit, delete
+app.use('/category', categoryRouter);
+
+// SUBCATEGORY | create, get, getById, edit, delete
+app.use('/subcategory', subcategoryRouter);
 
 
 app.listen(PORT, () => {
   console.log(`>> Server running on PORT: ${PORT}`.yellow.bgBlack.bold);
 });
+
+//TODO
+// SUBCATEGORY add image upload for create and edit
+// If SUBCATEGORY is deleted clear relations for all related products

@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import { Document, Model } from 'mongoose';
+import { IAddress } from '../address/IAddress';
 import { IAdmin } from '../admin/IAdmin';
 import { IToken } from './IToken';
 
@@ -15,6 +16,7 @@ export interface IUser extends Document {
   tokens: Array<IToken>;
   _id: string;
   adminRef: mongoose.Types.Array<IAdmin> | undefined;
+  addressRef: mongoose.Types.Array<IAddress> | undefined;
   generateAuthToken(): Promise<string>;
   clearTokens(): Promise<void>;
   createInactiveMessage(message: string): {
