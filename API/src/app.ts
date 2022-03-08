@@ -8,6 +8,8 @@ import adminRouter from "./routes/adminRouter";
 import addressRouter from "./routes/addressRouter";
 import categoryRouter from "./routes/categoryRouter";
 import subcategoryRouter from "./routes/subcategoryRouter";
+import path from "path";
+import productRouter from "./routes/productRouter.ts";
 
 const app = express();
 connectDatabase();
@@ -30,11 +32,14 @@ app.use('/category', categoryRouter);
 // SUBCATEGORY | create, get, getById, edit, delete
 app.use('/subcategory', subcategoryRouter);
 
+// PRODUCT | create, get, getById, edit, delete
+app.use('/product', productRouter);
+
+
+//Serve images to frontend (SERVER_URL/images/...)
+const dirname = path.resolve();
+app.use('/images', express.static(path.join(dirname, '/images')));
 
 app.listen(PORT, () => {
   console.log(`>> Server running on PORT: ${PORT}`.yellow.bgBlack.bold);
 });
-
-//TODO
-// SUBCATEGORY add image upload for create and edit
-// If SUBCATEGORY is deleted clear relations for all related products

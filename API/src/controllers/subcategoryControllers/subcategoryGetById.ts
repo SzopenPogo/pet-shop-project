@@ -12,7 +12,8 @@ const subcategoryGetById = async (req: Request, res: Response) => {
     }
 
     await subcategory.populate('categoryId');
-
+    await subcategory.populate('productRef');
+    
     res.status(200).send(subcategory);
   } catch (error) {
     const errorMessage = createErrorMessage(500, 'Get subcategory by id failed', error);

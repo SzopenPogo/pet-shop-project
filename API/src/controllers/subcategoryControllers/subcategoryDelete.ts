@@ -11,7 +11,14 @@ const subcategoryDelete = async (req: Request, res: Response) => {
       return res.status(errorMessage.status).send(errorMessage);
     }
 
-    //CHANGE RELATED PRODUCTS CATEGORY TO NULL
+    await subcategory.populate('productRef');
+
+    if (subcategory.productRef) {
+      for (let i = 0; i < subcategory.productRef.length; i++) {
+        subcategory.productRef[i].subcategoryId = null!;
+        await subcategory.productRef[i].save();
+      }
+    }
 
     res.status(200).send(subcategory);
   } catch (error) {

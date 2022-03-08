@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import { Document } from 'mongoose';
+import { IProduct } from '../product/IProduct';
 
 export interface ISubategory extends Document {
   [key: string]: any;
@@ -7,4 +8,5 @@ export interface ISubategory extends Document {
   title: string;
   imageUrl: string;
   categoryId: mongoose.Schema.Types.ObjectId;
+  productRef: mongoose.Types.Array<IProduct> | undefined;
 }

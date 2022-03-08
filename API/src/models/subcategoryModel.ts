@@ -19,7 +19,19 @@ const subcategorySchema = new mongoose.Schema<ISubategory>({
     required: true,
     ref: 'Category'
   }
+}, {
+  timestamps: true
+});
+
+//VIRTUAL
+//product
+subcategorySchema.virtual('productRef', {
+  ref: 'Product',
+  localField: '_id',
+  foreignField: 'subcategoryId'
 })
+
+subcategorySchema.set('toJSON', { virtuals: true });
 
 const Subcategory = mongoose.model<ISubategory>('Subcategory', subcategorySchema);
 export default Subcategory;
