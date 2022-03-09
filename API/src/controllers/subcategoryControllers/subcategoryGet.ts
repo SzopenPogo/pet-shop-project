@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { IMatchObject } from "../../interfaces/IMatch";
+import { IMatchObject } from "../../interfaces/other/IMatch";
 import Subcategory from "../../models/subcategoryModel";
 import { createErrorMessage } from "../../utils/messages/createErrorMessage";
 

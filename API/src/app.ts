@@ -10,6 +10,9 @@ import categoryRouter from "./routes/categoryRouter";
 import subcategoryRouter from "./routes/subcategoryRouter";
 import path from "path";
 import productRouter from "./routes/productRouter.ts";
+import sliderRouter from "./routes/sliderRouter";
+import contactDataRouter from "./routes/contactDataRouter";
+import contactFormRouter from "./routes/contactFormRouter";
 
 const app = express();
 connectDatabase();
@@ -34,6 +37,15 @@ app.use('/subcategory', subcategoryRouter);
 
 // PRODUCT | create, get, getById, edit, delete
 app.use('/product', productRouter);
+
+// SLIDER | create, get, getById, edit, delete
+app.use('/slider', sliderRouter);
+
+// CONTACT DATA | create, get, getById, edit, delete
+app.use('/contactData', contactDataRouter);
+
+// CONTACT FORM | create, get, getById, addAdminNote, cahngeIsResolved
+app.use('/contactForm', contactFormRouter);
 
 
 //Serve images to frontend (SERVER_URL/images/...)

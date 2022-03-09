@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import Subcategory from "../../models/subcategoryModel";
+import deleteImageFS from "../../utils/images/deleteImageFS";
 import { createErrorMessage } from "../../utils/messages/createErrorMessage";
 
 const subcategoryDelete = async (req: Request, res: Response) => {
@@ -19,6 +20,8 @@ const subcategoryDelete = async (req: Request, res: Response) => {
         await subcategory.productRef[i].save();
       }
     }
+
+    await deleteImageFS(subcategory.imageUrl);
 
     res.status(200).send(subcategory);
   } catch (error) {

@@ -1,11 +1,8 @@
 import { Response } from "express";
+import { IMatchObject } from "../../../interfaces/other/IMatch";
 import { IAuthRequest } from "../../../interfaces/user/IUserAuthRequest";
 import User from "../../../models/userModel";
 import { createErrorMessage } from "../../../utils/messages/createErrorMessage";
-
-interface IMatchObject {
-  [key: string]: any
-}
 
 const userGetAll = async (req: IAuthRequest, res: Response) => {
   try {
