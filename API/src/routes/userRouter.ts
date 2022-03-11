@@ -14,6 +14,7 @@ import userActivate from "../controllers/userControllers/actions/userActivate";
 import authInactive from "../middleware/authInactive";
 import userBan from "../controllers/userControllers/actions/userBan";
 import userUnban from "../controllers/userControllers/actions/userUnban";
+import userGetMe from "../controllers/userControllers/actions/userGetMe";
 
 const userRouter = Router();
 
@@ -44,10 +45,15 @@ userRouter.post('/logoutAll', auth, userLogoutAll);
 // ACCESS: PRIVATE, ADMIN
 userRouter.get('/', auth, authAdmin, userGetAll);
 
-// TYPE: GET /user/id
+// TYPE: GET /user/id/id
 // DESCRIPTION: Get user by id
 // ACCESS: PRIVATE, ADMIN
-userRouter.get('/:id', auth, authAdmin, userGetById);
+userRouter.get('/id/:id', auth, authAdmin, userGetById);
+
+// TYPE: GET /user/me
+// DESCRIPTION: Get user own profile data
+// ACCESS: PRIVATE
+userRouter.get('/me', auth, userGetMe);
 
 // TYPE: PATCH /user/edit/me
 // DESCRIPTION: Edit user

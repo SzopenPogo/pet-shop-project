@@ -13,6 +13,7 @@ import productRouter from "./routes/productRouter.ts";
 import sliderRouter from "./routes/sliderRouter";
 import contactDataRouter from "./routes/contactDataRouter";
 import contactFormRouter from "./routes/contactFormRouter";
+import routeNotFound from "./middleware/routeNotFound";
 
 const app = express();
 connectDatabase();
@@ -20,13 +21,13 @@ connectDatabase();
 app.use(cors());
 app.use(express.json());
 
-// USER | register, login, logout, logoutAll, getAll, getById, edit, deactivate, activate, ban, unban
+// USER | register, login, logout, logoutAll, getAll, getById, getMe, edit, deactivate, activate, ban, unban
 app.use('/user', userRouter);
 
 // ADMIN | add, remove, setAdminLevel
 app.use('/admin', adminRouter);
 
-// ADDRESS | add, get, getById, delete, editById
+// ADDRESS | add, get, getById, getUserAddresses, delete, editById
 app.use('/address', addressRouter);
 
 // CATEGORY | create, get, getById, edit, delete
@@ -44,13 +45,17 @@ app.use('/slider', sliderRouter);
 // CONTACT DATA | create, get, getById, edit, delete
 app.use('/contactData', contactDataRouter);
 
-// CONTACT FORM | create, get, getById, addAdminNote, cahngeIsResolved
+// CONTACT FORM | create, get, getById, addAdminNote, toggleIsResolved
 app.use('/contactForm', contactFormRouter);
 
 
 //Serve images to frontend (SERVER_URL/images/...)
 const dirname = path.resolve();
 app.use('/images', express.static(path.join(dirname, '/images')));
+
+
+//Route not found
+app.use(routeNotFound);
 
 app.listen(PORT, () => {
   console.log(`>> Server running on PORT: ${PORT}`.yellow.bgBlack.bold);

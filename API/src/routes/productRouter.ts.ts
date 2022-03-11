@@ -18,7 +18,7 @@ productRouter.post('/', auth, authAdmin, uploadImage.array('images'), productCre
 // TYPE: GET /product
 // DESCRIPTION: Get all products
 // PAGINATION: limit=number&skip=number
-// FILTERING: subcategoryId=string
+// FILTERING: subcategoryId=string, productTitle=string
 // SORTING: sortPrice=('desc' or 'asc'), sortTitle=('desc' or 'asc')
 // ACCESS: PUBLIC
 productRouter.get('/', productGet);

@@ -13,6 +13,13 @@ const productGet = async (req: Request, res: Response) => {
       match.subcategoryId = req.query.subcategoryId;
     }
 
+    if (req.query.productTitle) {
+      match.title = {
+        $regex: req.query.productTitle,
+        $options: 'i'
+      };
+    }
+
     if (req.query.sortPrice) {
       sort.price = (req.query.sortPrice === 'desc') ? -1 : 1;
     }
@@ -23,7 +30,7 @@ const productGet = async (req: Request, res: Response) => {
     
     const product = await Product.find(match)
       .sort(sort)
-      .limit(25)
+      .limit(req.query.limit ? +req.query.limit : 25)
       .skip(req.query.skip ? +req.query.skip : 0);
     
     res.status(200).send(product);

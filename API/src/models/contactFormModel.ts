@@ -22,18 +22,21 @@ const contactFormSchema = new mongoose.Schema<IContactForm>({
 
   isResolved: {
     type: Boolean,
-    default: true
+    default: false
   },
 
   adminNotes: [{
     adminId: {
-      type: String
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
     },
 
     adminNote: {
       type: String
     }
   }]
+}, {
+  timestamps: true
 });
 
 const ContactForm = mongoose.model('ContactForm', contactFormSchema);
