@@ -1,0 +1,7 @@
+@import '../../../style/variables/dimensions';
+
+.content {
+  width: 100vw;
+  min-height: 65vh;
+  margin-top: $header-height;
+}

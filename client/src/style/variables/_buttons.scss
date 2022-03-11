@@ -1,0 +1,9 @@
+@mixin reset-button()
+{
+    cursor: pointer;
+
+    &:focus,
+    &:active {
+        outline: none;
+    }
+}

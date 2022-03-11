@@ -1,0 +1,13 @@
+@import '../../../style/variables/buttons';
+
+.image-button {
+  display: block;
+
+  @include reset-button();
+
+  background-color: transparent;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+}
