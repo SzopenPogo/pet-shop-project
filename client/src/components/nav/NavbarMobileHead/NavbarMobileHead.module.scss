@@ -1,0 +1,26 @@
+@import '../../../style/variables/colors';
+@import '../../../style/variables/borders';
+
+.navbar-head {
+  width: 100%;
+  height: 4rem;
+  padding: 2vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4vw;
+
+  border-bottom: 1px solid $light-brown-color;
+
+  .button-container {
+    width: 2.3rem;
+    height: 2.3rem;
+    background-color: $light-brown-color;
+    border-radius: $border-radious;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

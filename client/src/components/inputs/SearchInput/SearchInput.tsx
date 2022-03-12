@@ -9,8 +9,8 @@ const SearchInput = () => {
 
   return (
     <form className={classes['search-container']}>
-      <ImageButton height="70%" width="2rem" image={searchIcon} onClick={searchHandler} />
       <input type='text' placeholder="Search our store" />
+      <ImageButton height="70%" width="2rem" image={searchIcon} onClick={searchHandler} />
     </form>
   )
 }

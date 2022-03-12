@@ -1,0 +1,24 @@
+@import '../../../style/variables/dimensions';
+@import '../../../style/variables/buttons';
+
+.nav-button {
+  @include navbar-item-dimensions();
+  @include reset-button();
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: transparent;
+  border: none;
+  color: black;
+
+  .nav-arrow {
+    height: 100%;
+    width: 1rem;
+    background-image: url('../../../images/icon/boldRightArrowBlack.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

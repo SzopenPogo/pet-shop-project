@@ -8,7 +8,7 @@ const clientWindowSlice = createSlice({
   },
   reducers: {
     setWindowScroll(state, action: {payload: number}) {
-      state.isWindowScrolled = action.payload >= 265;
+      state.isWindowScrolled = action.payload >= 35;
     },
     setWindowMobile(state, action: { payload: number }) {
       state.isWindowMobile = action.payload <= 1000

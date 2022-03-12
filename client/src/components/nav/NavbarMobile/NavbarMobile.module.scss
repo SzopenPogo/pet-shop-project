@@ -1,0 +1,40 @@
+@import '../../../style/variables/z-index';
+
+.navbar-mobile {
+  z-index: $mobile-navbar-z-index;
+  overflow: hidden;
+
+  width: 85vw;
+  height: 100vh;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  -webkit-box-shadow: 1px 1px 24px -8px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 1px 1px 24px -8px rgba(66, 68, 90, 1);
+  box-shadow: 1px 1px 24px -8px rgba(66, 68, 90, 1);
+
+  background-color: white;
+}
+
+.enter {
+  opacity: 0;
+  transform: translateX(-30rem);
+}
+
+.enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: 300ms, transform 300ms;
+}
+
+.exit {
+  opacity: 1;
+}
+
+.exit-active {
+  opacity: 0;
+  transform: translateX(-30rem);
+  transition: 300ms, transform 300ms;
+}

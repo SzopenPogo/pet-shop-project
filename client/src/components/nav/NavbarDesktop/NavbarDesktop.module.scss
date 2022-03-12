@@ -1,0 +1,9 @@
+@import '../../../style/variables/colors';
+@import '../../../style/variables/dimensions';
+
+.navbar {
+  width: 100%;
+  height: $navbar-desktop-height;
+  background-color: white;
+  border-top: 1px solid $light-yellow-color;
+}

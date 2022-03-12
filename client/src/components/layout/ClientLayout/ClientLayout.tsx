@@ -1,3 +1,5 @@
+import { useDispatch } from "react-redux";
+import { clientWindowActions } from "../../../store/clientWindow/clientWindow-slice";
 import Header from "../../ui/Header/Header";
 import classes from './ClientLayout.module.scss';
 
@@ -5,7 +7,20 @@ interface IProps {
   children: React.ReactChild
 }
 
-const ClientLayout = ({children}: IProps) => {
+const ClientLayout = ({ children }: IProps) => {
+  const dispatch = useDispatch();
+  
+  const scrollHandler = () => {
+    dispatch(clientWindowActions.setWindowScroll(window.scrollY));
+  }
+  window.addEventListener('scroll', scrollHandler);
+
+  const setDisplayDevice = () => {
+    dispatch(clientWindowActions.setWindowMobile(window.innerWidth));
+  }
+  window.addEventListener('resize', setDisplayDevice);
+  setDisplayDevice();
+
   return (
     <>
       <Header />
