@@ -1,0 +1,36 @@
+@import '../../../style/variables/colors';
+
+.link {
+  text-decoration: none;
+  color: black;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  transition: linear 70ms;
+
+  &:hover {
+    transform: scale(1.03);
+    color: $main-yellow-color;
+  }
+
+  div {
+    width: 4rem;
+    height: 4rem;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    border-radius: 50%;
+    border: 1px solid black;
+  }
+
+  .title {
+    margin: 0;
+    padding: 0;
+    font-size: 1.05rem;
+  }
+}

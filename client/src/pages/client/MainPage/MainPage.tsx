@@ -1,4 +1,4 @@
-import ClientLayout from "../../../components/layout/ClientLayout/ClientLayout"
+import ClientLayout from "../../../components/layout/ClientLayout/ClientLayout";
 
 const MainPage = () => {
   return (

@@ -9,28 +9,43 @@ import classes from './NavbarMobile.module.scss';
 import { CSSTransition } from 'react-transition-group';
 import { RootState } from '../../../store';
 import React from 'react';
+import { resetActiveSubcategory, setActiveSubcategory } from '../../../store/category/category-actions';
+import Spinner from '../../Spinner/Spinner';
+import { ISubcategory } from '../../../interfaces/ISubcategory';
 
 
 const NavbarMobile = () => {
   const dispatch = useDispatch();
+
   const isHamburgerActive = useSelector((state: RootState) => state.ui.isHamburgerActive);
+  const categories = useSelector((state: RootState) => state.category.categories);
+  const { loading, error, data } = categories;
 
   const toggleNavbar = () => {
     dispatch(uiActions.toggleHamburgerMenu());
+    dispatch(resetActiveSubcategory());
   }
 
-  const clickCategoryHandler = () => {
-
+  const clickCategoryHandler = (title: string, subcategory: Array<ISubcategory>) => {
+    dispatch(setActiveSubcategory(title, subcategory));
   }
 
-  const nodeRef = React.useRef(null)
+  const renderMenuButtons = data.map(category => (
+    <NavbarMobileButton
+      key={category._id}
+      title={category.title}
+      onClick={clickCategoryHandler.bind(this, category.title, category.subcategoryRef)} />
+  ));
+
+  const nodeRef = React.useRef(null);
+  const animationTime = 300;
   return ReactDOM.createPortal(
     <>
-      {isHamburgerActive && <Backdrop onClick={toggleNavbar} />}
+      <Backdrop onClick={toggleNavbar} activate={isHamburgerActive} timeout={animationTime} />
       <CSSTransition
         nodeRef={nodeRef}
         in={isHamburgerActive}
-        timeout={300}
+        timeout={animationTime}
         mountOnEnter
         unmountOnExit
         classNames={{
@@ -42,9 +57,16 @@ const NavbarMobile = () => {
       >
         <nav className={classes['navbar-mobile']} ref={nodeRef}>
           <NavbarMobileHead title='Menu' isHamburgerButton={true} />
-          <NavbarMobileButton title='Psy' onClick={clickCategoryHandler} />
 
-          <NavbarMobileSubcategory visible={false} title='Psy' />
+          {loading &&
+            <div className={classes.spinner}>
+              <Spinner size='10rem' borderSize='12px' color='gray' />
+            </div>
+          }
+
+          {!loading && !error && renderMenuButtons}
+
+          <NavbarMobileSubcategory />
         </nav>
       </CSSTransition>
     </>,

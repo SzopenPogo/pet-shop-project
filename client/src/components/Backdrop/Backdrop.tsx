@@ -1,11 +1,32 @@
 import classes from './Backdrop.module.scss';
+import { CSSTransition } from 'react-transition-group';
+import React from 'react';
 
 interface Props {
+  activate: boolean;
+  timeout: number;
   onClick: () => void;
 }
 
-const Backdrop = ({onClick}: Props) => {
-  return <div className={classes.backdrop} onClick={onClick} />;
+const Backdrop = ({ onClick, activate, timeout }: Props) => {
+  const nodeRef = React.useRef(null)
+  return (
+    <CSSTransition
+      nodeRef={nodeRef}
+      in={activate}
+      timeout={timeout}
+      mountOnEnter
+      unmountOnExit
+      classNames={{
+        enter: classes['enter'],
+        enterActive: classes['enter-active'],
+        exit: classes['exit'],
+        exitActive: classes['exit-active']
+      }}
+    >
+      <div className={classes.backdrop} onClick={onClick} ref={nodeRef} />
+    </CSSTransition>
+  );
 };
 
 export default Backdrop;

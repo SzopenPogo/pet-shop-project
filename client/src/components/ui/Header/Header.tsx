@@ -5,15 +5,22 @@ import HamburgerButton from '../../buttons/HamburgerButton/HamburgerButton';
 import UserButton from '../../buttons/UserButton/UserButton';
 import CartButton from '../../buttons/CartButton/CartButton';
 import SearchInput from '../../inputs/SearchInput/SearchInput';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../store';
 import NavbarDesktop from '../../nav/NavbarDesktop/NavbarDesktop';
 import NavbarMobile from '../../nav/NavbarMobile/NavbarMobile';
+import { useEffect } from 'react';
+import { categoriesFetch } from '../../../store/category/category-actions';
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(categoriesFetch());
+  }, [dispatch]);
+
   const isWindowScrolled = useSelector((state: RootState) => state.clientWindow.isWindowScrolled);
   const isMobile = useSelector((state: RootState) => state.clientWindow.isWindowMobile);
-  const isHamburgerActive = useSelector((state: RootState) => state.ui.isHamburgerActive);
 
   const iconSize = '2.25rem';
   const headerClass = isWindowScrolled && !isMobile

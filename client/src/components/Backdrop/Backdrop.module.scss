@@ -10,15 +10,22 @@
   height: 100%;
   
   background-color: rgba(0, 0, 0, 0.5);
-
-  animation: opacity-up 300ms ease-out forwards;
 }
 
-@keyframes opacity-up {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.enter {
+  opacity: 0;
+}
+
+.enter-active {
+  opacity: 1;
+  transition: linear 300ms;
+}
+
+.exit {
+  opacity: 1;
+}
+
+.exit-active {
+  opacity: 0;
+  transition: linear 300ms;
 }

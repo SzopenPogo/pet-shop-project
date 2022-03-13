@@ -1,0 +1,28 @@
+@import '../../style/variables/shadows';
+@import '../../style/variables/colors';
+
+.item {
+  cursor: pointer;
+
+  height: 100%;
+  padding: 0 1rem;
+
+  position: relative;
+
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: linear 80ms;
+
+  &:hover {
+    padding: 0 .9rem;
+    font-size: 1.2rem;;
+    color: $main-yellow-color;
+    @include light-shadow();
+  }
+}
