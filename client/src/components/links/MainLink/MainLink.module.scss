@@ -1,0 +1,7 @@
+@import '../../../style/variables/buttons';
+
+.main-link {
+  width: 100%;
+  
+  @include main-button();
+}

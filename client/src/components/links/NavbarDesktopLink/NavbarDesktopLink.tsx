@@ -9,10 +9,10 @@ interface IProps {
 }
 
 
-const NavbarDesktopLink = ({title, route, image}: IProps) => {
+const NavbarDesktopLink = ({ title, route, image }: IProps) => {
   return (
-    <Link to={route} className={classes.link}>
-      <div style={{backgroundImage: `url(${BACKEND_URL}/${image})`}} />
+    <Link to={route} className={classes.link} >
+      <div className={classes.image} style={{backgroundImage: `url(${BACKEND_URL}/${image})`}} />
       <h3 className={classes.title}>{title}</h3>
     </Link>
   )

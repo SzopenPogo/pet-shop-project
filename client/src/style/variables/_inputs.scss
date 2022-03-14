@@ -1,0 +1,15 @@
+@import './_borders.scss';
+@import './colors';
+
+@mixin main-input {
+  width: 90%;
+  padding: .5rem 1rem;
+  border-radius: $border-radious;
+  border: 1px solid $main-brown-color;
+  font-size: .9rem;
+
+  &:focus,
+  &:active {
+    outline: 1px solid $main-brown-color;
+  }
+}

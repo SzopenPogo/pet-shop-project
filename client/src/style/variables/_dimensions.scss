@@ -3,6 +3,7 @@ $mobile-width: 62.5rem;
 $header-height: 7rem;
 $header-desktop-content-height: 5.5rem;
 $header-desktop-content-height--active: 4.5rem;
+$simple-header-height: 4.5rem;
 
 $navbar-desktop-height: 3.25rem;
 @mixin navbar-item-dimensions() {

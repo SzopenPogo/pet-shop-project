@@ -1,0 +1,7 @@
+@import '../../../style/variables/buttons';
+
+.secondary-link {
+  width: 100%;
+  
+  @include secondary-button();
+}

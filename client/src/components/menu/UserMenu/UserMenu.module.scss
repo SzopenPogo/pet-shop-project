@@ -1,0 +1,7 @@
+@import '../../../style/variables/containers';
+
+.user-menu {
+  width: 10rem;
+  @include header-button-dropdown();
+  
+}

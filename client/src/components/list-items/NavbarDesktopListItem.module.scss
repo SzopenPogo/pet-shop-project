@@ -5,7 +5,7 @@
   cursor: pointer;
 
   height: 100%;
-  padding: 0 1rem;
+  padding: 0 2rem;
 
   position: relative;
 
@@ -17,12 +17,16 @@
   align-items: center;
   justify-content: center;
 
+  border-top: 1px solid white;
+
   transition: linear 80ms;
 
   &:hover {
-    padding: 0 .9rem;
+    padding: 0 1.9rem;
     font-size: 1.2rem;;
     color: $main-yellow-color;
     @include light-shadow();
+    background-color: $main-brown-color;
+    border-top: 1px solid $main-yellow-color;
   }
 }

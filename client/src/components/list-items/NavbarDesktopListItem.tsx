@@ -30,7 +30,7 @@ const NavbarDesktopListItem = ({ title, subcategory }: IProps) => {
       className={classes.item}
     >
       {title}
-      {title === activeTitle && <NavbarDesktopSubcategory subcategories={subcategoryRef} />}
+      <NavbarDesktopSubcategory subcategories={subcategoryRef} isActive={title === activeTitle} />
     </li>
   )
 }

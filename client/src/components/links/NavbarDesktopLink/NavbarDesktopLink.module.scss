@@ -1,36 +1,44 @@
 @import '../../../style/variables/colors';
 
 .link {
-  text-decoration: none;
-  color: black;
+  padding: .7rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  gap: .2rem;
+
+  text-decoration: none;
+  color: $light-yellow-color;
 
   transition: linear 70ms;
 
   &:hover {
-    transform: scale(1.03);
+    transform: scale(1.05);
     color: $main-yellow-color;
+
+    .image {
+      border: 1px solid $light-yellow-color;
+    }
   }
 
-  div {
+  .image {
     width: 4rem;
     height: 4rem;
 
+    background-color: $light-yellow-color;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 
     border-radius: 50%;
-    border: 1px solid black;
+    border: 1px solid $light-yellow-color;
   }
 
   .title {
     margin: 0;
-    padding: 0;
+    padding: .05rem .755rem;
     font-size: 1.05rem;
   }
 }

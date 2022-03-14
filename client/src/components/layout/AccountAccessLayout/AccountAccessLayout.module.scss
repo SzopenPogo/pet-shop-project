@@ -1,0 +1,17 @@
+@import '../../../style/variables/dimensions';
+
+.container {
+  margin-top: calc(#{$simple-header-height} + 1.5rem);
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+
+  @media(min-width: $mobile-width) {
+    justify-content: center;
+    flex-direction: row;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+}

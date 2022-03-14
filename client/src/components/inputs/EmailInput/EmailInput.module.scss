@@ -1,0 +1,5 @@
+@import '../../../style/variables/inputs';
+
+.email-input {
+  @include main-input(); 
+}

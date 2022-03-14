@@ -1,8 +1,53 @@
+@import './borders';
+@import './colors';
+
 @mixin reset-button() {
     cursor: pointer;
 
     &:focus,
     &:active {
         outline: none;
+    }
+}
+
+@mixin secondary-button {
+    padding: calc(.5rem - 2px) calc(1rem - 2px);
+
+    border-radius: $border-radious;
+    border: 2px solid $main-yellow-color;
+
+    text-decoration: none;
+    text-align: center;
+    color: $main-yellow-color;
+    font-weight: bold;
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, .2); 
+
+    transition: linear 100ms;   
+    &:hover {
+      border: 2px solid $light-yellow-color;
+      color: $light-yellow-color;
+    }
+}
+
+@mixin main-button {
+    padding: .5rem 1rem;
+
+    @include reset-button();
+
+    border-radius: $border-radious;
+    background-color: $main-yellow-color;
+    outline: none;
+    border: none;
+
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, .2);
+
+    transition: linear 100ms;  
+
+    &:hover {
+      background-color: $light-yellow-color;
     }
 }
