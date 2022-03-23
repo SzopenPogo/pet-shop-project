@@ -4,13 +4,15 @@ interface IProps {
   width: string;
   height: string;
   image: string;
+  isSubmit: boolean;
   onClick: () => void;
 }
 
-const ImageButton = ({width, height, image, onClick}: IProps) => {
+const ImageButton = ({ width, height, image, isSubmit, onClick }: IProps) => {
+  const buttonType = isSubmit ? 'submit' : 'button';
   return (
     <button
-      type='button'
+      type={buttonType}
       onClick={onClick}
       className={classes['image-button']}
       style={{

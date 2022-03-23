@@ -2,7 +2,7 @@
 @import './shadows';
 
 @mixin header-button-dropdown {
-  padding: .6rem 1rem;
+  padding: 1rem 1rem;
   position: absolute;
   top: 2.25rem;
 
@@ -10,7 +10,7 @@
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  gap: .5rem;
+  gap: .65rem;
 
   background-color: white;
   border-radius: $border-radious;

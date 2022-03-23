@@ -1,10 +1,14 @@
 import { SyntheticEvent, useRef } from 'react'
-import MainSubmitButton from '../../buttons/MainSubmitButton/MainSubmitButton';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../../../store/user/user-actions';
+import MainButton from '../../buttons/MainButton/MainButton';
 import EmailInput from '../../inputs/EmailInput/EmailInput';
 import PasswordInput from '../../inputs/PasswordInput/PasswordInput';
 import classes from './LoginForm.module.scss';
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
+  
   const emailInputRef = useRef<HTMLInputElement>(null);
   const passwordInputRef = useRef<HTMLInputElement>(null);
 
@@ -14,7 +18,7 @@ const LoginForm = () => {
     const emailValue = emailInputRef.current!.value;
     const passwordValue = passwordInputRef.current!.value;
 
-    
+    dispatch(loginUser(emailValue, passwordValue));
   }
   
   return (
@@ -23,7 +27,7 @@ const LoginForm = () => {
       <EmailInput ref={emailInputRef} title='email' />
       <PasswordInput ref={passwordInputRef} title='password' />
       <div className={classes['button-container']}>
-        <MainSubmitButton title='Sign in' />
+        <MainButton title='Sign in' />
       </div>
     </form>
   )

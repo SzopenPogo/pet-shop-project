@@ -3,7 +3,7 @@ import ImageButton from '../../buttons/ImageButton/ImageButton';
 import classes from './NavbarMobileHead.module.scss';
 import backArrow from '../../../images/icon/backArrow.svg';
 import { useDispatch } from 'react-redux';
-import { resetActiveSubcategory, setActiveSubcategory } from '../../../store/category/category-actions';
+import { resetActiveSubcategory } from '../../../store/category/category-actions';
 
 interface IProps {
   title: string;
@@ -23,7 +23,12 @@ const NavbarMobileHead = ({ title, isHamburgerButton }: IProps) => {
       <div className={classes['button-container']}>
         {isHamburgerButton
           ? <HamburgerButton />
-          : <ImageButton image={backArrow} width={backButtonSize} height={backButtonSize} onClick={backToMenuHandler} />
+          : <ImageButton
+            image={backArrow}
+            width={backButtonSize}
+            height={backButtonSize}
+            isSubmit={false}
+            onClick={backToMenuHandler} />
         }
       </div>
       <h1>{title}</h1>

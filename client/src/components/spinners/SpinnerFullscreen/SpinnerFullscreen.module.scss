@@ -1,0 +1,18 @@
+@import "../../../style/variables/z-index";
+
+.spinner-container {
+  z-index: $loading-fullscreen-spinner-z-index;
+
+  width: 100vw;
+  height: 100vh;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgba(0, 0, 0, 0.5);
+}

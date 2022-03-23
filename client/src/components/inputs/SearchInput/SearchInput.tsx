@@ -10,7 +10,7 @@ const SearchInput = () => {
   return (
     <form className={classes['search-container']}>
       <input type='text' placeholder="Search our store" />
-      <ImageButton height="70%" width="2rem" image={searchIcon} onClick={searchHandler} />
+      <ImageButton height="70%" width="2rem" image={searchIcon} isSubmit={true} onClick={searchHandler} />
     </form>
   )
 }

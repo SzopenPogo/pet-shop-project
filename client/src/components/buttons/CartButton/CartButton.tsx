@@ -16,6 +16,7 @@ const CartButton = ({ size }: IProps) => {
       width={size}
       height={size}
       image={cartIcon}
+      isSubmit={false}
       onClick={cartButtonHandler}
     />
   )

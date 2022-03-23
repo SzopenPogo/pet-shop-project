@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store';
 import NavbarDesktopListItem from '../../list-items/NavbarDesktopListItem';
+import Spinner from '../../spinners/Spinner/Spinner';
 import classes from './NavbarDesktop.module.scss';
 
 const NavbarDesktop = () => {
@@ -15,6 +16,7 @@ const NavbarDesktop = () => {
     <nav className={classes.navbar}>
       <ul>
         {!loading && !error && renderMenuItems}
+        {loading && <Spinner borderSize='.35rem' size='2rem' color='black' />}
       </ul>
     </nav>
   )

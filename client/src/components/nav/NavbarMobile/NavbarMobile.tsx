@@ -10,8 +10,8 @@ import { CSSTransition } from 'react-transition-group';
 import { RootState } from '../../../store';
 import React from 'react';
 import { resetActiveSubcategory, setActiveSubcategory } from '../../../store/category/category-actions';
-import Spinner from '../../Spinner/Spinner';
 import { ISubcategory } from '../../../interfaces/ISubcategory';
+import Spinner from '../../spinners/Spinner/Spinner';
 
 
 const NavbarMobile = () => {

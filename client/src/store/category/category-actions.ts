@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BACKEND_URL, CATEGORY_ROUTER } from "../../constants/backend";
+import { BACKEND_CATEGORY_ROUTER } from "../../constants/backend";
 import { CATEGORY_FAIL, CATEGORY_REQUEST, CATEGORY_SUCCESS } from "../../constants/category";
 import { ISubcategory } from "../../interfaces/ISubcategory";
 import { categoryActions } from "./category-slice";
@@ -29,21 +29,21 @@ export const resetActiveSubcategory = () => (dispatch: any) => {
 // REQUEST TO API
 // GET All Categories
 export const categoriesFetch = () => async (dispatch: any) => {
-  dispatch(categoryActions.categoryGet({ type: CATEGORY_REQUEST }));
+  dispatch(categoryActions.get({ type: CATEGORY_REQUEST }));
 
   const getCategories = async () => {
-    return await axios.get(`${BACKEND_URL}/${CATEGORY_ROUTER}`);
+    return await axios.get(`${BACKEND_CATEGORY_ROUTER}`);
   }
 
   try {
     const { data } = await getCategories();
     
-    dispatch(categoryActions.categoryGet({
+    dispatch(categoryActions.get({
       type: CATEGORY_SUCCESS,
       payload: data
     }))
   } catch (error) {
-    dispatch(categoryActions.categoryGet({
+    dispatch(categoryActions.get({
       type: CATEGORY_FAIL,
       payload: await getCategories()
     }))

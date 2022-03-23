@@ -24,7 +24,7 @@ const categorySlice = createSlice({
     }
   },
   reducers: {
-    categoryGet(state, action) {
+    get(state, action) {
       const { type, payload } = action.payload;
 
       switch (type) {
