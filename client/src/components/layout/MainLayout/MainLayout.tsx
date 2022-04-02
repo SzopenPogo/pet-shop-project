@@ -1,13 +1,13 @@
 import { useDispatch } from "react-redux";
 import { clientWindowActions } from "../../../store/clientWindow/clientWindow-slice";
 import Header from "../../ui/Header/Header";
-import classes from './ClientLayout.module.scss';
+import classes from './MainLayout.module.scss';
 
 interface IProps {
   children: React.ReactChild
 }
 
-const ClientLayout = ({ children }: IProps) => {
+const MainLayout = ({ children }: IProps) => {
   const dispatch = useDispatch();
   
   const scrollHandler = () => {
@@ -31,4 +31,4 @@ const ClientLayout = ({ children }: IProps) => {
   )
 }
 
-export default ClientLayout
+export default MainLayout

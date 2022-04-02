@@ -9,7 +9,18 @@ const userRegister = async (req: Request, res: Response) => {
     const user = new User(userData);
     await user.save();
 
-    res.status(201).send(user);
+    const token = await user.generateAuthToken();
+
+    const userResponseData = {
+      _id: user._id,
+      email: user.email,
+      isActive: user.isActive,
+      isAdmin: user.isAdmin,
+      avatarUrl: user.avatarUrl,
+      adminNote: user.adminNote
+    }
+
+    res.status(201).send({ userResponseData, token });
   } catch (error) {
     const errorMessage = createErrorMessage(500, 'User registration failed', error);
 

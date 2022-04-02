@@ -1,13 +1,18 @@
-import { LOGIN_ROUTE, REGISTER_ROUTE } from '../../../constants/routes';
-import MainLink from '../../links/MainLink/MainLink';
-import SecondaryLink from '../../links/SecondaryLink/SecondaryLink';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../store';
+import AuthorizedMenuElement from '../../elements/AuthorizedMenuElement/AuthorizedMenuElement';
+import UnauthorizedMenuElement from '../../elements/UnauthorizedMenuElenemts/UnauthorizedMenuElements';
 import classes from './UserMenu.module.scss';
 
 const UserMenu = () => {
+  const { data, token } = useSelector((state: RootState) => state.user);
+
   return (
     <div className={classes['user-menu']}>
-      <MainLink title='Sign in' route={LOGIN_ROUTE} />
-      <SecondaryLink title='Register' route={REGISTER_ROUTE} />
+      {!data._id 
+      ? <UnauthorizedMenuElement />
+      : <AuthorizedMenuElement _id={data._id} token={token} />
+      }
     </div>
   )
 }

@@ -1,11 +1,7 @@
-.login-form {
-  width: 100%;
+@import '../../../style/variables/forms';
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 1rem;
+.login-form {
+  @include main-form();
 
   .button-container {
     width: 90%;

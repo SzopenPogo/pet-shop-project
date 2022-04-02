@@ -3,3 +3,7 @@
 .email-input {
   @include main-input(); 
 }
+
+.invalid-email-input{
+  @include invalid-input();
+}

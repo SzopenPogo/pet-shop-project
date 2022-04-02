@@ -1,0 +1,9 @@
+@import '../../../style/variables/access-page';
+
+.login {
+  @include content-container();
+}
+
+.register {
+  @include form-container();
+}

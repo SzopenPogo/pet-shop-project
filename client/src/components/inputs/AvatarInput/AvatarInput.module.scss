@@ -1,0 +1,35 @@
+@import '../../../style/variables/colors';
+@import '../../../style/variables/dimensions';
+
+
+.wrapper {
+  overflow: hidden;
+
+  width: 2.5rem;
+  height: 2.5rem;
+
+  background-color: rgba(255, 255, 255, 0.75);
+  background-image: url('../../../images/icon/camera.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 58%;
+
+  border-radius: 50%;
+  border: 2px solid $main-brown-color;
+
+  transition: linear 100ms;
+  
+  @media (min-width: $mobile-width) {
+    border: 2px solid $light-brown-color;
+
+    &:hover {
+      border: 2px solid $main-brown-color;
+      background-size: 62%;
+    }
+  }
+
+  input[type=file] {
+    font-size: 200px;
+    opacity: 0;
+  }
+}

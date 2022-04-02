@@ -11,10 +11,13 @@
 }
 
 @mixin secondary-button {
+    @include reset-button();
+
     padding: calc(.5rem - 2px) calc(1rem - 2px);
 
     border-radius: $border-radious;
     border: 2px solid $main-yellow-color;
+    background-color: transparent;
 
     text-decoration: none;
     text-align: center;

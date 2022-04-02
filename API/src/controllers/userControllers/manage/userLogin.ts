@@ -38,7 +38,8 @@ const userLogin = async (req: Request, res: Response) => {
       email: user.email,
       isActive: user.isActive,
       isAdmin: user.isAdmin,
-      avatarUrl: user.avatarUrl
+      avatarUrl: user.avatarUrl,
+      adminNote: user.adminNote
     }
 
     res.status(200).send({ userResponseData, token });

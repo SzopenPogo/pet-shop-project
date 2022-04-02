@@ -1,0 +1,24 @@
+@import '../../../style/variables/colors';
+@import '../../../style/variables/dimensions';
+
+.avatar {
+  width: 35vw;
+  height: 35vw;
+
+  background-color: $light-brown-color;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 3px solid $main-brown-color;
+
+  @media (min-width: $mobile-width) {
+    width: 10rem;
+    height: 10rem;
+  }
+}

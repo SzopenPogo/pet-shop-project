@@ -13,7 +13,7 @@ const LoginPage = () => {
         </div>
         <div className={classes.register}>
           <h1>You don't have an account?</h1>
-          <SecondaryLink route={REGISTER_ROUTE} title='Create account' />
+          <SecondaryLink route={REGISTER_ROUTE} title='Create an account' />
         </div>
       </>
     </AccountAccessLayout>

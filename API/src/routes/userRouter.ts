@@ -15,6 +15,8 @@ import authInactive from "../middleware/authInactive";
 import userBan from "../controllers/userControllers/actions/userBan";
 import userUnban from "../controllers/userControllers/actions/userUnban";
 import userGetMe from "../controllers/userControllers/actions/userGetMe";
+import uploadImage from "../middleware/uploadImage";
+import userChangeAvatar from "../controllers/userControllers/manage/userChangeAvatar";
 
 const userRouter = Router();
 
@@ -84,5 +86,10 @@ userRouter.post('/ban/:id', auth, authAdmin, userBan);
 // DESCRIPTION: Unban user
 // ACCESS: PRIVATE, ADMIN
 userRouter.post('/unban/:id', auth, authAdmin, userUnban);
+
+// TYPE: PATCH /avatar
+// DESCRIPTION: Change user avatar
+// ACCESS: PRIVATE
+userRouter.patch('/avatar', auth, uploadImage.single('image'), userChangeAvatar);
 
 export default userRouter;

@@ -1,10 +1,10 @@
-import ClientLayout from "../../../components/layout/ClientLayout/ClientLayout";
+import MainLayout from "../../../components/layout/MainLayout/MainLayout";
 
 const MainPage = () => {
   return (
-    <ClientLayout>
+    <MainLayout>
       <h1>Main Page</h1>
-    </ClientLayout>
+    </MainLayout>
   )
 }
 

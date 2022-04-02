@@ -3,9 +3,10 @@ import classes from './PasswordInput.module.scss';
 
 interface IProps {
   title: string;
+  isValid: boolean;
 }
 
-const PasswordInput = React.forwardRef<HTMLInputElement, IProps>(({ title }, ref) => {
+const PasswordInput = React.forwardRef<HTMLInputElement, IProps>(({ title, isValid }, ref) => {
   const [isPassword, setIsPassword] = useState<boolean>(true);
 
   const toggleInputType = () => {
@@ -13,9 +14,10 @@ const PasswordInput = React.forwardRef<HTMLInputElement, IProps>(({ title }, ref
   }
 
   const inputType = isPassword ? 'password' : 'text';
+  const containerClass = isValid ? classes['password-container'] : `${classes['password-container']} ${classes['invalid-password-input']}`;
 
   return (
-    <div className={classes['password-container']}>
+    <div className={containerClass}>
       <input ref={ref} type={inputType} placeholder={title} required />
       <button type='button' onClick={toggleInputType}>
         show

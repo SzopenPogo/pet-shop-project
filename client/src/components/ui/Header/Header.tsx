@@ -2,7 +2,7 @@ import ImageLink from '../../links/ImageLink/ImageLink';
 import classes from './Header.module.scss';
 import petShopLogo from '../../../images/logo/petShopLogo.webp';
 import HamburgerButton from '../../buttons/HamburgerButton/HamburgerButton';
-import UserButton from '../../buttons/UserButton/UserButton';
+import UserButton from '../../icons/UserIcon/UserIcon';
 import CartButton from '../../buttons/CartButton/CartButton';
 import SearchInput from '../../inputs/SearchInput/SearchInput';
 import { useDispatch, useSelector } from 'react-redux';

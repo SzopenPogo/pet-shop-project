@@ -1,44 +1,9 @@
-@import '../../../style/variables/dimensions';
+@import '../../../style/variables/access-page';
 
 .login {
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-
-  @media(min-width: $mobile-width) {
-    width: 25rem;
-    min-height: 15rem;
-  }
+  @include form-container();
 }
 
 .register {
-  width: 90%;
-  margin-top: 3rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-
-  border-top: 1px solid rgba(0, 0, 0, 0.3);
-
-  @media(min-width: $mobile-width) {
-    min-height: 15rem;
-    padding-left: 3rem;
-    width: 22rem;
-    border-top: none;
-    border-left: 1px solid rgba(0, 0, 0, 0.3);
-  }
-
-  h1 {
-    text-align: center;
-
-    @media(min-width: $mobile-width) {
-      text-align: left;
-    }
-  }
-
+  @include content-container();
 }

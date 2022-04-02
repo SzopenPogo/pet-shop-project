@@ -1,0 +1,9 @@
+@import '../../../style/variables/forms';
+
+.register-form {
+  @include main-form();
+
+  .button-container {
+    width: 90%;
+  }
+}

@@ -13,3 +13,8 @@
     outline: 1px solid $main-brown-color;
   }
 }
+
+@mixin invalid-input {
+  border: 1px solid $invalid-red-color !important;
+  outline: 1px solid $invalid-red-color !important;
+}

@@ -1,0 +1,43 @@
+@import '../../../style/variables/dimensions';
+
+.address-container {
+  width: 100%;
+  padding: 2rem .5rem;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: .2rem;
+
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+
+  -webkit-box-shadow: 0px 3px 24px -3px rgba(66, 68, 90, 0.55);
+  -moz-box-shadow: 0px 3px 24px -3px rgba(66, 68, 90, 0.55);
+  box-shadow: 0px 3px 24px -3px rgba(66, 68, 90, 0.55);
+
+  @media (min-width: $mobile-width) {
+    width: 27rem;
+  }
+
+  .submit-form {
+    margin-top: 1.5rem;
+    width: 50%;
+  }
+
+  .edit-button-container {
+    width: 2.15rem;
+    height: 2.15rem;
+
+    position: absolute;
+    top: .45rem;
+    right: .45rem;
+  }
+
+  h1 {
+    margin: .75rem 0;
+  }
+}
