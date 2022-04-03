@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import addressSlice from "./address/address-slice";
 import categorySlice from "./category/category-slice";
 import clientWindowSlice from "./clientWindow/clientWindow-slice";
 import uiSlice from "./ui/ui-slice";
@@ -9,7 +10,8 @@ const store = configureStore({
     clientWindow: clientWindowSlice.reducer,
     ui: uiSlice.reducer,
     category: categorySlice.reducer,
-    user: userSilce.reducer
+    user: userSilce.reducer,
+    address: addressSlice.reducer
   }
 });
 

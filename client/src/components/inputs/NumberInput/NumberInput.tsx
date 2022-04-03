@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import generateInputId from '../../../utils/generateInputId';
-import classes from './TextInput.module.scss';
+import classes from './NumberInput.module.scss';
 
 interface IProps {
   title: string;
@@ -9,11 +9,11 @@ interface IProps {
   isReadonly: boolean;
   isRequired: boolean;
   isLabel: boolean;
-  value: string;
+  value: number;
   validateInput?: (value: string) => boolean;
 }
 
-const TextInput = React.forwardRef<HTMLInputElement, IProps>(({
+const NumberInput = React.forwardRef<HTMLInputElement, IProps>(({
   title,
   isValid = true,
   isReadonly,
@@ -22,34 +22,34 @@ const TextInput = React.forwardRef<HTMLInputElement, IProps>(({
   value,
   validateInput}, ref) => {
   
-  const [inputValue, setInputValue] = useState<string>(value);
+  const [inputValue, setInputValue] = useState<number>(value);
   const [isInputValid, setIsInputValid] = useState<boolean>(isValid);
 
   useEffect(() => {
     if (validateInput) {
-      setIsInputValid(validateInput(inputValue));
+      setIsInputValid(validateInput(inputValue.toString()));
     }
     
   }, [validateInput, inputValue]);
 
   const controllInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.currentTarget.value);
+    setInputValue(+event.currentTarget.value);
   }
   
   const inputClass = isInputValid
-    ? classes['text-input']
-    : `${classes['text-input']} ${classes['invalid-text-input']}`;
+    ? classes['number-input']
+    : `${classes['number-input']} ${classes['invalid-number-input']}`;
 
   
   const inputId = generateInputId(title);
   
   return (
-    <div className={classes['text-input-container']}>
+    <div className={classes['number-input-container']}>
       {isLabel && <label htmlFor={inputId}>{title}:</label>}
       <input
         id={inputId}
         ref={ref}
-        type='text'
+        type='number'
         placeholder={title}
         readOnly={isReadonly}
         className={inputClass}
@@ -61,4 +61,4 @@ const TextInput = React.forwardRef<HTMLInputElement, IProps>(({
   )
 })
 
-export default TextInput
+export default NumberInput
