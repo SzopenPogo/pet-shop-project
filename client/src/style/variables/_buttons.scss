@@ -1,5 +1,6 @@
 @import './borders';
 @import './colors';
+@import './dimensions';
 
 @mixin reset-button() {
     cursor: pointer;
@@ -52,4 +53,17 @@
     &:hover {
       background-color: $light-yellow-color;
     }
+}
+
+@mixin manage-button {
+  cursor: pointer;
+  width: $manage-button-size;
+  height: $manage-button-size;
+
+  background-color: transparent;
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: $border-radious;
 }

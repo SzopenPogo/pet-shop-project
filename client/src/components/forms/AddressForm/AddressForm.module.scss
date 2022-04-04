@@ -37,18 +37,30 @@
     width: 50%;
   }
 
-  .edit-button-container {
-    width: 2.15rem;
-    height: 2.15rem;
-
+  .manage-buttons-container {
     position: absolute;
     top: .45rem;
     right: .45rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: .75rem;
   }
 
   h1 {
     margin: .75rem 0;
   }
+}
+
+.address-delete-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: .75rem;
+  text-align: center;
 }
 
 .enter {

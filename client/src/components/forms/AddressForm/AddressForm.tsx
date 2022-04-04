@@ -8,6 +8,11 @@ import { IAddressData } from '../../../interfaces/IAddressData';
 import { useDispatch, useSelector } from 'react-redux';
 import { editAddress } from '../../../store/address/actions/address-edit-actions';
 import { RootState } from '../../../store';
+import DeleteButton from '../../buttons/DeleteButton/DeleteButton';
+import MainModal from '../../modals/MainModal/MainModal';
+import { uiActions } from '../../../store/ui/ui-slice';
+import { deleteUserAddress } from '../../../store/address/actions/address-delete-actions';
+import MainRedButton from '../../buttons/MainRedButton/MainRedButton';
 
 interface IProps extends IAddressData {
   addressIndex: number;
@@ -35,6 +40,7 @@ const AddressForm = ({
   const [isReadonly, setIsReadolny] = useState<boolean>(true);
 
   const token = useSelector((state: RootState) => state.user.token);
+  const isDeleteModalActive = useSelector((state: RootState) => state.ui.isDeleteModalActive);
 
   const validateInput = (value: string) => {
     return value.length >= 2;
@@ -51,6 +57,15 @@ const AddressForm = ({
 
   const clickEditButtonHandler = () => {
     setIsReadolny(!isReadonly);
+  }
+
+  const toggleDeleteModal = () => {
+    dispatch(uiActions.toggleDeleteModal());
+  }
+
+  const deleteAddress = () => {
+    dispatch(deleteUserAddress(token, _id, addressIndex));
+    toggleDeleteModal();
   }
 
   const submitHandler = (event: SyntheticEvent) => {
@@ -78,7 +93,7 @@ const AddressForm = ({
     setIsReadolny(true);
   }
 
-  let addressNumber = addressIndex; // <-- Added to prevent addressIndex from being incremented
+  let addressNumber = addressIndex; // <-- Added to prevent addressIndex from being incremented while map
   const nodeRef = useRef(null);
   return (
     <form className={classes['address-container']} onSubmit={submitHandler}>
@@ -161,9 +176,21 @@ const AddressForm = ({
         </div>
       </CSSTransition>
 
-      <div className={classes['edit-button-container']}>
+      <div className={classes['manage-buttons-container']}>
+        {isReadonly && <DeleteButton onClick={toggleDeleteModal} />}
         <EditButton isActive={isReadonly} onClick={clickEditButtonHandler} />
       </div>
+
+      <MainModal
+        timeout={300}
+        activate={isDeleteModalActive}
+        title={`Delete Address`}
+        closeFunction={toggleDeleteModal} >
+        <div className={classes['address-delete-modal']}>
+          <span>Are you sure you want<br />to delete this address?</span>
+          <MainRedButton isSubmit={false} title='Delete' onClick={deleteAddress} />
+        </div>
+      </MainModal>
     </form>
   )
 }

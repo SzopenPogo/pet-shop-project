@@ -1,0 +1,10 @@
+@import '../../../style/variables/buttons';
+@import '../../../style/variables/colors';
+
+.submit-button {
+  width: 100%;
+  height: 2.5rem;
+  @include main-button();
+
+  background-color: $main-red-color !important;
+}

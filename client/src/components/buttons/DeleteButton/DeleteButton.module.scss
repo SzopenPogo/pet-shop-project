@@ -1,0 +1,9 @@
+@import '../../../style/variables/buttons';
+@import '../../../style/variables/colors';
+
+.delete-button {
+  @include manage-button();
+
+  border: 1px solid $main-red-color;
+  background-image: url('../../../images/icon/binIconRed.svg');
+}
