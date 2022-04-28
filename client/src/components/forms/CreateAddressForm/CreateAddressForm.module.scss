@@ -1,0 +1,10 @@
+@import '../../../style/variables/forms';
+
+.create-address-form {
+  @include address-form();
+
+  .submit-button {
+    width: 50%;
+    margin-top: 1rem;
+  }
+}

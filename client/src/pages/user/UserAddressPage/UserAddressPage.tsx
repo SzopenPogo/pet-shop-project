@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import CreateAddressContainer from '../../../components/containers/CreateAddressContainer/CreateAddressContainer';
 import AddressForm from '../../../components/forms/AddressForm/AddressForm';
 import UserLayout from '../../../components/layout/UserLayout/UserLayout';
 import { RootState } from '../../../store';
@@ -33,9 +34,12 @@ const UserAddressPage = () => {
 
   return (
     <UserLayout>
-      <section className={classes.addresses}>
-        {renderAddresses}
-      </section>
+      <>
+        <CreateAddressContainer />
+        <section className={classes.addresses}>
+          {renderAddresses}
+        </section>
+      </>
     </UserLayout>
   )
 }

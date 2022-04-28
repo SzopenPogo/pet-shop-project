@@ -79,6 +79,25 @@ const addressSlice = createSlice({
           state.error = payload;
           break;
       }
+    },
+    add(state, action) {
+      const { type, payload } = action.payload;
+      
+      switch (type) {
+        case ADDRESS_REQUEST:
+          state.loading = true;
+          state.error = '';
+          break;
+        case ADDRESS_SUCCESS:
+          state.loading = false;
+          state.error = '';
+          state.data.push(payload);
+          break;
+        case ADDRESS_FAIL:
+          state.loading = false;
+          state.error = payload;
+          break;
+      }
     }
   }
 });

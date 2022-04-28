@@ -13,6 +13,8 @@ import MainModal from '../../modals/MainModal/MainModal';
 import { uiActions } from '../../../store/ui/ui-slice';
 import { deleteUserAddress } from '../../../store/address/actions/address-delete-actions';
 import MainRedButton from '../../buttons/MainRedButton/MainRedButton';
+import { validateAddressInput } from '../../../utils/validation/validateAddressInput';
+import { validatePhoneNumber } from '../../../utils/validation/validatePhoneNumber';
 
 interface IProps extends IAddressData {
   addressIndex: number;
@@ -41,19 +43,6 @@ const AddressForm = ({
 
   const token = useSelector((state: RootState) => state.user.token);
   const isDeleteModalActive = useSelector((state: RootState) => state.ui.isDeleteModalActive);
-
-  const validateInput = (value: string) => {
-    return value.length >= 2;
-  }
-
-  const validatePhoneInput = (value: string) => {
-    // Check if value is not a number. Whitespaces are allowed
-    if (!+value.replace(/\s+/g, '')) {
-      return false;
-    }
-
-    return value.length >= 2;
-  }
 
   const clickEditButtonHandler = () => {
     setIsReadolny(!isReadonly);
@@ -105,7 +94,7 @@ const AddressForm = ({
         isLabel={true}
         isReadonly={isReadonly}
         isRequired={true}
-        validateInput={validateInput}
+        validateInput={validateAddressInput}
       />
 
       <TextInput
@@ -115,7 +104,7 @@ const AddressForm = ({
         isLabel={true}
         isReadonly={isReadonly}
         isRequired={true}
-        validateInput={validateInput}
+        validateInput={validateAddressInput}
       />
 
       <TextInput
@@ -125,7 +114,7 @@ const AddressForm = ({
         isLabel={true}
         isReadonly={isReadonly}
         isRequired={true}
-        validateInput={validateInput}
+        validateInput={validateAddressInput}
       />
 
       <TextInput
@@ -135,7 +124,7 @@ const AddressForm = ({
         isLabel={true}
         isReadonly={isReadonly}
         isRequired={true}
-        validateInput={validateInput}
+        validateInput={validateAddressInput}
       />
 
       <TextInput
@@ -145,7 +134,7 @@ const AddressForm = ({
         isLabel={true}
         isReadonly={isReadonly}
         isRequired={true}
-        validateInput={validateInput}
+        validateInput={validateAddressInput}
       />
 
       <TextInput
@@ -155,7 +144,7 @@ const AddressForm = ({
         isLabel={true}
         isReadonly={isReadonly}
         isRequired={true}
-        validateInput={validatePhoneInput}
+        validateInput={validatePhoneNumber}
       />
 
       <CSSTransition
