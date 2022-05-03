@@ -10,7 +10,8 @@ interface IProps {
   isRequired: boolean;
   isLabel: boolean;
   value: string;
-  validateInput?: (value: string) => boolean;
+  validateInput?: (value: string, length?: number) => boolean;
+  inputMinValueLenght?: number;
 }
 
 const TextInput = React.forwardRef<HTMLInputElement, IProps>(({
@@ -20,17 +21,20 @@ const TextInput = React.forwardRef<HTMLInputElement, IProps>(({
   isRequired,
   isLabel,
   value,
-  validateInput}, ref) => {
+  validateInput,
+  inputMinValueLenght}, ref) => {
   
   const [inputValue, setInputValue] = useState<string>(value);
   const [isInputValid, setIsInputValid] = useState<boolean>(isValid);
 
+  const minValueLength = inputMinValueLenght ?  inputMinValueLenght : 0;
+
   useEffect(() => {
     if (validateInput) {
-      setIsInputValid(validateInput(inputValue));
+      setIsInputValid(validateInput(inputValue, minValueLength));
     }
     
-  }, [validateInput, inputValue]);
+  }, [validateInput, inputValue, minValueLength]);
 
   const controllInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.currentTarget.value);
@@ -56,6 +60,7 @@ const TextInput = React.forwardRef<HTMLInputElement, IProps>(({
         required={isRequired}
         value={inputValue}
         onChange={controllInputValue}
+        minLength={minValueLength}
       />
     </div>
   )

@@ -23,10 +23,10 @@ export const registerUser = (email: string, password: string) => async (dispatch
       payload: userResponseData
     }));
     
-  } catch (error) {
+  } catch (error: any) {
     dispatch(userActions.login({
       type: USER_FAIL,
-      payload: 'Reister failed'
+      payload: error.response.data.message
     }))
   }
 }

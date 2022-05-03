@@ -1,0 +1,30 @@
+@import '../../../style/variables/colors';
+@import '../../../style/variables/borders';
+@import '../../../style/variables/dimensions';
+
+.info-message-container {
+  display: block;
+
+  width: 80vw;
+  padding: .5rem;
+
+  border-radius: $border-radious;
+
+  color: white;
+  text-align: center;
+  text-decoration: none;
+
+  @media(min-width: $mobile-width) {
+    width: 20rem;
+  }
+}
+
+.info-message-positive {
+  background-color: $light-green-color;
+  border: 3px solid $main-green-color;
+}
+
+.info-message-negative {
+  background-color: $light-red-color;
+  border: 3px solid $main-red-color;
+}

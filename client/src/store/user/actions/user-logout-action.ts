@@ -26,10 +26,10 @@ export const userLogout = (token: string) => async (dispatch: any) => {
     dispatch(userActions.logout({
      type: USER_SUCCESS
     }))
-  } catch (error) {
+  } catch (error: any) {
     dispatch(userActions.logout({
       type: USER_FAIL,
-      payload: 'Logout user failed'
+      payload: error.response.data.message
     }));
   
   }

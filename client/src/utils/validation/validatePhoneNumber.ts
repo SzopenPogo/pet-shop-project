@@ -4,5 +4,5 @@ export const validatePhoneNumber = (value: string) => {
     return false;
   }
 
-  return value.length >= 2;
+  return value.length >= 5;
 }

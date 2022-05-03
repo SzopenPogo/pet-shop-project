@@ -25,10 +25,10 @@ export const getUserMe = (token: string) => async (dispatch: any) => {
       type: USER_SUCCESS,
       payload: data
     }))
-  } catch (error) {
+  } catch (error: any) {
     dispatch(userActions.get({
       type: USER_FAIL,
-      payload: 'Fetch user failed'
+      payload: error.response.data.message
     }))
   }
 }

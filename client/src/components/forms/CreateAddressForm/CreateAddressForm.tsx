@@ -1,7 +1,9 @@
 import { SyntheticEvent, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { MIN_ADDRES_CITY_LENGTH, MIN_ADDRES_COUNTRY_LENGTH, MIN_ADDRES_HOME_NUMBER_LENGTH, MIN_ADDRES_POSTAL_CODE_LENGTH, MIN_ADDRES_STREET_LENGTH } from '../../../constants/address';
 import { RootState } from '../../../store';
 import { addNewAddress } from '../../../store/address/actions/address-add-actions';
+import { addInfoMessage } from '../../../store/ui/actions/info-items-actions';
 import { validateAddressInput } from '../../../utils/validation/validateAddressInput';
 import { validatePhoneNumber } from '../../../utils/validation/validatePhoneNumber';
 import MainButton from '../../buttons/MainButton/MainButton';
@@ -9,10 +11,10 @@ import TextInput from '../../inputs/TextInput/TextInput'
 import classes from './CreateAddressForm.module.scss';
 
 interface IProps {
-  onSubmitFunction?: () => void;
+  onSubmitAdditionalFunction?: () => void;
 }
 
-const CreateAddressForm = ({onSubmitFunction}: IProps) => {
+const CreateAddressForm = ({onSubmitAdditionalFunction}: IProps) => {
   const dispatch = useDispatch();
 
   const countryInputRef = useRef<HTMLInputElement>(null);
@@ -44,9 +46,11 @@ const CreateAddressForm = ({onSubmitFunction}: IProps) => {
       phoneNumberValue
     ));
 
-    if (onSubmitFunction) {
-      onSubmitFunction();
+    if (onSubmitAdditionalFunction) {
+      onSubmitAdditionalFunction();
     }
+
+    dispatch(addInfoMessage({message: 'Address created!', timeout: 1500, isPositive: true}));
   }
   
   return (
@@ -60,6 +64,7 @@ const CreateAddressForm = ({onSubmitFunction}: IProps) => {
         isReadonly={false}
         isRequired={true}
         validateInput={validateAddressInput}
+        inputMinValueLenght={MIN_ADDRES_COUNTRY_LENGTH}
       />
 
       <TextInput
@@ -70,6 +75,7 @@ const CreateAddressForm = ({onSubmitFunction}: IProps) => {
         isReadonly={false}
         isRequired={true}
         validateInput={validateAddressInput}
+        inputMinValueLenght={MIN_ADDRES_CITY_LENGTH}
       />
 
       <TextInput
@@ -80,6 +86,7 @@ const CreateAddressForm = ({onSubmitFunction}: IProps) => {
         isReadonly={false}
         isRequired={true}
         validateInput={validateAddressInput}
+        inputMinValueLenght={MIN_ADDRES_POSTAL_CODE_LENGTH}
       />
 
       <TextInput
@@ -90,6 +97,7 @@ const CreateAddressForm = ({onSubmitFunction}: IProps) => {
         isReadonly={false}
         isRequired={true}
         validateInput={validateAddressInput}
+        inputMinValueLenght={MIN_ADDRES_STREET_LENGTH}
       />
 
       <TextInput
@@ -100,6 +108,7 @@ const CreateAddressForm = ({onSubmitFunction}: IProps) => {
         isReadonly={false}
         isRequired={true}
         validateInput={validateAddressInput}
+        inputMinValueLenght={MIN_ADDRES_HOME_NUMBER_LENGTH}
       />
 
       <TextInput

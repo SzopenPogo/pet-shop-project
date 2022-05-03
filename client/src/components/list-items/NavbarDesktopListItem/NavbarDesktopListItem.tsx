@@ -1,9 +1,9 @@
 import classes from './NavbarDesktopListItem.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { ISubcategory } from '../../interfaces/ISubcategory';
-import { resetActiveSubcategory, setActiveSubcategory } from '../../store/category/category-actions';
-import NavbarDesktopSubcategory from '../nav/NavbarDesktopSubcategory/NavbarDesktopSubcategory';
-import { RootState } from '../../store';
+import { ISubcategory } from '../../../interfaces/ISubcategory';
+import { resetActiveSubcategory, setActiveSubcategory } from '../../../store/category/category-actions';
+import NavbarDesktopSubcategory from '../../nav/NavbarDesktopSubcategory/NavbarDesktopSubcategory';
+import { RootState } from '../../../store';
 
 interface IProps {
   title: string;

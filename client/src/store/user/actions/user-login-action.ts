@@ -23,10 +23,10 @@ export const loginUser = (email: string, password: string) => async (dispatch: a
       payload: userResponseData
     }));
     
-  } catch (error) {
+  } catch (error: any) {
     dispatch(userActions.login({
       type: USER_FAIL,
-      payload: 'Login failed'
+      payload: error.response.data.message
     }))
   }
 }

@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store';
-import NavbarDesktopListItem from '../../list-items/NavbarDesktopListItem';
+import NavbarDesktopListItem from '../../list-items/NavbarDesktopListItem/NavbarDesktopListItem';
 import Spinner from '../../spinners/Spinner/Spinner';
 import classes from './NavbarDesktop.module.scss';
 
@@ -9,7 +9,10 @@ const NavbarDesktop = () => {
   const { loading, error, data } = categories;
 
   const renderMenuItems = data.map(category => (
-    <NavbarDesktopListItem key={category._id} title={category.title} subcategory={category.subcategoryRef} />
+    <NavbarDesktopListItem 
+    key={category._id} 
+    title={category.title} 
+    subcategory={category.subcategoryRef} />
   ));
 
   return (

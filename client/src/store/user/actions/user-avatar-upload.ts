@@ -28,10 +28,10 @@ export const editUserAvatar = (token: string, image: File) => async (dispatch: a
       type: USER_SUCCESS,
       payload: data
     }))
-  } catch (error) {
+  } catch (error: any) {
     dispatch(userActions.avatar({
       type: USER_FAIL,
-      payload: 'Fetch user failed'
+      payload: error.response.data.message
     }))
   }
 }

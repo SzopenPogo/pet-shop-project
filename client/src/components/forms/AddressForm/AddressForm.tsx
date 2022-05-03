@@ -15,6 +15,9 @@ import { deleteUserAddress } from '../../../store/address/actions/address-delete
 import MainRedButton from '../../buttons/MainRedButton/MainRedButton';
 import { validateAddressInput } from '../../../utils/validation/validateAddressInput';
 import { validatePhoneNumber } from '../../../utils/validation/validatePhoneNumber';
+import { addInfoMessage } from '../../../store/ui/actions/info-items-actions';
+import { MIN_ADDRES_CITY_LENGTH, MIN_ADDRES_COUNTRY_LENGTH, MIN_ADDRES_HOME_NUMBER_LENGTH, MIN_ADDRES_POSTAL_CODE_LENGTH, MIN_ADDRES_STREET_LENGTH } from '../../../constants/address';
+import { addressSelect } from '../../../store/address/actions/address-select-actions';
 
 interface IProps extends IAddressData {
   addressIndex: number;
@@ -43,6 +46,7 @@ const AddressForm = ({
 
   const token = useSelector((state: RootState) => state.user.token);
   const isDeleteModalActive = useSelector((state: RootState) => state.ui.isDeleteModalActive);
+  const selectedAddres = useSelector((state: RootState) => state.address.selectedAddressData);
 
   const clickEditButtonHandler = () => {
     setIsReadolny(!isReadonly);
@@ -52,9 +56,29 @@ const AddressForm = ({
     dispatch(uiActions.toggleDeleteModal());
   }
 
-  const deleteAddress = () => {
-    dispatch(deleteUserAddress(token, _id, addressIndex));
+  const selectAddress = () => {
+    dispatch(addressSelect({
+      _id,
+      userId: token,
+      country,
+      postalCode,
+      city,
+      street,
+      homeNumber,
+      phoneNumber,
+      index: addressIndex
+    }));
+  }
+
+  const prepareAddressForDelete = () => {
+    selectAddress();
     toggleDeleteModal();
+  }
+
+  const deleteAddress = () => {
+    dispatch(deleteUserAddress(token, selectedAddres._id, selectedAddres.index));
+    toggleDeleteModal();
+    dispatch(addInfoMessage({message: 'Address deleted!', timeout: 1500, isPositive: false}));
   }
 
   const submitHandler = (event: SyntheticEvent) => {
@@ -66,6 +90,9 @@ const AddressForm = ({
     const streetValue = streetInputRef.current!.value;
     const homeNumberValue = homeNumberInputRef.current!.value;
     const phoneNumberValue = phoneNumberInputRef.current!.value;
+
+    console.log(addressIndex);
+    
 
     dispatch(editAddress(
       token,
@@ -80,6 +107,7 @@ const AddressForm = ({
     ));
 
     setIsReadolny(true);
+    dispatch(addInfoMessage({message: `Address edited!`, timeout: 1500, isPositive: true}));
   }
 
   let addressNumber = addressIndex; // <-- Added to prevent addressIndex from being incremented while map
@@ -95,6 +123,7 @@ const AddressForm = ({
         isReadonly={isReadonly}
         isRequired={true}
         validateInput={validateAddressInput}
+        inputMinValueLenght={MIN_ADDRES_COUNTRY_LENGTH}
       />
 
       <TextInput
@@ -105,6 +134,7 @@ const AddressForm = ({
         isReadonly={isReadonly}
         isRequired={true}
         validateInput={validateAddressInput}
+        inputMinValueLenght={MIN_ADDRES_CITY_LENGTH}
       />
 
       <TextInput
@@ -115,6 +145,7 @@ const AddressForm = ({
         isReadonly={isReadonly}
         isRequired={true}
         validateInput={validateAddressInput}
+        inputMinValueLenght={MIN_ADDRES_POSTAL_CODE_LENGTH}
       />
 
       <TextInput
@@ -125,6 +156,7 @@ const AddressForm = ({
         isReadonly={isReadonly}
         isRequired={true}
         validateInput={validateAddressInput}
+        inputMinValueLenght={MIN_ADDRES_STREET_LENGTH}
       />
 
       <TextInput
@@ -135,6 +167,7 @@ const AddressForm = ({
         isReadonly={isReadonly}
         isRequired={true}
         validateInput={validateAddressInput}
+        inputMinValueLenght={MIN_ADDRES_HOME_NUMBER_LENGTH}
       />
 
       <TextInput
@@ -145,6 +178,7 @@ const AddressForm = ({
         isReadonly={isReadonly}
         isRequired={true}
         validateInput={validatePhoneNumber}
+        inputMinValueLenght={5}
       />
 
       <CSSTransition
@@ -166,7 +200,7 @@ const AddressForm = ({
       </CSSTransition>
 
       <div className={classes['manage-buttons-container']}>
-        {isReadonly && <DeleteButton onClick={toggleDeleteModal} />}
+        {isReadonly && <DeleteButton onClick={prepareAddressForDelete} />}
         <EditButton isActive={isReadonly} onClick={clickEditButtonHandler} />
       </div>
 

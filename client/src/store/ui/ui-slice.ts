@@ -1,10 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { IInfoMessage } from "../../interfaces/IInfoMessage";
 
 const uiSlice = createSlice({
   name: 'ui',
   initialState: {
     isHamburgerActive: false,
-    isDeleteModalActive: false
+    isDeleteModalActive: false,
+    infoMessages: [] as Array<IInfoMessage>
   },
   reducers: {
     toggleHamburgerMenu(state) {
@@ -12,6 +14,14 @@ const uiSlice = createSlice({
     },
     toggleDeleteModal(state) {
       state.isDeleteModalActive = !state.isDeleteModalActive;
+    },
+    addInfoMessage(state, action) {
+      const { payload } = action.payload;
+      state.infoMessages.push(payload);
+    },
+    removeInfoMessage(state, action) {
+      const { payload } = action.payload;
+      state.infoMessages.splice(payload, 1);
     }
   }
 });

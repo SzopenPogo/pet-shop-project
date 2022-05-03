@@ -3,8 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import CreateAddressContainer from '../../../components/containers/CreateAddressContainer/CreateAddressContainer';
 import AddressForm from '../../../components/forms/AddressForm/AddressForm';
 import UserLayout from '../../../components/layout/UserLayout/UserLayout';
+import InfoModal from '../../../components/modals/InfoModal/InfoModal';
+import Spinner from '../../../components/spinners/Spinner/Spinner';
 import { RootState } from '../../../store';
 import { getAllAddresses } from '../../../store/address/actions/address-get-actions';
+import { addInfoMessage } from '../../../store/ui/actions/info-items-actions';
 import classes from './UserAddressPage.module.scss';
 
 const UserAddressPage = () => {
@@ -15,7 +18,11 @@ const UserAddressPage = () => {
 
   useEffect(() => {
     dispatch(getAllAddresses(token));
-  }, [dispatch, token])
+
+    if(error) {
+      dispatch(addInfoMessage({message: error, timeout: 3000, isPositive: false}));
+    }
+  }, [dispatch, token, error])
 
   const renderAddresses = data.map((address, index) => (
     <AddressForm
@@ -35,10 +42,13 @@ const UserAddressPage = () => {
   return (
     <UserLayout>
       <>
+        <InfoModal />
         <CreateAddressContainer />
-        <section className={classes.addresses}>
+        {!loading && <section className={classes.addresses}>
           {renderAddresses}
-        </section>
+        </section>}
+        {loading && <Spinner borderSize='.35rem' size='2rem' color='black' />}
+        {error && <h1>{error}</h1>}
       </>
     </UserLayout>
   )

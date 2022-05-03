@@ -41,7 +41,7 @@ const CreateAddressContainer = () => {
         }}
       >
         <div ref={nodeRef} className={classes['form-container']}>
-          <CreateAddressForm onSubmitFunction={toggleCreateAddress} />
+          <CreateAddressForm onSubmitAdditionalFunction={toggleCreateAddress} />
         </div>
       </CSSTransition>
     </section>

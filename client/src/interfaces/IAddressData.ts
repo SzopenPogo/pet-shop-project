@@ -12,3 +12,7 @@ export interface IAddressData {
 export interface IAddressArray {
   data: Array<IAddressData>;
 }
+
+export interface ISelectedAddress extends IAddressData {
+  index: number;
+}

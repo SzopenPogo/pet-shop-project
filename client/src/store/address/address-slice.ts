@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ADDRESS_FAIL, ADDRESS_REQUEST, ADDRESS_SUCCESS } from "../../constants/address";
+import { ISelectedAddress } from "../../interfaces/IAddressData";
 
 const initialAddressData = {
   _id: '',
@@ -19,7 +20,8 @@ const addressSlice = createSlice({
     error: '',
     data: [
       initialAddressData
-    ]
+    ],
+    selectedAddressData: {} as ISelectedAddress
   },
   reducers: {
     getAll(state, action) {
@@ -98,6 +100,10 @@ const addressSlice = createSlice({
           state.error = payload;
           break;
       }
+    },
+    select(state, action) {
+      const { payload } = action.payload;
+      state.selectedAddressData = payload;
     }
   }
 });

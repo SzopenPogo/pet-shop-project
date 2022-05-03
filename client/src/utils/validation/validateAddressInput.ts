@@ -1,3 +1,4 @@
-export const validateAddressInput = (value: string) => {
-  return value.length >= 2;
+export const validateAddressInput = (value: string, length?: number) => {
+  const inputLength = length ? length : 1;
+  return value.length >= inputLength;
 }
