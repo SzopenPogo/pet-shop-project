@@ -1,12 +1,7 @@
 @import '../../../style/variables/inputs';
 
 .text-input-container {
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  @include main-input-container();
 
   label {
     margin: .35rem;

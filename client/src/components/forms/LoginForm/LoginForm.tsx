@@ -26,8 +26,8 @@ const LoginForm = () => {
   return (
     <form className={classes['login-form']} onSubmit={onSubmitHandler}>
       <h1>Sign in</h1>
-      <EmailInput ref={emailInputRef} title='email' isValid={error === ''} />
-      <PasswordInput ref={passwordInputRef} title='password' isValid={error === ''} />
+      <EmailInput ref={emailInputRef} title='email' isValid={error === ''} isReadonly={false} />
+      <PasswordInput ref={passwordInputRef} title='password' isValid={error === ''} isReadonly={false} />
       {error && <span>{error}</span>}
       <div className={classes['button-container']}>
         <MainButton title='Sign in' isSubmit={true} />

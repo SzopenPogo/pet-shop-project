@@ -131,6 +131,25 @@ const userSilce = createSlice({
           state.error = payload;
           break;
       }
+    },
+    editData(state, action) {
+      const { type, payload } = action.payload;
+      
+      switch (type) {
+        case USER_REQUEST:
+          state.loading = true;
+          state.error = '';
+          break;
+        case USER_SUCCESS:
+          state.loading = false;
+          state.error = '';
+          state.data = payload;
+          break;
+        case USER_FAIL:
+          state.loading = false;
+          state.error = payload;
+          break;
+      }
     }
   }
 });

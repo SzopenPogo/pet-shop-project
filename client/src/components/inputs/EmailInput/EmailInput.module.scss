@@ -1,9 +1,19 @@
 @import '../../../style/variables/inputs';
 
-.email-input {
-  @include main-input(); 
+.email-input-container {
+  @include main-input-container();
+
+  label {
+    margin: .35rem;
+  }
+  
+  .email-input {
+    @include main-input(); 
+  }
+
+  .invalid-email-input{
+    @include invalid-input();
+  }
 }
 
-.invalid-email-input{
-  @include invalid-input();
-}
+

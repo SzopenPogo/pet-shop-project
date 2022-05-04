@@ -2,8 +2,9 @@ import { useSelector } from 'react-redux';
 import UserDataContainer from '../../../components/containers/UserDataContainer/UserDataContainer';
 import UserLayout from '../../../components/layout/UserLayout/UserLayout';
 import ProfileLink from '../../../components/links/ProfileLink/ProfileLink';
-import { PROFILE_EDIT_ADDRESS_ROUTE } from '../../../constants/routes';
+import { PROFILE_EDIT_ADDRESS_ROUTE, PROFILE_EDIT_DATA_ROUTE } from '../../../constants/routes';
 import { RootState } from '../../../store';
+import classes from './UserProfilePage.module.scss';
 
 const UserProfilePage = () => {
 
@@ -14,7 +15,10 @@ const UserProfilePage = () => {
     <UserLayout>
       <>
         <UserDataContainer data={data} token={token} />
-        <ProfileLink link={`${PROFILE_EDIT_ADDRESS_ROUTE}/${data._id}`} title='Address' />
+        <section className={classes['profile-page-options']}>
+          <ProfileLink link={`${PROFILE_EDIT_ADDRESS_ROUTE}`} title='Address' />
+          <ProfileLink link={`${PROFILE_EDIT_DATA_ROUTE}`} title='User Data' />
+        </section>
       </>
     </UserLayout>
   )

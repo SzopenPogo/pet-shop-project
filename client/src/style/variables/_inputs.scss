@@ -1,6 +1,15 @@
 @import './_borders.scss';
 @import './colors';
 
+@mixin main-input-container {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 @mixin main-input {
   width: 90%;
   padding: .5rem 1rem;

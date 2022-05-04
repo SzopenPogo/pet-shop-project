@@ -1,0 +1,28 @@
+@import '../../../style/variables/forms';
+
+.edit-data-form {
+  @include main-form();
+  padding-top: 2.5rem;
+  position: relative;
+
+  .edit-button-container {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+  }
+
+  .active-form-container {
+    width: 100%;
+    margin-top: .5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: .75rem;
+    
+    .active-form__button {
+      width: 75%;
+    }
+  }
+}

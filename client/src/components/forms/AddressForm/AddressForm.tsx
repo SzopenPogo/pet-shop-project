@@ -91,9 +91,6 @@ const AddressForm = ({
     const homeNumberValue = homeNumberInputRef.current!.value;
     const phoneNumberValue = phoneNumberInputRef.current!.value;
 
-    console.log(addressIndex);
-    
-
     dispatch(editAddress(
       token,
       _id,

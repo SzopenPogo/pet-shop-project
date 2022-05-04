@@ -10,6 +10,7 @@ export const BACKEND_USER_ROUTER_GET_ME = `${BACKEND_URL}/user/me`;
 export const BACKEND_USER_ROUTER_LOGOUT = `${BACKEND_URL}/user/logout`;
 export const BACKEND_USER_ROUTER_REGISTER = `${BACKEND_URL}/user/register`;
 export const BACKEND_USER_ROUTER_AVATAR = `${BACKEND_URL}/user/avatar`;
+export const BACKEND_USER_ROUTER_EDIT_DATA = `${BACKEND_URL}/user/edit/me`;
 
 //ADDRESS
 export const BACKEND_ADDRESS_ROUTER = `${BACKEND_URL}/address`;
