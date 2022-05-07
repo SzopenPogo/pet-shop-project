@@ -1,8 +1,8 @@
 export interface IUserData {
   _id: string;
   email: string;
-  isActive: string;
-  isAdmin: string;
+  isActive: boolean;
+  isAdmin: boolean;
   avatarUrl: string;
   adminNote: string;
 }

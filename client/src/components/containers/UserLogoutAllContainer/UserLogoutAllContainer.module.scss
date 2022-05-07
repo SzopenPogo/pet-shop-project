@@ -1,0 +1,5 @@
+@import '../../../style/variables/containers';
+
+.logout-all-container {
+  @include main-container(.5rem, 20rem);
+}

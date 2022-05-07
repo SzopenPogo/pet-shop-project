@@ -3,3 +3,7 @@ export const USER_SUCCESS = 'USER_SUCCESS';
 export const USER_FAIL = 'USER_FAIL';
 
 export const USER_TOKEN_COOKIE_NAME = 'token';
+
+export const ADMIN_USER_REQUEST = 'ADMIN_USER_REQUEST';
+export const ADMIN_USER_SUCCESS = 'ADMIN_USER_SUCCESS';
+export const ADMIN_USER_FAIL = 'ADMIN_USER_FAIL';

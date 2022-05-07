@@ -10,8 +10,8 @@ const tokenCookie = userTokenStoredCookie && userTokenStoredCookie !== 'undefine
 const initialUserData = {
   _id: '',
   email: '',
-  isActive: '',
-  isAdmin: '',
+  isActive: false,
+  isAdmin: false,
   avatarUrl: '',
   adminNote: ''
 }

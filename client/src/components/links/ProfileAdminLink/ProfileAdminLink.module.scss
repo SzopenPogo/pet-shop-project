@@ -1,0 +1,12 @@
+@import '../../../style/variables/profile-links';
+
+
+.profile-admin-link {
+  @include profile-link();
+  background-image: url('../../../images/icon/penIconGray.svg');
+  
+  h2 {
+    margin: 0;
+    padding: 0;
+  }
+}
