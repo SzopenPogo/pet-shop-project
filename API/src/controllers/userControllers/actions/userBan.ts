@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
+import { IAuthRequest } from "../../../interfaces/user/IUserAuthRequest";
 import Admin from "../../../models/adminModel";
 import User from "../../../models/userModel";
 import { createErrorMessage } from "../../../utils/messages/createErrorMessage";
 import { createInfoMessage } from "../../../utils/messages/createInfoMessage";
 
-const userBan = async (req: Request, res: Response) => {
+const userBan = async (req: IAuthRequest, res: Response) => {
   try {
     const user = await User.findById(req.params.id);
 
@@ -23,6 +24,11 @@ const userBan = async (req: Request, res: Response) => {
       return res.status(errorMessage.status).send(errorMessage);
     }
 
+    if(user._id.toString() === req.user?._id.toString()) {
+      const errorMessage = createErrorMessage(400, 'You can\'t ban yourself!');
+      return res.status(errorMessage.status).send(errorMessage);
+    }
+
     if (user.adminKey) {
       const removeAdmin = await Admin.deleteAdmin(user);
 
@@ -32,7 +38,7 @@ const userBan = async (req: Request, res: Response) => {
     }
 
     user.adminNote = (req.body.adminNote);
-    await user.setInactive(); // <-- This functon includes user.save so adminNote is saved
+     await user.setInactive(); // <-- This functon includes user.save so adminNote is saved
 
     const infoMessage = createInfoMessage(200, `${user.email} is now banned`)
     res.status(infoMessage.status).send(infoMessage);

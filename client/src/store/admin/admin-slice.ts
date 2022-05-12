@@ -28,6 +28,42 @@ const adminSlice = createSlice({
           state.error = payload;
           break;
       }
+    },
+    ban(state, action) {
+      const { type, payload } = action.payload;
+      
+      switch (type) {
+        case ADMIN_USER_REQUEST:
+          state.loading = true;
+          state.error = '';
+          break;
+        case ADMIN_USER_SUCCESS:
+          state.loading = false;
+          state.error = '';
+          break;
+        case ADMIN_USER_FAIL:
+          state.loading = false;
+          state.error = payload;
+          break;
+      }
+    },
+    unban(state, action) {
+      const { type, payload } = action.payload;
+      
+      switch (type) {
+        case ADMIN_USER_REQUEST:
+          state.loading = true;
+          state.error = '';
+          break;
+        case ADMIN_USER_SUCCESS:
+          state.loading = false;
+          state.error = '';
+          break;
+        case ADMIN_USER_FAIL:
+          state.loading = false;
+          state.error = payload;
+          break;
+      }
     }
   }
 });

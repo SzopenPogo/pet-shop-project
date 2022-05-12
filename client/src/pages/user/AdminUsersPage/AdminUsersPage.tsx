@@ -27,7 +27,7 @@ const AdminUsersPage = () => {
         <section className={classes['users-container']}>
           {loading && <Spinner borderSize='.75rem' size='12rem' color='gray' />}
           {error && <h1>{error}</h1>}
-          <AdminUsersList users={users} />
+          {!loading && <AdminUsersList users={users} />}
         </section>
       </>
     </UserLayout>

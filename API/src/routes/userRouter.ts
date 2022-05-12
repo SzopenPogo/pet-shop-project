@@ -67,27 +67,27 @@ userRouter.patch('/edit/me', auth, userEdit);
 // ACCESS: PRIVATE, ADMIN
 userRouter.patch('/edit/:id', auth, authAdmin, userEditById);
 
-// TYPE: POST /deactivate/me
+// TYPE: POST /user/deactivate/me
 // DESCRIPTION: Deactivate user
 // ACCESS: PRIVATE
 userRouter.post('/deactivate/me', auth, userDeactivate);
 
-// TYPE: POST /activate/me
+// TYPE: POST /user/activate/me
 // DESCRIPTION: Activate user
 // ACCESS: PRIVATE
 userRouter.post('/activate/me', authInactive, userActivate);
 
-// TYPE: POST /ban/id
+// TYPE: POST /user/ban/id
 // DESCRIPTION: Ban user
 // ACCESS: PRIVATE, ADMIN
 userRouter.post('/ban/:id', auth, authAdmin, userBan);
 
-// TYPE: POST /unban/id
+// TYPE: POST /user/unban/id
 // DESCRIPTION: Unban user
 // ACCESS: PRIVATE, ADMIN
 userRouter.post('/unban/:id', auth, authAdmin, userUnban);
 
-// TYPE: PATCH /avatar
+// TYPE: PATCH /user/avatar
 // DESCRIPTION: Change user avatar
 // ACCESS: PRIVATE
 userRouter.patch('/avatar', auth, uploadImage.single('image'), userChangeAvatar);
