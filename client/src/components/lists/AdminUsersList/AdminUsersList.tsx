@@ -1,6 +1,6 @@
 import classes from './AdminUsersList.module.scss';
 import { IUserData } from '../../../interfaces/IUserData'
-import AdminUserDataListItem from '../../list-items/AdminUserDataListItem/AdminUserDataListItem'
+import AdminUserList from '../AdminUserList/AdminUserList'
 
 interface IProps {
   users: Array<IUserData>
@@ -8,7 +8,7 @@ interface IProps {
 
 const AdminUsersList = ({users}: IProps) => {
   const renderUsers = users.map(user => (
-    <AdminUserDataListItem
+    <AdminUserList
      key={user._id}
      _id={user._id}
      email={user.email}

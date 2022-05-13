@@ -1,0 +1,24 @@
+@import '../../../style/variables/colors';
+
+.bool-dot-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: .25rem;
+  
+  .bool-dot-dot {
+    width: 1rem;
+    height: 1rem;
+
+    border-radius: 50%;
+  }
+
+  .bool-dot-dot__true {
+    background-color: $main-green-color;
+  }
+
+  .bool-dot-dot__false {
+    background-color: $main-red-color;
+  }
+}

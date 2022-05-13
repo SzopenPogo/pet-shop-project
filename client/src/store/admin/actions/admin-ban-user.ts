@@ -2,12 +2,12 @@ import axios from "axios";
 import { BACKEND_ADMIN_ROUTER_BAN_USER } from "../../../constants/backend";
 import { ADMIN_USER_FAIL, ADMIN_USER_REQUEST, ADMIN_USER_SUCCESS } from "../../../constants/user";
 import { adminActions } from "../admin-slice";
-import { adminGetAllUsers } from "./admin-get-all-users";
 
 export const adminBanUser = (
   token: string, 
   userId: string,
-  adminNote: string
+  adminNote: string,
+  endingFunction?: () => void
   ) => async (dispatch: any) => {
   dispatch(adminActions.ban({ type: ADMIN_USER_REQUEST}));
 
@@ -25,7 +25,10 @@ export const adminBanUser = (
     await banUser();
 
     dispatch(adminActions.ban({ type: ADMIN_USER_SUCCESS}));
-    dispatch(adminGetAllUsers(token));
+    
+    if(endingFunction) {
+      endingFunction();
+    }
     
   } catch (error: any) {
     dispatch(adminActions.ban({

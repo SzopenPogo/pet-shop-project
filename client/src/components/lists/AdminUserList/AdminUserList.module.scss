@@ -1,0 +1,34 @@
+@import '../../../style/variables/colors';
+
+$border: 1px solid rgba(0, 0, 0, 0.45);
+
+.user-list {
+  position: relative;
+
+  width: 100vw;
+  margin: 0;
+  padding: .5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: .5rem;
+
+  list-style: none;
+  background-color: transparent;
+  border-top: $border;
+  border-bottom: $border;
+
+  transition: linear 100ms;
+
+  .edit-button-container {
+    position: absolute;
+    top: .25rem;
+    right: .25rem;
+  }
+}
+
+.user-list__edit {
+  background-color: $light-yellow-color;
+}
