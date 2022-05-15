@@ -1,7 +1,9 @@
 @import '../../../style/variables/colors';
+@import '../../../style/variables/dimensions';
+@import '../../../style/variables/borders';
 
 $border: 1px solid rgba(0, 0, 0, 0.45);
-
+$main-gap: .75rem;
 .user-list {
   position: relative;
 
@@ -13,14 +15,45 @@ $border: 1px solid rgba(0, 0, 0, 0.45);
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: .5rem;
+  gap: $main-gap;
 
   list-style: none;
   background-color: transparent;
   border-top: $border;
   border-bottom: $border;
 
-  transition: linear 100ms;
+  transition: linear 150ms;
+
+  @media (min-width: $mobile-width) {
+    width: 35rem;
+    padding: 1.25rem;
+
+    border-left: $border;
+    border-right: $border;
+    border-radius: $border-radious;
+    &:hover {
+      -webkit-box-shadow: 0px 3px 24px -3px rgba(66, 68, 90, 0.55);
+      -moz-box-shadow: 0px 3px 24px -3px rgba(66, 68, 90, 0.55);
+      box-shadow: 0px 3px 24px -3px rgba(66, 68, 90, 0.55);
+    }
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: $main-gap;
+
+    .account-status-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: .25rem;
+    }
+  }
 
   .edit-button-container {
     position: absolute;
@@ -30,5 +63,9 @@ $border: 1px solid rgba(0, 0, 0, 0.45);
 }
 
 .user-list__edit {
-  background-color: $light-yellow-color;
+  background-color: $main-gray-color;
+  color: white;
+  -webkit-box-shadow: 0px 3px 24px -3px rgba(66, 68, 90, 0.55);
+  -moz-box-shadow: 0px 3px 24px -3px rgba(66, 68, 90, 0.55);
+  box-shadow: 0px 3px 24px -3px rgba(66, 68, 90, 0.55);
 }

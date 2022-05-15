@@ -17,6 +17,7 @@ export const BACKEND_USER_ROUTER_LOGOUT_ALL = `${BACKEND_URL}/user/logoutAll`;
 export const BACKEND_ADMIN_ROUTER_GET_ALL_USERS = `${BACKEND_URL}/user`;
 export const BACKEND_ADMIN_ROUTER_BAN_USER = `${BACKEND_URL}/user/ban`;
 export const BACKEND_ADMIN_ROUTER_UNBAN_USER = `${BACKEND_URL}/user/unban`;
+export const BACKEND_ADMIN_ROUTER_EDIT_USER = `${BACKEND_URL}/user/edit`;
 
 //ADDRESS
 export const BACKEND_ADDRESS_ROUTER = `${BACKEND_URL}/address`;
