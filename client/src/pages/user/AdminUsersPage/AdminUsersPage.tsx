@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import AdminUsersFilterBar from '../../../components/elements/AdminUsersFilterBar/AdminUsersFilterBar';
 import UserLayout from '../../../components/layout/UserLayout/UserLayout';
 import AdminUsersList from '../../../components/lists/AdminUsersList/AdminUsersList';
 import InfoModal from '../../../components/modals/InfoModal/InfoModal';
 import Spinner from '../../../components/spinners/Spinner/Spinner';
 import { RootState } from '../../../store';
 import { adminGetAllUsers } from '../../../store/admin/actions/admin-get-all-users';
+import { addInfoMessage } from '../../../store/ui/actions/info-items-actions';
 import classes from './AdminUsersPage.module.scss';
 
 const AdminUsersPage = () => {
@@ -17,7 +19,11 @@ const AdminUsersPage = () => {
 
   useEffect(() => {
     dispatch(adminGetAllUsers(token));
-  }, [dispatch, token]);
+
+    if(error) {
+      dispatch(addInfoMessage({message: error, timeout: 2000, isPositive: false}));
+    }
+  }, [dispatch, token, error]);
 
 
   return (
@@ -25,8 +31,8 @@ const AdminUsersPage = () => {
       <>
         <InfoModal />
         <section className={classes['users-container']}>
+          <AdminUsersFilterBar />
           {loading && <Spinner borderSize='.75rem' size='12rem' color='gray' />}
-          {error && <h1>{error}</h1>}
           {!loading && <AdminUsersList users={users} />}
         </section>
       </>

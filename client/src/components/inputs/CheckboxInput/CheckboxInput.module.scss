@@ -1,0 +1,53 @@
+@import '../../../style/variables/colors';
+@import '../../../style/variables/borders';
+
+$input-size: 1.25rem;
+
+.checkbox-container {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  input {
+    cursor: pointer;
+    z-index: 5;
+    width: $input-size;
+    height: $input-size;
+
+    opacity: 0;
+  }
+
+  .checkmark {
+    z-index: 2;
+
+    position: absolute;
+    top: 1.5rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+    width: $input-size;
+    height: $input-size;
+
+    display: block;
+    
+    border-radius: $border-radious;
+    border: 1px solid $main-gray-color;
+    background-color: white;
+    outline: 1px solid transparent;
+
+    transition: linear 100ms;
+  }
+
+  input:hover ~ .checkmark {
+    border: 1px solid $main-green-color;
+    outline: 1px solid $main-green-color;
+  }
+
+  input:checked ~ .checkmark {
+    border: 1px solid $main-green-color;
+    background-color: $light-green-color;
+  }
+}

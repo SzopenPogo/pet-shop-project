@@ -14,6 +14,12 @@ const userGetAll = async (req: IAuthRequest, res: Response) => {
     if (req.query.isAdmin) {
       match.isAdmin = req.query.isAdmin === 'true';
     }
+    if (req.query.email) {
+      match.email = {
+        $regex: req.query.productTitle,
+        $options: 'i'
+      };
+    }
 
 
     const users = await User.find(match)

@@ -42,7 +42,7 @@ userRouter.post('/logoutAll', auth, userLogoutAll);
 
 // TYPE: GET /user
 // PAGINATION: limit=number&skip=number
-// FILTERING: isActive=boolean, isAdmin=boolean
+// FILTERING: isActive=boolean, isAdmin=boolean, email='string'
 // DESCRIPTION: Get all users
 // ACCESS: PRIVATE, ADMIN
 userRouter.get('/', auth, authAdmin, userGetAll);
