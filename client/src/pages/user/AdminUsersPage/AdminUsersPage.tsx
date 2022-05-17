@@ -13,17 +13,17 @@ import classes from './AdminUsersPage.module.scss';
 const AdminUsersPage = () => {
   const dispatch = useDispatch();
 
-  const token = useSelector((state:RootState) => state.user.token);
-  const data = useSelector((state:RootState) => state.admin);
-  const {loading, error, users} = data;
+  const token = useSelector((state: RootState) => state.user.token);
+  const data = useSelector((state: RootState) => state.admin);
+  const {loading, error, users, getUsersUrl} = data;
 
   useEffect(() => {
-    dispatch(adminGetAllUsers(token));
+    dispatch(adminGetAllUsers(token, getUsersUrl));
 
     if(error) {
       dispatch(addInfoMessage({message: error, timeout: 2000, isPositive: false}));
     }
-  }, [dispatch, token, error]);
+  }, [dispatch, token, error, getUsersUrl]);
 
 
   return (

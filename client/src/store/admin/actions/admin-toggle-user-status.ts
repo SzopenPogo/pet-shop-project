@@ -5,7 +5,8 @@ import { adminUnbanUser } from "./admin-unban-user";
 
 export const adminToggleUserSatus = (
   isActive: boolean,
-  token: string, 
+  token: string,
+  url: string,
   userId: string, 
   userEmail: string,
   adminNote: string
@@ -13,7 +14,7 @@ export const adminToggleUserSatus = (
   
   const showInfoAndFetchUsers = (message: string, isPositive: boolean) => {
     dispatch(addInfoMessage({message, timeout: 1500, isPositive}));
-    dispatch(adminGetAllUsers(token));
+    dispatch(adminGetAllUsers(token, url));
   }
 
   if(isActive) {

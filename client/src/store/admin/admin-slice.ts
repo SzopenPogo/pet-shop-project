@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { BACKEND_ADMIN_ROUTER_GET_ALL_USERS } from "../../constants/backend";
 import { ADMIN_USER_FAIL, ADMIN_USER_REQUEST, ADMIN_USER_SUCCESS } from "../../constants/user";
 import { IUserData } from "../../interfaces/IUserData";
 
@@ -7,7 +8,8 @@ const adminSlice = createSlice({
   initialState: {
     loading: false,
     error: '',
-    users: [] as Array<IUserData>
+    users: [] as Array<IUserData>,
+    getUsersUrl: BACKEND_ADMIN_ROUTER_GET_ALL_USERS
   },
   reducers: {
     getAll(state, action) {
@@ -83,6 +85,9 @@ const adminSlice = createSlice({
           break;
       }
     },
+    editGetUserUrl(state, action) {
+      state.getUsersUrl = action.payload;
+    }
   }
 });
 

@@ -1,7 +1,12 @@
 import classes from './AdminUsersFilterBar.module.scss';
 import SearchInput from '../../inputs/SearchInput/SearchInput'
 import SelectInput from '../../inputs/SelectInput/SelectInput';
-import { SELECT_ADMIN_OPTIONS__ADMIN, SELECT_ADMIN_OPTIONS__ALL, SELECT_ADMIN_OPTIONS__USERS, SELECT_STATUS_OPTIONS__ADMIN, SELECT_STATUS_OPTIONS__ALL, SELECT_STATUS_OPTIONS__USERS } from '../../../constants/selectOptions';
+import { SELECT_ADMIN_OPTIONS__ADMIN, SELECT_ADMIN_OPTIONS__ALL, SELECT_ADMIN_OPTIONS__USERS, SELECT_STATUS_OPTIONS__ACTIVE, SELECT_STATUS_OPTIONS__ALL, SELECT_STATUS_OPTIONS__BANNED } from '../../../constants/selectOptions';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../../store';
+import { useEffect, useState } from 'react';
+import { setAdminGetAllUsersUrl } from '../../../store/admin/actions/admin-get-all-users-url';
+import { setUrlBoolValue } from '../../../utils/url/setUrlBoolValue';
 
 
 const SELECT_TYPE_OPTIONS = [
@@ -25,24 +30,42 @@ const SELECT_STATUS_OPTIONS = [
     value: SELECT_STATUS_OPTIONS__ALL
   },
   {
-    title: SELECT_STATUS_OPTIONS__ADMIN,
-    value: SELECT_STATUS_OPTIONS__ADMIN
+    title: SELECT_STATUS_OPTIONS__ACTIVE,
+    value: SELECT_STATUS_OPTIONS__ACTIVE
   },
   {
-    title: SELECT_STATUS_OPTIONS__USERS,
-    value: SELECT_STATUS_OPTIONS__USERS
+    title: SELECT_STATUS_OPTIONS__BANNED,
+    value: SELECT_STATUS_OPTIONS__BANNED
   }
 ]
 
 
 const AdminUsersFilterBar = () => {
+  const dispatch = useDispatch();
+
+  const [isAdminOption, setIsAdminOption] = useState<string>('');
+  const [isActiveOption, setIsActiveOption] = useState<string>('');
+
+  useEffect(() => {
+    dispatch(setAdminGetAllUsersUrl(isActiveOption, isAdminOption));
+  }, [dispatch, isActiveOption, isAdminOption])
+
   const accountTypeValueChangeHandler = (value: string) => {
-    console.log('val ' + value);
-    
+    setIsAdminOption(setUrlBoolValue(
+      'isAdmin', 
+      value,
+      SELECT_ADMIN_OPTIONS__ADMIN, 
+      SELECT_ADMIN_OPTIONS__USERS
+    ));
   }
 
   const accountStatusValueChangeHandler = (value: string) => {
-    console.log('val ' + value);
+    setIsActiveOption(setUrlBoolValue(
+      'isActive', 
+      value,
+      SELECT_STATUS_OPTIONS__ACTIVE, 
+      SELECT_STATUS_OPTIONS__BANNED
+    ));
   }
 
   return (

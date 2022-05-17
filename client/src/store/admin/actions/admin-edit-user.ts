@@ -6,7 +6,8 @@ import { adminActions } from "../admin-slice"
 import { adminGetAllUsers } from "./admin-get-all-users";
 
 export const AdminEditUser = (
-  token: string, 
+  token: string,
+  url: string,
   _id: string, 
   email: string, 
   adminNote: string
@@ -32,7 +33,7 @@ export const AdminEditUser = (
 
     dispatch(adminActions.edit({ type: ADMIN_USER_SUCCESS}));
     dispatch(addInfoMessage({message: `${email} edited!`, timeout: 1500, isPositive: true}));
-    dispatch(adminGetAllUsers(token));
+    dispatch(adminGetAllUsers(token, url));
     
   } catch (error: any) {
     dispatch(adminActions.edit({

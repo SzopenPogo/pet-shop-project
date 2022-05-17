@@ -29,6 +29,7 @@ const AdminUserList = ({_id, email, isActive, isAdmin, adminNote}: IProps) => {
   const adminNoteInputRef = useRef<HTMLTextAreaElement>(null);
 
   const token = useSelector((state: RootState) => state.user.token);
+  const adminGetUsersUrl = useSelector((state: RootState) => state.admin.getUsersUrl);
 
   const [isReadonly, setIsReadonly] = useState<boolean>(true);
   const [isMoreDetails, setIsMoreDetails] = useState<boolean>(false);
@@ -72,7 +73,7 @@ const AdminUserList = ({_id, email, isActive, isAdmin, adminNote}: IProps) => {
       }));
     }
 
-    dispatch(adminToggleUserSatus(isActive, token, _id, email, adminNoteValue));
+    dispatch(adminToggleUserSatus(isActive, token, adminGetUsersUrl, _id, email, adminNoteValue));
   }
 
   const submitEditUserDataHandler = (event: React.FormEvent<HTMLFormElement>) => {
@@ -81,7 +82,7 @@ const AdminUserList = ({_id, email, isActive, isAdmin, adminNote}: IProps) => {
     const emailValue = emailInputRef.current!.value;
     const adminNoteValue = adminNoteInputRef.current!.value;
     
-    dispatch(AdminEditUser(token, _id, emailValue, adminNoteValue));
+    dispatch(AdminEditUser(token, adminGetUsersUrl, _id, emailValue, adminNoteValue));
 
     toggleUserReadonly();
     toggleMoreDetails();

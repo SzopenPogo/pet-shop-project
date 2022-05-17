@@ -1,11 +1,12 @@
 import { Dispatch } from "@reduxjs/toolkit";
 import axios from "axios";
-import { BACKEND_ADMIN_ROUTER_GET_ALL_USERS } from "../../../constants/backend";
 import { ADMIN_USER_FAIL, ADMIN_USER_REQUEST, ADMIN_USER_SUCCESS } from "../../../constants/user"
 import { adminActions } from "../admin-slice"
 
-export const adminGetAllUsers = (token: string) => async (dispatch: Dispatch) => {
-  dispatch(adminActions.getAll({ type: ADMIN_USER_REQUEST }));
+export const adminGetAllUsers = (
+  token: string,
+  url: string
+  ) => async (dispatch: Dispatch) => {dispatch(adminActions.getAll({ type: ADMIN_USER_REQUEST }));
 
   const config = {
     headers: {
@@ -14,7 +15,7 @@ export const adminGetAllUsers = (token: string) => async (dispatch: Dispatch) =>
   }
 
   const getAllUsers = async () => {
-    return await axios.get(`${BACKEND_ADMIN_ROUTER_GET_ALL_USERS}`, config);
+    return await axios.get(url, config);
   }
 
   try {
