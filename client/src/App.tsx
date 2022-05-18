@@ -4,7 +4,7 @@ import { LOGIN_ROUTE, PROFILE_ADMIN_EDIT_USERS_ROUTE, PROFILE_EDIT_ADDRESS_ROUTE
 import LoginPage from "./pages/client/LoginPage/LoginPage";
 import MainPage from "./pages/client/MainPage/MainPage";
 import RegisterPage from "./pages/client/RegisterPage/RegisterPage";
-import AdminUsersPage from "./pages/user/AdminUsersPage/AdminUsersPage";
+import AdminUsersPage from "./pages/admin/AdminUsersPage/AdminUsersPage";
 import UserAddressPage from "./pages/user/UserAddressPage/UserAddressPage";
 import UserEditDataPage from "./pages/user/UserEditDataPage/UserEditDataPage";
 import UserProfilePage from "./pages/user/UserProfilePage/UserProfilePage";

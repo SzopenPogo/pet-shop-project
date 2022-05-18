@@ -2,8 +2,7 @@ import classes from './AdminUsersFilterBar.module.scss';
 import SearchInput from '../../inputs/SearchInput/SearchInput'
 import SelectInput from '../../inputs/SelectInput/SelectInput';
 import { SELECT_ADMIN_OPTIONS__ADMIN, SELECT_ADMIN_OPTIONS__ALL, SELECT_ADMIN_OPTIONS__USERS, SELECT_STATUS_OPTIONS__ACTIVE, SELECT_STATUS_OPTIONS__ALL, SELECT_STATUS_OPTIONS__BANNED } from '../../../constants/selectOptions';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../../store';
+import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { setAdminGetAllUsersUrl } from '../../../store/admin/actions/admin-get-all-users-url';
 import { setUrlBoolValue } from '../../../utils/url/setUrlBoolValue';
@@ -45,10 +44,11 @@ const AdminUsersFilterBar = () => {
 
   const [isAdminOption, setIsAdminOption] = useState<string>('');
   const [isActiveOption, setIsActiveOption] = useState<string>('');
+  const [searchedEmail, setSearchedEmail] = useState<string>('');
 
   useEffect(() => {
-    dispatch(setAdminGetAllUsersUrl(isActiveOption, isAdminOption));
-  }, [dispatch, isActiveOption, isAdminOption])
+    dispatch(setAdminGetAllUsersUrl(isActiveOption, isAdminOption, searchedEmail));
+  }, [dispatch, isActiveOption, isAdminOption, searchedEmail])
 
   const accountTypeValueChangeHandler = (value: string) => {
     setIsAdminOption(setUrlBoolValue(
@@ -68,10 +68,14 @@ const AdminUsersFilterBar = () => {
     ));
   }
 
+  const searchUserHandler = (value: string) => {
+    setSearchedEmail(value);
+  }
+
   return (
     <div className={classes['user-filter-bar-container']}>
-      <div><SearchInput /></div>
-      <form>
+      <div className={classes['input-container']}>
+        <SearchInput title='Find a user by email' searchFunction={searchUserHandler} />
         <SelectInput
           isRequired={false}
           isLabel={true}
@@ -86,7 +90,7 @@ const AdminUsersFilterBar = () => {
           options={SELECT_STATUS_OPTIONS}
           onChangeFunction={accountStatusValueChangeHandler}
         />
-      </form>
+      </div>
     </div>
   )
 }

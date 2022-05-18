@@ -5,7 +5,7 @@ interface IProps {
   height: string;
   image: string;
   isSubmit: boolean;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const ImageButton = ({ width, height, image, isSubmit, onClick }: IProps) => {

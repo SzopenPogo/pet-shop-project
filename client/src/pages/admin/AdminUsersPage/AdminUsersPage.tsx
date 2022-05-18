@@ -32,8 +32,12 @@ const AdminUsersPage = () => {
         <InfoModal />
         <section className={classes['users-container']}>
           <AdminUsersFilterBar />
-          {loading && <Spinner borderSize='.75rem' size='12rem' color='gray' />}
-          {!loading && <AdminUsersList users={users} />}
+          <section className={classes.content}>
+            {loading && <div className={classes.spinner}>
+              <Spinner borderSize='.75rem' size='12rem' color='gray' />
+            </div>}
+            {!loading && <AdminUsersList users={users} />}
+          </section>
         </section>
       </>
     </UserLayout>

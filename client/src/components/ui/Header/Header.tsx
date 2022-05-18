@@ -27,6 +27,10 @@ const Header = () => {
     ? `${classes.header} ${classes['header--active']}`
     : classes.header;
   
+  const searchProductHandler = () => {
+
+  }
+
   return (
     <>
       <header className={headerClass}>
@@ -40,7 +44,7 @@ const Header = () => {
             <CartButton size={iconSize} />
           </div>
           <div className={classes.search}>
-            <SearchInput />
+            <SearchInput searchFunction={searchProductHandler} title='Search our store' />
           </div>
         </div>
         { !isMobile && <NavbarDesktop />}

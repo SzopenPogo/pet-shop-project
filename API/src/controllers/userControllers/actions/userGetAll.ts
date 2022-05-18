@@ -14,9 +14,9 @@ const userGetAll = async (req: IAuthRequest, res: Response) => {
     if (req.query.isAdmin) {
       match.isAdmin = req.query.isAdmin === 'true';
     }
-    if (req.query.email) {
+    if (req.query.searchingEmail) {
       match.email = {
-        $regex: req.query.productTitle,
+        $regex: req.query.searchingEmail,
         $options: 'i'
       };
     }
