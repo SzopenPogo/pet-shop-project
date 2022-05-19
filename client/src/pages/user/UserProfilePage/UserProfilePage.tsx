@@ -3,7 +3,7 @@ import UserDataContainer from '../../../components/containers/UserDataContainer/
 import UserLayout from '../../../components/layout/UserLayout/UserLayout';
 import ProfileAdminLink from '../../../components/links/ProfileAdminLink/ProfileAdminLink';
 import ProfileLink from '../../../components/links/ProfileLink/ProfileLink';
-import { PROFILE_ADMIN_EDIT_USERS_ROUTE, PROFILE_EDIT_ADDRESS_ROUTE, PROFILE_EDIT_DATA_ROUTE } from '../../../constants/routes';
+import { PROFILE_ADMIN_EDIT_CATEGORY_ROUTE, PROFILE_ADMIN_EDIT_USERS_ROUTE, PROFILE_EDIT_ADDRESS_ROUTE, PROFILE_EDIT_DATA_ROUTE } from '../../../constants/routes';
 import { RootState } from '../../../store';
 import classes from './UserProfilePage.module.scss';
 
@@ -21,6 +21,7 @@ const UserProfilePage = () => {
           <ProfileLink link={PROFILE_EDIT_ADDRESS_ROUTE} title='Address' />
           <ProfileLink link={PROFILE_EDIT_DATA_ROUTE} title='User Data' />
           <ProfileAdminLink link={PROFILE_ADMIN_EDIT_USERS_ROUTE} title='Users' isAdmin={isAdmin} />
+          <ProfileAdminLink link={PROFILE_ADMIN_EDIT_CATEGORY_ROUTE} title='Category' isAdmin={isAdmin} />
         </section>
       </>
     </UserLayout>

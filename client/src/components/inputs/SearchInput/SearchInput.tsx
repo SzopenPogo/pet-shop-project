@@ -1,17 +1,28 @@
 import ImageButton from "../../buttons/ImageButton/ImageButton"
 import searchIcon from '../../../images/icon/search.svg';
 import classes from './SearchInput.module.scss';
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 interface IProps {
   title: string;
+  searchTime: number;
   searchFunction: (value: string) => void;
 }
 
-const SearchInput = ({title, searchFunction}: IProps) => {
+const SearchInput = ({title, searchTime, searchFunction}: IProps) => {
   const searchInputRef = useRef<HTMLInputElement>(null);
 
-  const[searchInputValue, setSearchInputValue] = useState<string>('')
+  const[searchInputValue, setSearchInputValue] = useState<string>('');
+
+  useEffect(() => {
+    const searchTimeout = setTimeout(() => {
+      searchFunction(searchInputValue);
+    }, searchTime)
+
+    return () => {
+      clearTimeout(searchTimeout);
+    }
+  }, [searchInputValue, searchFunction, searchTime]);
 
   const searchSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

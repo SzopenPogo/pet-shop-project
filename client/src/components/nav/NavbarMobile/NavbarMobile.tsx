@@ -9,7 +9,7 @@ import classes from './NavbarMobile.module.scss';
 import { CSSTransition } from 'react-transition-group';
 import { RootState } from '../../../store';
 import React from 'react';
-import { resetActiveSubcategory, setActiveSubcategory } from '../../../store/category/category-actions';
+import { resetActiveSubcategory, setActiveSubcategory } from '../../../store/category/actions/category-get-actions';
 import { ISubcategory } from '../../../interfaces/ISubcategory';
 import Spinner from '../../spinners/Spinner/Spinner';
 

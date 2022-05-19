@@ -21,6 +21,7 @@ const AdminUsersList = ({users}: IProps) => {
   return (
     <ul className={classes.users}>
       {renderUsers}
+      {users.length <= 0 && <h1>No users found</h1>}
     </ul>
   )
 }

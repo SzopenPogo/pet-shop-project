@@ -3,7 +3,7 @@ import ImageButton from '../../buttons/ImageButton/ImageButton';
 import classes from './NavbarMobileHead.module.scss';
 import backArrow from '../../../images/icon/backArrow.svg';
 import { useDispatch } from 'react-redux';
-import { resetActiveSubcategory } from '../../../store/category/category-actions';
+import { resetActiveSubcategory } from '../../../store/category/actions/category-get-actions';
 
 interface IProps {
   title: string;

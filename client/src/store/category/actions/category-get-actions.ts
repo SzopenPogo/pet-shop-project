@@ -1,8 +1,8 @@
 import axios from "axios";
-import { BACKEND_CATEGORY_ROUTER } from "../../constants/backend";
-import { CATEGORY_FAIL, CATEGORY_REQUEST, CATEGORY_SUCCESS } from "../../constants/category";
-import { ISubcategory } from "../../interfaces/ISubcategory";
-import { categoryActions } from "./category-slice";
+import { BACKEND_CATEGORY_ROUTER } from "../../../constants/backend";
+import { CATEGORY_FAIL, CATEGORY_REQUEST, CATEGORY_SUCCESS } from "../../../constants/category";
+import { ISubcategory } from "../../../interfaces/ISubcategory";
+import { categoryActions } from "../category-slice";
 
 // CLIENT
 // Set active subcategory

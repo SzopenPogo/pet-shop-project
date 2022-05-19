@@ -75,7 +75,7 @@ const AdminUsersFilterBar = () => {
   return (
     <div className={classes['user-filter-bar-container']}>
       <div className={classes['input-container']}>
-        <SearchInput title='Find a user by email' searchFunction={searchUserHandler} />
+        <SearchInput title='Find a user by email' searchTime={1000} searchFunction={searchUserHandler} />
         <SelectInput
           isRequired={false}
           isLabel={true}

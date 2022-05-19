@@ -10,7 +10,7 @@ import { RootState } from '../../../store';
 import NavbarDesktop from '../../nav/NavbarDesktop/NavbarDesktop';
 import NavbarMobile from '../../nav/NavbarMobile/NavbarMobile';
 import { useEffect } from 'react';
-import { categoriesFetch } from '../../../store/category/category-actions';
+import { categoriesFetch } from '../../../store/category/actions/category-get-actions';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -44,7 +44,7 @@ const Header = () => {
             <CartButton size={iconSize} />
           </div>
           <div className={classes.search}>
-            <SearchInput searchFunction={searchProductHandler} title='Search our store' />
+            <SearchInput searchFunction={searchProductHandler} searchTime={800} title='Search our store' />
           </div>
         </div>
         { !isMobile && <NavbarDesktop />}
