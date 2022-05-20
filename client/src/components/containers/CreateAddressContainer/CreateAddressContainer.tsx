@@ -1,9 +1,8 @@
 import { useRef, useState } from 'react';
-import CloseButton from '../../buttons/CloseButton/CloseButton';
-import MainButton from '../../buttons/MainButton/MainButton';
 import CreateAddressForm from '../../forms/CreateAddressForm/CreateAddressForm';
 import { CSSTransition } from 'react-transition-group';
 import classes from './CreateAddressContainer.module.scss';
+import MainAndCloseButtonToggle from '../../buttons/MainAndCloseButtonToggle/MainAndCloseButtonToggle';
 
 const CreateAddressContainer = () => {
   const [isCreateAddress, setIsCreateAddress] = useState<boolean>(false);
@@ -12,20 +11,17 @@ const CreateAddressContainer = () => {
     setIsCreateAddress(!isCreateAddress);
   }
 
-  const buttonsStyle = isCreateAddress ? { justifyContent: 'flex-end', width: '100%' } : {};
 
   const nodeRef = useRef(null);
   return (
     <section className={classes['create-address']}>
       
-      <div className={classes.buttons} style={buttonsStyle}>
-        {!isCreateAddress && <MainButton
-          isSubmit={false}
-          title='Add new address'
-          onClick={toggleCreateAddress}
-        />}
-        {isCreateAddress && <CloseButton onClick={toggleCreateAddress} />}
-      </div>
+
+      <MainAndCloseButtonToggle 
+        title={'Add new address'}
+        isToClose={isCreateAddress}
+        toggleFunction={toggleCreateAddress} 
+      />
       
       <CSSTransition
         nodeRef={nodeRef}

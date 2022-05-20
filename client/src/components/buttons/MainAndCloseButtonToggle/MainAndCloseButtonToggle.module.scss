@@ -1,0 +1,17 @@
+@import '../../../style/variables/dimensions';
+
+.buttons {
+  width: 80%;
+  margin: .5rem 0;
+  padding: 0 .5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: linear 150ms;
+
+  @media (min-width: $mobile-width) {
+    padding: 0;
+  }
+}
