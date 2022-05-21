@@ -100,6 +100,25 @@ const categorySlice = createSlice({
           state.categories.error = payload;
           break;
       }
+    },
+    create(state, action) {
+      const { type, payload } = action.payload;
+      
+      switch (type) {
+        case CATEGORY_REQUEST:
+          state.categories.loading = true;
+          state.categories.error = null;
+          break;
+        case CATEGORY_SUCCESS:
+          state.categories.loading = false;
+          state.categories.error = null;
+          state.categories.data.push(payload);
+          break;
+        case CATEGORY_FAIL:
+          state.categories.loading = false;
+          state.categories.error = payload;
+          break;
+      }
     }
   }
 })

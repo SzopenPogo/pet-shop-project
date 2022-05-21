@@ -1,7 +1,7 @@
 @import './dimensions';
 @import './borders';
 
-@mixin main-form {
+@mixin main-form($pc-width) {
   width: 100%;
 
   display: flex;
@@ -11,7 +11,7 @@
   gap: 1rem;
 
   @media (min-width: $mobile-width) {
-    width: 20rem;
+    width: $pc-width;
     padding: 2.5rem 1rem;
 
     border-radius: $border-radious;

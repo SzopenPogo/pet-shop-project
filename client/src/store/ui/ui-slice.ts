@@ -6,7 +6,8 @@ const uiSlice = createSlice({
   initialState: {
     isHamburgerActive: false,
     isDeleteModalActive: false,
-    infoMessages: [] as Array<IInfoMessage>
+    infoMessages: [] as Array<IInfoMessage>,
+    isFormContainerActive: false
   },
   reducers: {
     toggleHamburgerMenu(state) {
@@ -22,6 +23,9 @@ const uiSlice = createSlice({
     removeInfoMessage(state, action) {
       const { payload } = action.payload;
       state.infoMessages.splice(payload, 1);
+    },
+    toggleFormContainer(state) {
+      state.isFormContainerActive = !state.isFormContainerActive;
     }
   }
 });

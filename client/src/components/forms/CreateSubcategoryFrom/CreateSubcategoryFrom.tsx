@@ -1,27 +1,23 @@
-import classes from './CreateCategoryForm.module.scss';
+import classes from './CreateSubcategoryFrom.module.scss'
 import TextInput from '../../inputs/TextInput/TextInput'
-import MainButton from '../../buttons/MainButton/MainButton';
-import { FormEvent, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { FormEvent, useRef } from 'react'
+import MainButton from '../../buttons/MainButton/MainButton'
 import { RootState } from '../../../store';
-import { adminCreateCategory } from '../../../store/category/actions/category-create-actions';
+import { useSelector } from 'react-redux';
 
 interface IProps {
   closeFormFunction?: () => void;
 }
 
-const CreateCategoryForm = ({closeFormFunction}: IProps) => {
-  const dispatch = useDispatch();
-
+const CreateSubcategoryFrom = ({closeFormFunction}: IProps) => {
   const titleInputRef = useRef<HTMLInputElement>(null);
 
   const token = useSelector((state: RootState) => state.user.token);
 
-  const submitCreateFormHandler = (event: FormEvent) => {
+  const submitCreateSubcategoryHandler = (event: FormEvent) => {
     event.preventDefault();
 
     const titleValue = titleInputRef.current!.value;
-    dispatch(adminCreateCategory(token, titleValue));
 
     if(closeFormFunction) {
       closeFormFunction();
@@ -29,13 +25,13 @@ const CreateCategoryForm = ({closeFormFunction}: IProps) => {
   }
 
   return (
-    <form className={classes['create-category']} onSubmit={submitCreateFormHandler}>
+    <form className={classes['create-subcategory']} onSubmit={submitCreateSubcategoryHandler}>
       <TextInput
         ref={titleInputRef}
         isLabel={true}
         isReadonly={false}
         isRequired={true}
-        title={'Category title'}
+        title={'Subcategory title'}
         value=''
       />
       <div className={classes['submit-button-container']}>
@@ -48,4 +44,4 @@ const CreateCategoryForm = ({closeFormFunction}: IProps) => {
   )
 }
 
-export default CreateCategoryForm
+export default CreateSubcategoryFrom
