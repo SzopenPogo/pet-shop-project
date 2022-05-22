@@ -8,7 +8,7 @@ interface IProps {
   title: string;
   isLabel: boolean;
   isRequired: boolean;
-  onChangeFunction: (value: string) => void;
+  onChangeFunction?: (value: string) => void;
 }
 
 
@@ -21,7 +21,9 @@ const SelectInput = React.forwardRef<HTMLSelectElement, IProps>(({
   }, ref) => {
 
   const onChangeHandler = (event: any) => {
-    onChangeFunction(event.target.value);
+    if(onChangeFunction) {
+      onChangeFunction(event.target.value);
+    }
   }
 
   const renderOptions = options.map(option => (

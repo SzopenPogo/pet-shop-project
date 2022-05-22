@@ -2,6 +2,7 @@ export const BACKEND_URL = 'http://localhost:5000';
 
 // CATEGORY ROUTES
 export const BACKEND_CATEGORY_ROUTER = `${BACKEND_URL}/category`;
+export const BACKEND_SUBCATEGORY_ROUTER = `${BACKEND_URL}/subcategory`;
 
 // USER ROUTES
 export const BACKEND_USER_ROUTER = `${BACKEND_URL}/user`;
