@@ -10,7 +10,8 @@ const subcategorySlice = createSlice({
       loading: false,
       error: null,
       data: [] as Array<ISubcategory>
-    }
+    },
+    selectedSubcategoryId: ''
   },
   reducers: {
     create(state, action) {
@@ -31,6 +32,66 @@ const subcategorySlice = createSlice({
           state.subcategories.error = payload;
           break;
       }
+    },
+    get(state, action) {
+      const { type, payload } = action.payload;
+      
+      switch (type) {
+        case SUBCATEGORY_REQUEST:
+          state.subcategories.loading = true;
+          state.subcategories.error = null;
+          break;
+        case SUBCATEGORY_SUCCESS:
+          state.subcategories.loading = false;
+          state.subcategories.error = null;
+          state.subcategories.data = payload;
+          break;
+        case SUBCATEGORY_FAIL:
+          state.subcategories.loading = false;
+          state.subcategories.error = payload;
+          break;
+      }
+    },
+    edit(state, action) {
+      const { type, payload, index } = action.payload;
+      
+      switch (type) {
+        case SUBCATEGORY_REQUEST:
+          state.subcategories.loading = true;
+          state.subcategories.error = null;
+          break;
+        case SUBCATEGORY_SUCCESS:
+          state.subcategories.loading = false;
+          state.subcategories.error = null;
+          state.subcategories.data[index] = payload;
+          break;
+        case SUBCATEGORY_FAIL:
+          state.subcategories.loading = false;
+          state.subcategories.error = payload;
+          break;
+      }
+    },
+    delete(state, action) {
+      const { type, payload, index } = action.payload;
+      
+      switch (type) {
+        case SUBCATEGORY_REQUEST:
+          state.subcategories.loading = true;
+          state.subcategories.error = null;
+          break;
+        case SUBCATEGORY_SUCCESS:
+          state.subcategories.loading = false;
+          state.subcategories.error = null;
+          state.subcategories.data.splice(index ,1);
+          break;
+        case SUBCATEGORY_FAIL:
+          state.subcategories.loading = false;
+          state.subcategories.error = payload;
+          break;
+      }
+    },
+    select(state, action) {
+      state.selectedSubcategoryId = action.payload.payload;
     }
   }
 });

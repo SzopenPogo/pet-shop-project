@@ -4,13 +4,15 @@ import { BACKEND_SUBCATEGORY_ROUTER } from "../../../constants/backend";
 import { SUBCATEGORY_FAIL, SUBCATEGORY_REQUEST, SUBCATEGORY_SUCCESS } from "../../../constants/subcategory";
 import { subcategoryActions } from "../subcategory-slice";
 
-export const adminSubcategoryCreate = (
+export const adminEditSubcategory = (
   token: string,
+  index: number,
+  _id: string,
   title: string,
   image: File,
   categoryId: string
 ) => async (dispatch: Dispatch) => {
-  dispatch(subcategoryActions.create({type: SUBCATEGORY_REQUEST}));
+  dispatch(subcategoryActions.edit({type: SUBCATEGORY_REQUEST}));
 
   const config = {
     headers: {
@@ -18,24 +20,32 @@ export const adminSubcategoryCreate = (
     }
   }
 
+  
   const formData = new FormData();
-  formData.append('image', image, image.name);
-  formData.append('title', title);
-  formData.append('categoryId', categoryId);
+  if(title) {
+    formData.append('title', title);
+  }
+  if(categoryId) {
+    formData.append('categoryId', categoryId);
+  }
+  if(image) {
+    formData.append('image', image, image.name);
+  }
 
-  const createSubcategoryRequest = async () => {
-    return await axios.post(BACKEND_SUBCATEGORY_ROUTER, formData, config);
+  const editSubcategoryRequest = async () => {
+    return await axios.patch(`${BACKEND_SUBCATEGORY_ROUTER}/${_id}`, formData, config);
   }
 
   try {
-    const { data } = await createSubcategoryRequest();
+    const { data } = await editSubcategoryRequest();
 
-    dispatch(subcategoryActions.create({
+    dispatch(subcategoryActions.edit({
       type: SUBCATEGORY_SUCCESS,
-      payload: data
+      payload: data,
+      index
     }));
   } catch (error: any) {
-    dispatch(subcategoryActions.create({
+    dispatch(subcategoryActions.edit({
       type: SUBCATEGORY_FAIL,
       payload: error.response.data.message
     }));

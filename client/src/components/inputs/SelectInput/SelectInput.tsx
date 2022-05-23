@@ -8,6 +8,7 @@ interface IProps {
   title: string;
   isLabel: boolean;
   isRequired: boolean;
+  selectedOptionValue?: string;
   onChangeFunction?: (value: string) => void;
 }
 
@@ -17,6 +18,7 @@ const SelectInput = React.forwardRef<HTMLSelectElement, IProps>(({
   title,
   isLabel,
   isRequired,
+  selectedOptionValue,
   onChangeFunction
   }, ref) => {
 
@@ -39,6 +41,7 @@ const SelectInput = React.forwardRef<HTMLSelectElement, IProps>(({
         id={inputId}
         required={isRequired}
         onChange={onChangeHandler}
+        defaultValue={selectedOptionValue}
       >
         {renderOptions}
       </select>

@@ -7,6 +7,8 @@ import { RootState } from '../../../store';
 import { useEffect } from 'react';
 import { addInfoMessage } from '../../../store/ui/actions/info-items-actions';
 import Spinner from '../../../components/spinners/Spinner/Spinner';
+import AdminSubcategoryList from '../../../components/lists/AdminSubcategoryList/AdminSubcategoryList';
+import { subcategoryGet } from '../../../store/subcategory/actions/subcategory-get-actions';
 
 const AdminSubcategoryPage = () => {
   const dispatch = useDispatch();
@@ -20,6 +22,8 @@ const AdminSubcategoryPage = () => {
         timeout: 1500
       }))
     }
+
+    dispatch(subcategoryGet());
   }, [error, dispatch])
 
   return (
@@ -28,6 +32,7 @@ const AdminSubcategoryPage = () => {
         <InfoModal />
         <section className={classes['admin-subcategory-page']}>
           <CreateSubcategoryContainer />
+          {!loading && <AdminSubcategoryList />}
           {loading && <Spinner borderSize='.75rem' size='12rem' color='gray' />}
         </section>
       </>

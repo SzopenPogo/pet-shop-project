@@ -1,0 +1,16 @@
+@import '../../../style/variables/lists';
+
+.subcategory-item {
+  position: relative;
+
+  @include main-list();
+  padding-top: 3rem !important;
+
+  .subcategory-manage-buttons {
+    @include list-manage-container();
+  }
+}
+
+.subcategory-item--edit {
+  @include edit-list();
+}

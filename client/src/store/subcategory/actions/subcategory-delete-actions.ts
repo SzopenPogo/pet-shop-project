@@ -4,38 +4,32 @@ import { BACKEND_SUBCATEGORY_ROUTER } from "../../../constants/backend";
 import { SUBCATEGORY_FAIL, SUBCATEGORY_REQUEST, SUBCATEGORY_SUCCESS } from "../../../constants/subcategory";
 import { subcategoryActions } from "../subcategory-slice";
 
-export const adminSubcategoryCreate = (
+export const adminDeleteSubcategory = (
   token: string,
-  title: string,
-  image: File,
-  categoryId: string
+  index: number,
+  _id: string
 ) => async (dispatch: Dispatch) => {
-  dispatch(subcategoryActions.create({type: SUBCATEGORY_REQUEST}));
-
+  dispatch(subcategoryActions.delete({type: SUBCATEGORY_REQUEST}));
   const config = {
     headers: {
       Authorization: `Bearer ${token}`
     }
   }
 
-  const formData = new FormData();
-  formData.append('image', image, image.name);
-  formData.append('title', title);
-  formData.append('categoryId', categoryId);
-
-  const createSubcategoryRequest = async () => {
-    return await axios.post(BACKEND_SUBCATEGORY_ROUTER, formData, config);
+  const deleteSubcategoryRequest = async () => {
+    return await axios.delete(`${BACKEND_SUBCATEGORY_ROUTER}/${_id}`, config);
   }
 
   try {
-    const { data } = await createSubcategoryRequest();
+    await deleteSubcategoryRequest();
 
-    dispatch(subcategoryActions.create({
+    dispatch(subcategoryActions.delete({
       type: SUBCATEGORY_SUCCESS,
-      payload: data
+      payload: '',
+      index
     }));
   } catch (error: any) {
-    dispatch(subcategoryActions.create({
+    dispatch(subcategoryActions.delete({
       type: SUBCATEGORY_FAIL,
       payload: error.response.data.message
     }));

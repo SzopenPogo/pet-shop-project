@@ -57,3 +57,13 @@ $main-gap: .75rem;
   top: .25rem;
   right: .25rem;
 }
+
+@mixin list-manage-container {
+  @include list-edit-button();
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: .55rem;
+}

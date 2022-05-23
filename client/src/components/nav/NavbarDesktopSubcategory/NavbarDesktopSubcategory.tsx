@@ -15,10 +15,15 @@ const NavbarDesktopSubcategory = ({subcategories, isActive}: IProps) => {
     <NavbarDesktopLink
       key={subcategory._id}
       title={subcategory.title}
-      route={`subcategory/${subcategory.categoryId}`}
+      route={`subcategory/${subcategory._id}`}
       image={subcategory.imageUrl}
     />
   ))
+
+  // const huj = subcategories.map(subcategory => {
+  //   console.log(subcategory._id);
+    
+  // })
 
   const nodeRef = React.useRef(null);
   return (

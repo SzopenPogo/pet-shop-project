@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { CATEGORY_FAIL, CATEGORY_REQUEST, CATEGORY_SUCCESS } from "../../constants/category";
+import { ISubcategory } from "../../interfaces/ISubcategory";
 
 interface ISelectedCategory {
   _id: string,
@@ -20,12 +21,7 @@ const categorySlice = createSlice({
     },
     activeSubcategory: {
       title: '',
-      subcategoryRef: [{
-        _id: '',
-        title: '',
-        imageUrl: '',
-        categoryId: ''
-      }]
+      subcategoryRef: [] as Array<ISubcategory>
     },
     selectedCategory: {} as ISelectedCategory
   },
