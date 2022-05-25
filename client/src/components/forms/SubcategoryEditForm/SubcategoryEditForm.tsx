@@ -1,13 +1,12 @@
 import { FormEvent, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ISelectOption } from '../../../interfaces/ISelectOption';
 import { ISubcategory } from '../../../interfaces/ISubcategory';
 import { RootState } from '../../../store';
 import { adminEditSubcategory } from '../../../store/subcategory/actions/subcategory-edit-actions';
 import MainButton from '../../buttons/MainButton/MainButton';
 import FileInput from '../../inputs/FileInput/FileInput';
-import SelectInput from '../../inputs/SelectInput/SelectInput';
 import TextInput from '../../inputs/TextInput/TextInput';
+import SubcategorySelect from '../../Select/SubcategorySelect/SubcategorySelect';
 import classes from './SubcategoryEditForm.module.scss';
 
 interface IProps extends ISubcategory {
@@ -31,8 +30,6 @@ const SubcategoryEditForm = ({
   const categoryIdInputRef = useRef<HTMLSelectElement>(null);
 
   const token = useSelector((state: RootState) => state.user.token);
-  const categories = useSelector((state: RootState) => state.category.categories.data);
-
 
   const editSubcategoryHandler = (event: FormEvent) => {
     event.preventDefault();
@@ -47,14 +44,6 @@ const SubcategoryEditForm = ({
       toggleFunction();
     }
   }
-
-  const categoriesOptions = [] as Array<ISelectOption>;
-  categories.map((category) => (
-    categoriesOptions.push({
-      title: category.title,
-      value: category._id
-    })
-  ));  
 
   return (
     <form className={classes['subcategory-edit']} onSubmit={editSubcategoryHandler}>
@@ -75,13 +64,9 @@ const SubcategoryEditForm = ({
           acceptedFile='image'
         />
 
-        <SelectInput
+        <SubcategorySelect
           ref={categoryIdInputRef}
-          isLabel={true}
-          isRequired={true}
-          title='Category'
-          options={categoriesOptions}
-          selectedOptionValue={categoryId._id}
+          selectedValue={categoryId._id}
         />
 
         <div className={classes['button-container']}>

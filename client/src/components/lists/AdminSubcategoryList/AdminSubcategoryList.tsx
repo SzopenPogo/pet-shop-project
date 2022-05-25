@@ -2,6 +2,7 @@ import classes from './AdminSubcategoryList.module.scss';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store';
 import AdminSubcategoryListItem from '../../list-items/AdminSubcategoryListItem/AdminSubcategoryListItem';
+import { match } from 'assert';
 
 const AdminSubcategoryList = () => {
   const {data} = useSelector((state: RootState) => state.subcategory.subcategories);
@@ -16,10 +17,11 @@ const AdminSubcategoryList = () => {
       categoryId={subcategory.categoryId}
     />
   ));
-  
+
   return (
     <ul className={classes['admin-subcategory-list']}>
-      {renderSubcategories}
+      {data.length <= 0 && <h1>No subcategories found</h1>}
+      {data.length > 0 && renderSubcategories}
     </ul>
   )
 }

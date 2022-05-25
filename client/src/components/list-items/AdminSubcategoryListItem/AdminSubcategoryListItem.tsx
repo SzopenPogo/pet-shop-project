@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { BACKEND_URL } from '../../../constants/backend';
 import { ISubcategory } from '../../../interfaces/ISubcategory';
 import { RootState } from '../../../store';
 import { adminDeleteSubcategory } from '../../../store/subcategory/actions/subcategory-delete-actions';
@@ -59,9 +60,14 @@ const AdminSubcategoryListItem = ({
   ? `${classes['subcategory-item']}`
   : `${classes['subcategory-item']} ${classes['subcategory-item--edit']}`;
 
+  const imageFullUrl = `${BACKEND_URL}/${imageUrl}`;
+
   return (
     <>
       <li className={subcategoryItemClass}>
+        <div className={classes['category-image-container']}>
+          <img className={classes['category-image']} src={imageFullUrl} alt={title} />
+        </div>
         <span>ID: {_id}</span>
         <SubcategoryEditForm
           _id={_id}
@@ -85,7 +91,7 @@ const AdminSubcategoryListItem = ({
       >
         <>
           <h2 style={{margin: '.5rem 0'}}>
-            Are you sure you want to delete this category?
+            Are you sure you want to delete this subcategory?
           </h2>
           <span style={{marginBottom: '1rem'}}>ID: {_id}</span>
           <MainButton

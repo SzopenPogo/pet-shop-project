@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { BACKEND_SUBCATEGORY_ROUTER } from "../../constants/backend";
 import { SUBCATEGORY_FAIL, SUBCATEGORY_REQUEST, SUBCATEGORY_SUCCESS } from "../../constants/subcategory";
 import {ISubcategory} from '../../interfaces/ISubcategory';
 
@@ -11,7 +12,9 @@ const subcategorySlice = createSlice({
       error: null,
       data: [] as Array<ISubcategory>
     },
-    selectedSubcategoryId: ''
+    selectedSubcategoryId: '',
+    subcategoryUrl: BACKEND_SUBCATEGORY_ROUTER,
+    subcategoryLastUpdate: ''
   },
   reducers: {
     create(state, action) {
@@ -26,6 +29,7 @@ const subcategorySlice = createSlice({
           state.subcategories.loading = false;
           state.subcategories.error = null;
           state.subcategories.data.push(payload);
+          state.subcategoryLastUpdate = new Date().toISOString();
           break;
         case SUBCATEGORY_FAIL:
           state.subcategories.loading = false;
@@ -64,6 +68,7 @@ const subcategorySlice = createSlice({
           state.subcategories.loading = false;
           state.subcategories.error = null;
           state.subcategories.data[index] = payload;
+          state.subcategoryLastUpdate = new Date().toISOString();
           break;
         case SUBCATEGORY_FAIL:
           state.subcategories.loading = false;
@@ -83,6 +88,7 @@ const subcategorySlice = createSlice({
           state.subcategories.loading = false;
           state.subcategories.error = null;
           state.subcategories.data.splice(index ,1);
+          state.subcategoryLastUpdate = new Date().toISOString();
           break;
         case SUBCATEGORY_FAIL:
           state.subcategories.loading = false;
@@ -92,6 +98,9 @@ const subcategorySlice = createSlice({
     },
     select(state, action) {
       state.selectedSubcategoryId = action.payload.payload;
+    },
+    subcategoryUrl(state, action) {
+      state.subcategoryUrl = action.payload;
     }
   }
 });

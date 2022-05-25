@@ -1,4 +1,6 @@
 @import '../../../style/variables/lists';
+@import '../../../style/variables/dimensions';
+@import '../../../style/variables/colors';
 
 .subcategory-item {
   position: relative;
@@ -8,6 +10,27 @@
 
   .subcategory-manage-buttons {
     @include list-manage-container();
+  }
+
+  .category-image-container {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 2px solid $light-yellow-color;
+    
+
+    .category-image {
+      min-width: 100%;
+      min-height: 100%;
+    }
+
   }
 }
 

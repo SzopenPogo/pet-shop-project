@@ -9,11 +9,16 @@ import { addInfoMessage } from '../../../store/ui/actions/info-items-actions';
 import Spinner from '../../../components/spinners/Spinner/Spinner';
 import AdminSubcategoryList from '../../../components/lists/AdminSubcategoryList/AdminSubcategoryList';
 import { subcategoryGet } from '../../../store/subcategory/actions/subcategory-get-actions';
+import AdminSubcategorySearchbar from '../../../components/elements/AdminSubcategorySearchbar/AdminSubcategorySearchbar';
+import { categoriesFetch } from '../../../store/category/actions/category-get-actions';
 
 const AdminSubcategoryPage = () => {
   const dispatch = useDispatch();
+
   const {loading, error} = useSelector((state: RootState) => state.subcategory.subcategories);
-  
+  const subcategoryUrl = useSelector((state: RootState) => state.subcategory.subcategoryUrl);
+  const subcategoryLastUpdate = useSelector((state: RootState) => state.subcategory.subcategoryLastUpdate);
+
   useEffect(() => {
     if(error) {
       dispatch(addInfoMessage({
@@ -23,8 +28,13 @@ const AdminSubcategoryPage = () => {
       }))
     }
 
-    dispatch(subcategoryGet());
-  }, [error, dispatch])
+    dispatch(subcategoryGet(subcategoryUrl));
+
+  }, [error, dispatch, subcategoryUrl])
+
+  useEffect(() => {
+    dispatch(categoriesFetch());
+  }, [dispatch, subcategoryLastUpdate])
 
   return (
     <UserLayout>
@@ -32,7 +42,11 @@ const AdminSubcategoryPage = () => {
         <InfoModal />
         <section className={classes['admin-subcategory-page']}>
           <CreateSubcategoryContainer />
-          {!loading && <AdminSubcategoryList />}
+          {!loading &&
+          <>
+            <AdminSubcategorySearchbar />
+            <AdminSubcategoryList />
+          </>}
           {loading && <Spinner borderSize='.75rem' size='12rem' color='gray' />}
         </section>
       </>

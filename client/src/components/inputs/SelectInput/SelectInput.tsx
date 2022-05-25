@@ -29,7 +29,12 @@ const SelectInput = React.forwardRef<HTMLSelectElement, IProps>(({
   }
 
   const renderOptions = options.map(option => (
-    <option key={option.value} value={option.value}>{option.title}</option>
+    <option
+      key={`${option.value}+${option.title}`}
+      value={option.value}
+    >
+      {option.title}
+    </option>
   ));
 
   const inputId = generateInputId(title);

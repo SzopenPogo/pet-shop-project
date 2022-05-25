@@ -5,10 +5,9 @@ import MainButton from '../../buttons/MainButton/MainButton'
 import { RootState } from '../../../store';
 import { useDispatch, useSelector } from 'react-redux';
 import FileInput from '../../inputs/FileInput/FileInput';
-import SelectInput from '../../inputs/SelectInput/SelectInput';
-import {ISelectOption} from '../../../interfaces/ISelectOption';
 import { addInfoMessage } from '../../../store/ui/actions/info-items-actions';
 import { adminSubcategoryCreate } from '../../../store/subcategory/actions/subcategory-create-actions';
+import SubcategorySelect from '../../Select/SubcategorySelect/SubcategorySelect';
 
 interface IProps {
   closeFormFunction?: () => void;
@@ -22,7 +21,6 @@ const CreateSubcategoryFrom = ({closeFormFunction}: IProps) => {
   const categoryIdInputRef = useRef<HTMLSelectElement>(null);
 
   const token = useSelector((state: RootState) => state.user.token);
-  const categories = useSelector((state: RootState) => state.category.categories.data);
 
   const submitCreateSubcategoryHandler = (event: FormEvent) => {
     event.preventDefault();
@@ -52,14 +50,6 @@ const CreateSubcategoryFrom = ({closeFormFunction}: IProps) => {
     }));
   }
 
-  const categoriesOptions = [] as Array<ISelectOption>;
-  categories.map((category) => (
-    categoriesOptions.push({
-      title: category.title,
-      value: category._id
-    })
-  ));
-
   return (
     <form className={classes['create-subcategory']} onSubmit={submitCreateSubcategoryHandler}>
       <TextInput
@@ -76,12 +66,8 @@ const CreateSubcategoryFrom = ({closeFormFunction}: IProps) => {
         isRequired={true}
         acceptedFile='image'
       />
-      <SelectInput
+      <SubcategorySelect
         ref={categoryIdInputRef}
-        isLabel={true}
-        isRequired={true}
-        title='Category'
-        options={categoriesOptions}
       />
       <div className={classes['submit-button-container']}>
         <MainButton
