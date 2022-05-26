@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../store';
 import { selectSubcategory } from '../../../store/subcategory/actions/subcategory-select-actions';
 import { setSubcategoryUrl } from '../../../store/subcategory/actions/subcategory-url-actions';
-import SubcategorySelect from '../../Select/SubcategorySelect/SubcategorySelect';
+import CategorySelect from '../../Select/CategorySelect/CategorySelect';
 import classes from './AdminSubcategorySearchbar.module.scss';
 
 const AdminSubcategorySearchbar = () => {
@@ -21,7 +21,7 @@ const AdminSubcategorySearchbar = () => {
   return (
     <div className={classes['subcategory-searchbar-container']}>
       <h2>Find subcategory by:</h2>
-      <SubcategorySelect
+      <CategorySelect
         ref={categorySelectRef}
         onChangeFunction={changeSubcategoryUrlHandler}
         selectedValue={selectedSubcategoryId}

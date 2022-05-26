@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import FileInput from '../../inputs/FileInput/FileInput';
 import { addInfoMessage } from '../../../store/ui/actions/info-items-actions';
 import { adminSubcategoryCreate } from '../../../store/subcategory/actions/subcategory-create-actions';
-import SubcategorySelect from '../../Select/SubcategorySelect/SubcategorySelect';
+import CategorySelect from '../../Select/CategorySelect/CategorySelect';
 
 interface IProps {
   closeFormFunction?: () => void;
@@ -66,7 +66,7 @@ const CreateSubcategoryFrom = ({closeFormFunction}: IProps) => {
         isRequired={true}
         acceptedFile='image'
       />
-      <SubcategorySelect
+      <CategorySelect
         ref={categoryIdInputRef}
       />
       <div className={classes['submit-button-container']}>

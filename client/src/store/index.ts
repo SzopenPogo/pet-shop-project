@@ -3,6 +3,7 @@ import addressSlice from "./address/address-slice";
 import adminSlice from "./admin/admin-slice";
 import categorySlice from "./category/category-slice";
 import clientWindowSlice from "./clientWindow/clientWindow-slice";
+import productSlice from "./product/product-slice";
 import subcategorySlice from "./subcategory/subcategory-slice";
 import uiSlice from "./ui/ui-slice";
 import userSilce from "./user/user-slice";
@@ -15,7 +16,8 @@ const store = configureStore({
     user: userSilce.reducer,
     address: addressSlice.reducer,
     admin: adminSlice.reducer,
-    subcategory: subcategorySlice.reducer
+    subcategory: subcategorySlice.reducer,
+    product: productSlice.reducer
   }
 });
 

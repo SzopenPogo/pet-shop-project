@@ -1,57 +1,9 @@
-@import '../../../style/variables/dimensions';
-@import '../../../style/variables/colors';
-@import '../../../style/variables/borders';
+@import '../../../style/variables/inputs';
 
 .file-picker {
-  width: 90%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: .75rem;
-
+  @include file-picker();
   .input-wrapper {
-    overflow: hidden;
-    z-index: 2;
-  
-    position: relative;
-  
-    width: 100%;
-    height: 2.8rem;
-  
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
-    border-radius: $border-radious;
-    background-color: $main-yellow-color;
-    outline: none;
-    border: none;
-  
-    text-decoration: none;
-    text-align: center;
-    color: white;
-    font-weight: bold;
-    text-shadow: 0px 0px 3px rgba(0, 0, 0, .2);
-    font-size: .9rem;
-  
-    transition: linear 100ms;  
-  
-    &:hover {
-      background-color: $light-yellow-color;
-    }
-
-    input[type=file] {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 22;
-      display: block;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-    }
+    @include file-picker-input-wrapper();
   }
 
   .selected-file-container {

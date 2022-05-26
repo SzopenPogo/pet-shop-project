@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { CATEGORY_FAIL, CATEGORY_REQUEST, CATEGORY_SUCCESS } from "../../constants/category";
+import { ICategory } from "../../interfaces/ICategory";
 import { ISubcategory } from "../../interfaces/ISubcategory";
 
 interface ISelectedCategory {
@@ -13,17 +14,18 @@ const categorySlice = createSlice({
     categories: {
       loading: false,
       error: null,
-      data: [{
-        _id: '',
-        title: '',
-        subcategoryRef: []
-      }]
+      data: [] as Array<ICategory>
     },
     activeSubcategory: {
       title: '',
       subcategoryRef: [] as Array<ISubcategory>
     },
-    selectedCategory: {} as ISelectedCategory
+    selectedCategory: {} as ISelectedCategory,
+    category: {
+      loading: false,
+      error: null,
+      data: {} as ICategory
+    }
   },
   reducers: {
     get(state, action) {
@@ -113,6 +115,25 @@ const categorySlice = createSlice({
         case CATEGORY_FAIL:
           state.categories.loading = false;
           state.categories.error = payload;
+          break;
+      }
+    },
+    getById(state, action) {
+      const { type, payload } = action.payload;
+
+      switch (type) {
+        case CATEGORY_REQUEST:
+          state.category.loading = true;
+          state.category.error = null;
+          break;
+        case CATEGORY_SUCCESS:
+          state.category.loading = false;
+          state.category.error = null;
+          state.category.data = payload;
+          break;
+        case CATEGORY_FAIL:
+          state.category.loading = false;
+          state.category.error = payload;
           break;
       }
     }

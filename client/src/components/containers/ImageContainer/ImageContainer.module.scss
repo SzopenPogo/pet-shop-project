@@ -1,0 +1,10 @@
+@import '../../../style/variables/borders';
+
+.image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  border-radius: $border-radious;
+  border: 2px solid white;
+}

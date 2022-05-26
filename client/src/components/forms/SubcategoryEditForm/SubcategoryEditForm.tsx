@@ -6,7 +6,7 @@ import { adminEditSubcategory } from '../../../store/subcategory/actions/subcate
 import MainButton from '../../buttons/MainButton/MainButton';
 import FileInput from '../../inputs/FileInput/FileInput';
 import TextInput from '../../inputs/TextInput/TextInput';
-import SubcategorySelect from '../../Select/SubcategorySelect/SubcategorySelect';
+import CategorySelect from '../../Select/CategorySelect/CategorySelect';
 import classes from './SubcategoryEditForm.module.scss';
 
 interface IProps extends ISubcategory {
@@ -64,7 +64,7 @@ const SubcategoryEditForm = ({
           acceptedFile='image'
         />
 
-        <SubcategorySelect
+        <CategorySelect
           ref={categoryIdInputRef}
           selectedValue={categoryId._id}
         />

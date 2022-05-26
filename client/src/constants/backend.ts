@@ -22,3 +22,6 @@ export const BACKEND_ADMIN_ROUTER_EDIT_USER = `${BACKEND_URL}/user/edit`;
 
 //ADDRESS
 export const BACKEND_ADDRESS_ROUTER = `${BACKEND_URL}/address`;
+
+//PRODUCT
+export const BACKEND_PRODUCT_ROUTER = `${BACKEND_URL}/product`;

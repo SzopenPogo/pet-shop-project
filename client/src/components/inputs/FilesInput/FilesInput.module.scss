@@ -1,0 +1,24 @@
+@import '../../../style/variables/inputs';
+@import '../../../style/variables/borders';
+
+.files-picker {
+  @include file-picker();
+  .input-wrapper {
+    @include file-picker-input-wrapper();
+  }
+
+  .selected-files-container {
+    width: 100%;
+    padding: .25rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: .25rem;
+
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: $border-radious;
+  }
+}
