@@ -1,28 +1,43 @@
 import { useState } from 'react';
-import BigCreateButton from '../../buttons/BigCreateButton/BigCreateButton';
+import BigAdminButton from '../../buttons/BigAdminButton/BigAdminButton';
 import CreateProductForm from '../../forms/CreateProductForm/CreateProductForm';
 import classes from './CreateProductContainer.module.scss';
+import productImage from '../../../images/icon/productIconGray.svg';
 
 const CreateProductContainer = () => {
   const [isFormActive, setIsFormActive] = useState<boolean>(false);
-
-  const toggleFormActive = () => {
-    setIsFormActive(!isFormActive);
-  }
+  const [isButtonActive, setIsButtonActive] = useState<boolean>(true);
 
   const formActiveTimeout = 200;
+
+  const setFormActive = () => {
+    setIsButtonActive(false);
+    setTimeout(() => {
+      setIsFormActive(true);
+    }, formActiveTimeout);
+  }
+
+  const setFormInctive = () => {
+    setIsFormActive(false);
+    setTimeout(() => {
+      setIsButtonActive(true);
+    }, formActiveTimeout);
+  }
+
   return (
     <section className={classes['create-product-container']}>
-      <BigCreateButton
+      <BigAdminButton
         title='Product'
-        activate={!isFormActive}
+        subtitle='create'
+        backgroundImage={productImage}
+        activate={isButtonActive}
         timeout={formActiveTimeout}
-        onClick={toggleFormActive}
+        onClick={setFormActive}
       />
       <CreateProductForm 
         activate={isFormActive}
         timeout={formActiveTimeout}
-        toggleFunction={toggleFormActive}
+        toggleFunction={setFormInctive}
       />
     </section>
   )

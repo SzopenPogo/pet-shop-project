@@ -1,15 +1,24 @@
-import classes from './BigCreateButton.module.scss';
+import classes from './BigAdminButton.module.scss';
 import { CSSTransition } from 'react-transition-group';
 import { useRef } from 'react';
 
 interface IProps {
   title: string;
+  subtitle: string;
+  backgroundImage: string;
   activate: boolean;
   timeout: number;
   onClick?: () => void;
 }
 
-const BigCreateButton = ({ title, activate, timeout, onClick }: IProps) => {
+const BigAdminButton = ({
+  title,
+  subtitle,
+  backgroundImage,
+  activate,
+  timeout,
+  onClick
+  }: IProps) => {
   const nodeRef = useRef(null);
   return (
     <CSSTransition
@@ -30,12 +39,15 @@ const BigCreateButton = ({ title, activate, timeout, onClick }: IProps) => {
         type='button'
         className={classes['add-button']}
         onClick={onClick}
+        style={{
+          backgroundImage: `url('${backgroundImage}')`
+        }}
       >
-        <h3>Create</h3>
+        <h3>{subtitle}</h3>
         <h1>{title}</h1>
       </button>
     </CSSTransition>
   )
 }
 
-export default BigCreateButton
+export default BigAdminButton

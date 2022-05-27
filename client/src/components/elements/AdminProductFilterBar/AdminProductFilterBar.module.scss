@@ -1,0 +1,16 @@
+@import '../../../style/variables/colors';
+
+.admin-product-filter-bar {
+  width: 100%;
+  padding: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: .5rem;
+
+
+  background-color: $light-brown-color;
+}

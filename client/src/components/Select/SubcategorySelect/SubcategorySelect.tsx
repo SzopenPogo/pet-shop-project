@@ -12,12 +12,14 @@ interface IProps {
   selectedValue?: string;
   onChangeFunction?: (value: string) => void;
   title?: string;
+  isEmptySubategory?: boolean;
 }
 
 const SubcategorySelect =  React.forwardRef<HTMLSelectElement, IProps>(({
   selectedValue,
   onChangeFunction,
-  title
+  title,
+  isEmptySubategory
   }, ref) => {
 
   const dispatch = useDispatch();
@@ -36,6 +38,13 @@ const SubcategorySelect =  React.forwardRef<HTMLSelectElement, IProps>(({
 
     dispatch(categoryGetById(value));
     setIsSubcategorySelect(true);
+  }
+
+  if(isEmptySubategory) {
+    subcategoriesOptions.push({
+      title: '-- Select --',
+      value: ''
+    })
   }
 
   if(subcategoryRef) {

@@ -2,7 +2,6 @@ import classes from './AdminSubcategoryList.module.scss';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store';
 import AdminSubcategoryListItem from '../../list-items/AdminSubcategoryListItem/AdminSubcategoryListItem';
-import { match } from 'assert';
 
 const AdminSubcategoryList = () => {
   const {data} = useSelector((state: RootState) => state.subcategory.subcategories);
