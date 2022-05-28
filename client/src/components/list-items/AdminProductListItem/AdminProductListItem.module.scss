@@ -1,0 +1,7 @@
+@import '../../../style/variables/containers';
+
+.admin-product-item {
+  width: 100%;
+
+  @include main-container(.5rem, 80%);
+}

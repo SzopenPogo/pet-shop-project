@@ -1,0 +1,14 @@
+@import '../../../style/variables/z-index';
+
+.gallery-modal-container {
+  z-index: $gallery-modal-z-index;
+
+  width: 100vw;
+  height: 100vh;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  background-color: white;
+}

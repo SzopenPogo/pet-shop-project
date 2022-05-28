@@ -11,7 +11,8 @@ const productSlice = createSlice({
       data: [] as Array<IProduct>
     },
     productUrl: '',
-    productUrlOptions: [] as Array<string>
+    productUrlOptions: [] as Array<string>,
+    productPages: 0
   },
   reducers: {
     create(state, action) {
@@ -57,7 +58,8 @@ const productSlice = createSlice({
         case PRODUCT_SUCCESS:
           state.products.loading = false;
           state.products.error = null;
-          state.products.data = payload;
+          state.products.data = payload.product;
+          state.productPages = payload.pages;
           break;
         case PRODUCT_FAIL:
           state.products.loading = false;

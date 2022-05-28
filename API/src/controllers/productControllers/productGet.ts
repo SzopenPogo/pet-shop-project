@@ -27,13 +27,16 @@ const productGet = async (req: Request, res: Response) => {
     if (req.query.sortTitle) {
       sort.title = (req.query.sortTitle === 'desc') ? -1 : 1;
     }
+    const limitNumber = req.query.limit ? +req.query.limit : 25;
     
     const product = await Product.find(match)
       .sort(sort)
-      .limit(req.query.limit ? +req.query.limit : 25)
+      .limit(limitNumber)
       .skip(req.query.skip ? +req.query.skip : 0);
     
-    res.status(200).send(product);
+    const pages = (product.length / limitNumber).toFixed();
+    
+    res.status(200).send({product, pages});
   } catch (error) {
     const errorMessage = createErrorMessage(500, 'Get products failed', error);
     res.status(errorMessage.status).send(errorMessage);
