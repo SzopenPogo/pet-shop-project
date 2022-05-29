@@ -37,7 +37,14 @@ const ProductItemImageContainer = ({images, title}: IImage) => {
           toggleGallery={toggleGallery}
           />
       </div>
-      {isGalleryActive && <GalleryModal />}
+      {isGalleryActive && 
+        <GalleryModal
+          isActive={isGalleryActive}
+          images={images}
+          activeImage={activeImage}
+          galleryClose={toggleGallery}
+          title={title}
+        />}
     </>
   )
 }

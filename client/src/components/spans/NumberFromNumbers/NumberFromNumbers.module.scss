@@ -1,0 +1,9 @@
+@import '../../../style/variables/colors';
+@import '../../../style/variables/borders';
+
+.number-from-numbers {
+  padding: .5rem;
+  border-radius: $border-radious;
+  background-color: $light-brown-color;
+  color: white;
+}
