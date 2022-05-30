@@ -23,6 +23,8 @@
 
   background-color: white;
 
+  transition: linear 150ms;
+
   @media (min-width: $mobile-width) {
     flex-direction: row;
   }
@@ -140,17 +142,21 @@
 
 
 .enter {
-  opacity: 0 !important;
+  opacity: 0;
+  transform: scale(.9);
 }
 
 .enter-active {
-  opacity: 1 !important;
+  opacity: 1;
+  transform: scale(1);
 }
 
 .exit {
-  opacity: 1 !important;
+  opacity: 1;
+  transform: scale(1);
 }
 
 .exit-active {
-  opacity: 0 !important;
+  opacity: 0;
+  transform: scale(.9);
 }

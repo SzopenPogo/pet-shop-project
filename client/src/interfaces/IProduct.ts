@@ -6,3 +6,8 @@ export interface IProduct {
   price: number;
   subcategoryId: string;
 }
+
+export interface ISelectedProduct {
+  _id: string;
+  index: number;
+}

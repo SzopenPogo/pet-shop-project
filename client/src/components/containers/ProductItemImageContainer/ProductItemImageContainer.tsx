@@ -19,6 +19,10 @@ const ProductItemImageContainer = ({images, title}: IImage) => {
     setIsGalleryActive(!isGalleryActive);
   }
 
+  const closeGallery = () => {
+    setIsGalleryActive(false);
+  }
+
   return (
     <>
       <div className={classes['product-images']}>
@@ -37,14 +41,13 @@ const ProductItemImageContainer = ({images, title}: IImage) => {
           toggleGallery={toggleGallery}
           />
       </div>
-      {isGalleryActive && 
-        <GalleryModal
-          isActive={isGalleryActive}
-          images={images}
-          activeImage={activeImage}
-          galleryClose={toggleGallery}
-          title={title}
-        />}
+      <GalleryModal
+        isActive={isGalleryActive}
+        images={images}
+        activeImage={activeImage}
+        galleryClose={closeGallery}
+        title={title}
+      />
     </>
   )
 }

@@ -63,14 +63,14 @@ const GalleryModal = ({isActive, images, activeImage, galleryClose, title}: IPro
       changeMainImageByArrow(true);
     }
     if(event.key === 'Escape') {
-      galleryClose();
+      return galleryClose();
     }
   }, [changeMainImageByArrow, galleryClose])
 
   useEffect(() => {
-    window.addEventListener('keydown', galleryKeyHandler);
+    window.addEventListener('keyup', galleryKeyHandler);
     return () => {
-      window.removeEventListener('keydown', galleryKeyHandler);
+      window.removeEventListener('keyup', galleryKeyHandler);
     };
   }, [galleryKeyHandler]);
 
@@ -78,7 +78,7 @@ const GalleryModal = ({isActive, images, activeImage, galleryClose, title}: IPro
     <CSSTransition
         nodeRef={nodeRef}
         in={isActive}
-        timeout={2000}
+        timeout={200}
         mountOnEnter
         unmountOnExit
         classNames={{

@@ -1,7 +1,58 @@
-@import '../../../style/variables/containers';
+@import '../../../style/variables/lists';
+@import '../../../style/variables/dimensions';
 
 .admin-product-item {
   width: 100%;
+  
+  position: relative;
+  @include main-list();
+  margin-top: 2rem;
+  padding-top: 3rem;
 
-  @include main-container(.5rem, 80%);
+  .product-manage-buttons {
+    @include list-manage-container();
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  input, textarea {
+    text-align: center;
+  }
+
+  @media (min-width: $mobile-width) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    input, textarea {
+      border: none !important;
+    }
+  }
+
+  .info-items {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: .5rem;
+
+    span {
+      font-size: 1.1rem;
+      margin: .5rem 0;
+      .id-wrapper {
+        font-weight: bold
+      }
+    }
+  }
+}
+
+.admin-product-item--edit {
+  @include edit-list();
+
+  @media (min-width: $mobile-width) {
+    display: flex;
+
+  }
 }

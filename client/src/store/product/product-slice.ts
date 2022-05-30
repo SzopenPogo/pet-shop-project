@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PRODUCT_FAIL, PRODUCT_REQUEST, PRODUCT_SUCCESS } from "../../constants/product";
-import { IProduct } from "../../interfaces/IProduct";
+import { IProduct, ISelectedProduct } from "../../interfaces/IProduct";
 
 const productSlice = createSlice({
   name: 'product',
@@ -12,7 +12,8 @@ const productSlice = createSlice({
     },
     productUrl: '',
     productUrlOptions: [] as Array<string>,
-    productPages: 0
+    productPages: 0,
+    selectedProduct: {} as ISelectedProduct
   },
   reducers: {
     create(state, action) {
@@ -66,6 +67,32 @@ const productSlice = createSlice({
           state.products.error = payload;
           break;
       }
+    },
+    delete(state, action) {
+      const { type, payload, index } = action.payload;
+      
+      switch (type) {
+        case PRODUCT_REQUEST:
+          state.products.loading = true;
+          state.products.error = null;
+          break;
+        case PRODUCT_SUCCESS:
+          state.products.loading = false;
+          state.products.error = null;
+          state.products.data.splice(index ,1);;
+          break;
+        case PRODUCT_FAIL:
+          state.products.loading = false;
+          state.products.error = payload;
+          break;
+      }
+    },
+    select(state, action) {
+      const {_id, index} = action.payload;
+      state.selectedProduct = {
+        _id,
+        index
+      };
     },
   }
 });

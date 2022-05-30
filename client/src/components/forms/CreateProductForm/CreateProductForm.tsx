@@ -12,6 +12,7 @@ import { adminCreateProduct } from '../../../store/product/actions/product-creat
 import { RootState } from '../../../store';
 import MainButton from '../../buttons/MainButton/MainButton';
 import { addInfoMessage } from '../../../store/ui/actions/info-items-actions';
+import { PRODUCT_DESCRIPTION_LENGTH } from '../../../constants/product';
 
 interface IProps {
   activate: boolean;
@@ -106,7 +107,7 @@ const CreateProductForm = ({ activate, timeout, toggleFunction }: IProps) => {
           title='Description'
           value=''
           isRequired={true}
-          maxLength={750}
+          maxLength={PRODUCT_DESCRIPTION_LENGTH}
         />
 
         <SubcategorySelect

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ISelectOption } from '../../../interfaces/ISelectOption';
 import { RootState } from '../../../store';
 import { categoryGetById } from '../../../store/category/actions/category-get-by-id-actions';
+import { findCategoryId } from '../../../utils/searching/findCategoryId';
 import SelectInput from '../../inputs/SelectInput/SelectInput';
 import Spinner from '../../spinners/Spinner/Spinner';
 import CategorySelect from '../CategorySelect/CategorySelect';
@@ -23,11 +24,17 @@ const SubcategorySelect =  React.forwardRef<HTMLSelectElement, IProps>(({
   }, ref) => {
 
   const dispatch = useDispatch();
-  const categories = useSelector((state: RootState) => state.category.category);
-  const {loading, data} = categories;
+  const category = useSelector((state: RootState) => state.category.category);
+  const {loading, data} = category;
   const {subcategoryRef} = data;
+  
+  const categories = useSelector((state: RootState) => state.category.categories.data);
+  const selectedCategoryId = selectedValue ? findCategoryId(selectedValue, categories) : '';
+  const selectedCategoryIndex = categories.findIndex(category => category._id === selectedCategoryId);
+  const selectedCategory = categories[selectedCategoryIndex];
 
-  const [isSubcategorySelect, setIsSubcategorySelect] = useState<boolean>(false);
+  const [isSubcategorySelect, setIsSubcategorySelect] = useState<boolean>(!!selectedCategoryId);
+  const [isCategoryValueChanged, setIsCategoryValueChanged] = useState<boolean>(false);
 
   const subcategoriesOptions = [] as Array<ISelectOption>;
 
@@ -38,6 +45,7 @@ const SubcategorySelect =  React.forwardRef<HTMLSelectElement, IProps>(({
 
     dispatch(categoryGetById(value));
     setIsSubcategorySelect(true);
+    setIsCategoryValueChanged(true);
   }
 
   if(isEmptySubategory) {
@@ -47,13 +55,30 @@ const SubcategorySelect =  React.forwardRef<HTMLSelectElement, IProps>(({
     })
   }
 
+  // Render default subcategories when is no selectedValue or if is
+  // selected value but user change default category 
   if(subcategoryRef) {
-    subcategoryRef.map((subcategory) => (
-      subcategoriesOptions.push({
-        title: subcategory.title,
-        value: subcategory._id
-      })
-    ));
+    if(!selectedValue || isCategoryValueChanged) {
+      subcategoryRef.map((subcategory) => (
+        subcategoriesOptions.push({
+          title: subcategory.title,
+          value: subcategory._id
+        })
+      ));
+    }
+  }
+
+  // Render specyfic subcategories for selected category when
+  // user has not changed category before
+  if(selectedCategory  && !isCategoryValueChanged) {
+    if(selectedValue) {
+      selectedCategory.subcategoryRef.map((subcategory) => (
+        subcategoriesOptions.push({
+          title: subcategory.title,
+          value: subcategory._id
+        })
+      ));
+    }
   }
 
   const selectInputTitle = title ? title : 'Subcategory'
@@ -62,6 +87,7 @@ const SubcategorySelect =  React.forwardRef<HTMLSelectElement, IProps>(({
       <CategorySelect
           onChangeFunction={categoryChangeHandler}
           isEmptyCategory={true}
+          selectedValue={selectedCategoryId}
       />
       {isSubcategorySelect && !loading && <SelectInput
         ref={ref}
