@@ -1,15 +1,16 @@
+import { Children, ReactChild } from 'react';
 import classes from './ImageContainer.module.scss';
 
 interface IProps {
   size: string;
   imageUrl: string;
-  imagesUrlArray?: string;
+  children?: ReactChild;
 }
 
 const ImageContainer = ({
   size,
   imageUrl,
-  imagesUrlArray
+  children
   }: IProps) => {
 
   const imageStyle = {
@@ -17,12 +18,13 @@ const ImageContainer = ({
     height: `${size}`,
     backgroundImage: `url(${imageUrl})`
   }
-
   return (
     <div
       className={classes.image}
       style={imageStyle}
-    />
+    >
+      {children}
+    </div>
   )
 }
 

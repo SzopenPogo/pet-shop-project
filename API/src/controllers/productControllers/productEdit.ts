@@ -7,7 +7,7 @@ import { createErrorMessage } from "../../utils/messages/createErrorMessage";
 
 const productEdit = async (req: Request, res: Response) => {
   try {
-    const allowedUpdates = ['title', 'price', 'subcategoryId'];
+    const allowedUpdates = ['title', 'price', 'subcategoryId', 'description'];
     const updates = Object.keys(req.body);
     const isValidOperator = updates.every(update => allowedUpdates.includes(update));
 

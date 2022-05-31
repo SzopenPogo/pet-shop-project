@@ -1,38 +1,46 @@
-@import '../../../style/variables/z-index';
+@import '../../../style/variables/borders';
 
-.admin-product-list {
+.delete-image-container {
   width: 100%;
-  margin: 0;
-  padding: .5rem;
+  max-height: 70vh;
+  margin: 1rem 0;
 
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  gap: 1rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: .5rem;
 
-  list-style: none;
+  .image-button-container {
+    position: absolute;
+    top: .25rem;
+    right: .25rem;
 
-  .spinner-container {
-    z-index: $spinner-z-index;
-    position: fixed;
-    top: 0;
-    left: 0;
-  
-    width: 100%;
-    height: 100%;
-  
     display: flex;
     align-items: center;
     justify-content: center;
-  
+
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: $border-radious;
+  }
+
+  .delete-image-spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     background-color: rgba(255, 255, 255, 0.4);
     animation: white-background-flashing 1.5s infinite;
   }
-
 }
-
-
 
 
 @keyframes white-background-flashing {

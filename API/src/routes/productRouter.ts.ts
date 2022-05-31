@@ -1,6 +1,7 @@
 import { Router } from "express";
 import productCreate from "../controllers/productControllers/productCreate";
 import productDelete from "../controllers/productControllers/productDelete";
+import productDeleteImage from "../controllers/productControllers/productDeleteImage";
 import productEdit from "../controllers/productControllers/productEdit";
 import productGet from "../controllers/productControllers/productGet";
 import productGetById from "../controllers/productControllers/productGetById";
@@ -37,5 +38,10 @@ productRouter.patch('/:id', auth, authAdmin, uploadImage.array('images'), produc
 // DESCRIPTION: delete product by id
 // ACCESS: PRIVATE, ADMIN
 productRouter.delete('/:id', auth, authAdmin, productDelete);
+
+// TYPE: PATCH /product/image/id
+// DESCRIPTION: Delete product single image
+// ACCESS: PRIVATE, ADMIN
+productRouter.patch('/image/:id', auth, authAdmin, productDeleteImage)
 
 export default productRouter;

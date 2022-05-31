@@ -7,6 +7,18 @@
   flex-direction: column;
   gap: .5rem;
 
+  .file-button-container {
+    width: 14rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button-container {
+    margin: .25rem;
+    width: 10rem;
+  }
+
   .submit-button-container {
     margin-top: 1rem;
     width: 60%;

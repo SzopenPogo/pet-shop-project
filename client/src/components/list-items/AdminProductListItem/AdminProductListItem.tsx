@@ -4,6 +4,7 @@ import { IProduct } from '../../../interfaces/IProduct';
 import { RootState } from '../../../store';
 import { adminDeleteProduct } from '../../../store/product/actions/product-delete-actions';
 import { selectProduct } from '../../../store/product/actions/product-select-actions';
+import { addInfoMessage } from '../../../store/ui/actions/info-items-actions';
 import DeleteButton from '../../buttons/DeleteButton/DeleteButton';
 import EditButton from '../../buttons/EditButton/EditButton';
 import MainButton from '../../buttons/MainButton/MainButton';
@@ -49,6 +50,11 @@ const AdminProductListItem = ({
 
   const deleteProductHandler = () => {
     dispatch(adminDeleteProduct(token, selectedSubcategoryId, selectedSubcategoryIndex));
+    dispatch(addInfoMessage({
+      message: 'Product deleted',
+      isPositive: true,
+      timeout: 1500
+    }))
   }
 
   const categoryItemClass = isReadonly 
@@ -71,6 +77,7 @@ const AdminProductListItem = ({
           subcategoryId={subcategoryId}
           title={title}
           isReadonly={isReadonly}
+          toggleFunction={toggleProductEdit}
         />
 
         <div className={classes['product-manage-buttons']}>

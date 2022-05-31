@@ -4,7 +4,7 @@ const createImgOutputDir = async (dir: string, originalName: string, fieldName: 
   const dirName = `images/${dir}`;
   await fsx.ensureDir(dirName);
 
-  const imageName = originalName.split(/\.(jpg|png|jpeg)$/)[0];
+  const imageName = originalName.split(/\.(jpg|png|jpeg)$/)[0].replace(/\s/g, '_');
 
   return `${dirName}/${imageName}-${fieldName}-${Date.now()}.webp`;
 }
