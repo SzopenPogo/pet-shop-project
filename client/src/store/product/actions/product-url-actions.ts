@@ -23,7 +23,15 @@ export const manageProductUrlAction = (
   }
   
   if(isInOptions) {
-    const optionIndex = productUrlOptions.indexOf(option);
+    let optionIndex;
+    
+    for (let i = 0; i < productUrlOptions.length; i++) {
+      if(productUrlOptions[i].split('=')[0] === optionName) {
+        optionIndex = i;
+        break;
+      }
+    }
+    
     dispatch(productActions.productUrlOption({
       type: true,
       payload: {

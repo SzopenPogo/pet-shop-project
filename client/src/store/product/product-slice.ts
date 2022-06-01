@@ -42,6 +42,13 @@ const productSlice = createSlice({
       const {type, payload} = action.payload;
       const {index, option} = payload;
       
+      //If option value is empty
+      if(!option.split('=')[1]) {
+        state.productUrlOptions.splice(index, 1);
+        return;
+      }
+
+      //Remove existing option from array of options
       if(type) {
         state.productUrlOptions.splice(index, 1);
       }

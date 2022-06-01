@@ -1,30 +1,46 @@
 @import '../../../style/variables/borders';
+@import '../../../style/variables/dimensions';
 
 .search-container {
-  overflow: hidden;
+  position: relative;
 
   width: 100%;
-  height: 2rem;
+  height: $searchbar-height;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-
-  background-color: white;
-  border-radius: $border-radious;
-
-  input {
+  .searchbar-container {
+    overflow: hidden;
     width: 100%;
     height: 100%;
-    padding: .25rem .5rem;
-    border: none;
-    font-size: .9rem;
-    
-    &:focus,
-    &:active {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+    background-color: white;
+    border-radius: $border-radious;
+    input {
+      width: 100%;
+      height: 100%;
+      padding: .25rem .5rem;
       border: none;
-      outline: none;
+      font-size: .9rem;
+      
+      &:focus,
+      &:active {
+        border: none;
+        outline: none;
+      }
     }
+  }
+}
+
+.search-container--active {
+  -webkit-box-shadow: 0px 9px 16px -11px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 0px 9px 16px -11px rgba(0, 0, 0, 1);
+  box-shadow: 0px 9px 16px -11px rgba(0, 0, 0, 1);
+  
+  .searchbar-container {
+    border-radius: $border-radious $border-radious 0 0 !important;    
   }
 }

@@ -12,6 +12,8 @@ const ProductSubcategory = () => {
     let option = '';
     if(value) {
       option = `subcategoryId=${value}`
+    } else {
+      option = 'subcategoryId='
     }
     dispatch(manageProductUrlAction(productUrlOptions, option));
   }

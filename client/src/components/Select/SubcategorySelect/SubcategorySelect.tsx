@@ -8,7 +8,7 @@ import SelectInput from '../../inputs/SelectInput/SelectInput';
 import Spinner from '../../spinners/Spinner/Spinner';
 import CategorySelect from '../CategorySelect/CategorySelect';
 import classes from './SubcategorySelect.module.scss';
-
+//TODO reset subcategory value if !isCategoryValueChanged 
 interface IProps {
   selectedValue?: string;
   onChangeFunction?: (value: string) => void;
