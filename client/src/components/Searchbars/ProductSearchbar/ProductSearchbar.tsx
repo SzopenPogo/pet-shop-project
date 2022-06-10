@@ -25,7 +25,7 @@ const ProductSearchbar = ({isSearchProductWindow}: IProps) => {
 
   return (
     <SearchInput 
-      title={''}
+      title={'Find product by name'}
       searchTime={650}
       searchFunction={searchProductHandler}
     />

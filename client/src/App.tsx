@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router";
 import MasterLayout from "./components/layout/MasterLayout/MasterLayout";
-import { LOGIN_ROUTE, PROFILE_ADMIN_EDIT_CATEGORY_ROUTE, PROFILE_ADMIN_EDIT_PRODUCT_ROUTE, PROFILE_ADMIN_EDIT_SUBCATEGORY_ROUTE, PROFILE_ADMIN_EDIT_USERS_ROUTE, PROFILE_EDIT_ADDRESS_ROUTE, PROFILE_EDIT_DATA_ROUTE, PROFILE_ROUTE, REGISTER_ROUTE } from "./constants/routes";
+import { LOGIN_ROUTE, PROFILE_ADMIN_EDIT_CATEGORY_ROUTE, PROFILE_ADMIN_EDIT_PRODUCT_ROUTE, PROFILE_ADMIN_EDIT_SLIDER_ROUTE, PROFILE_ADMIN_EDIT_SUBCATEGORY_ROUTE, PROFILE_ADMIN_EDIT_USERS_ROUTE, PROFILE_EDIT_ADDRESS_ROUTE, PROFILE_EDIT_DATA_ROUTE, PROFILE_ROUTE, REGISTER_ROUTE } from "./constants/routes";
 import LoginPage from "./pages/client/LoginPage/LoginPage";
 import MainPage from "./pages/client/MainPage/MainPage";
 import RegisterPage from "./pages/client/RegisterPage/RegisterPage";
@@ -11,6 +11,7 @@ import UserProfilePage from "./pages/user/UserProfilePage/UserProfilePage";
 import AdminCategoryPage from "./pages/admin/AdminCategoryPage/AdminCategoryPage";
 import AdminSubcategoryPage from "./pages/admin/AdminSubcategoryPage/AdminSubcategoryPage";
 import AdminProductPage from "./pages/admin/AdminProductPage/AdminProductPage";
+import AdminSliderPage from "./pages/admin/AdminSliderPage/AdminSliderPage";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
         <Route path={PROFILE_ADMIN_EDIT_CATEGORY_ROUTE} element={<AdminCategoryPage />} />
         <Route path={PROFILE_ADMIN_EDIT_SUBCATEGORY_ROUTE} element={<AdminSubcategoryPage />} />
         <Route path={PROFILE_ADMIN_EDIT_PRODUCT_ROUTE} element={<AdminProductPage />} />
+        <Route path={PROFILE_ADMIN_EDIT_SLIDER_ROUTE} element={<AdminSliderPage />} />
       </Routes>
     </MasterLayout>
   );

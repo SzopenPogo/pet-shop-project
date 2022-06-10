@@ -1,0 +1,5 @@
+export const SLIDER_REQUEST = 'SLIDER_REQUEST';
+export const SLIDER_SUCCESS = 'SLIDER_SUCCESS';
+export const SLIDER_FAIL = 'SLIDER_FAIL';
+
+export const SLIDER_DESCRIPTION_LENGTH = 150;

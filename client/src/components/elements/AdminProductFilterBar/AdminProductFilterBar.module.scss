@@ -1,4 +1,5 @@
 @import '../../../style/variables/colors';
+@import '../../../style/variables/dimensions';
 
 .admin-product-filter-bar {
   width: 100%;
@@ -7,10 +8,38 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: .5rem;
 
-
   background-color: $light-brown-color;
+
+  .filter-bar-main-options-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: .5rem;
+
+    @media (min-width: $mobile-width) {
+      width: 50%;
+    }
+
+    .filter-bar-searchbar {
+      width: 90%;
+    }
+  }
+
+  .filter-bar-sort-container {
+    width: 100%;
+    margin-top: .5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+  
 }

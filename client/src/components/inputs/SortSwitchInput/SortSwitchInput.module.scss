@@ -1,0 +1,68 @@
+@import '../../../style/variables/borders';
+@import '../../../style/variables/colors';
+
+$switch-height: 2rem;
+$switch-padding: .35rem;
+
+.switch {
+  cursor: pointer;
+  position: relative;
+
+  width: 12rem;
+  height: $switch-height;
+  padding: $switch-padding calc($switch-height + $switch-padding) $switch-padding $switch-padding;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: white;
+  border-radius: $border-radious;
+  border: 1px solid black;
+  font-size: .9rem;
+
+  -webkit-transition: .4s;
+  transition: .4s;
+
+  &:hover {
+    outline: 1px solid black;
+  }
+
+  input {
+    display: none;
+  }
+
+  .slider {
+    &::before {
+      content: "";
+
+      position: absolute;
+      right: $switch-padding;
+      bottom: 0;
+      
+      height: 100%;
+      width: $switch-height;
+      
+      border-radius: $border-radious;
+      background-image: url('../../../images/icon/blackArrow.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 60%;
+      
+      transform: rotate(180deg);
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+  }
+}
+
+.slider-active {
+  .slider:before {
+    background-size: 80%;
+    transform: rotate(90deg);
+  }
+}
+
+input:checked + .slider:before {
+  transform: rotate(270deg);
+}
