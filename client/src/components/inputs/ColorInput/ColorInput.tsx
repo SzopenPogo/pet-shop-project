@@ -7,14 +7,16 @@ interface IProps {
   isReadonly: boolean;
   isRequired: boolean;
   isLabel?: boolean;
+  value?: string;
 }
 
 const ColorInput = React.forwardRef<HTMLInputElement, IProps>(({
   title,
   isReadonly,
   isRequired,
-  isLabel}, ref) => {
-
+  isLabel,
+  value
+}, ref) => {
   const inputId = generateInputId(title);
   return (
     <div className={classes['color-input-container']}>
@@ -26,6 +28,7 @@ const ColorInput = React.forwardRef<HTMLInputElement, IProps>(({
         placeholder={title}
         readOnly={isReadonly}
         required={isRequired}
+        defaultValue={value}
       />
     </div>
   )

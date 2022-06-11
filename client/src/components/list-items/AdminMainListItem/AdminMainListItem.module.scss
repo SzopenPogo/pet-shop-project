@@ -1,0 +1,37 @@
+@import '../../../style/variables/lists';
+@import '../../../style/variables/dimensions';
+
+.admin-list-item {
+  width: 100%;
+  
+  position: relative;
+  @include main-list();
+  margin-top: 2rem;
+  padding-top: 3rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  @media (min-width: $mobile-width) {
+    min-width: 50rem;
+    max-width: 90%;
+  }
+
+  .manage-buttons {
+    @include list-manage-container();
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  input, textarea {
+    text-align: center;
+  }
+}
+
+.admin-list-item--edit {
+  @include edit-list();
+}

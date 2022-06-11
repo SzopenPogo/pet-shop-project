@@ -4,6 +4,7 @@ import BigAdminButton from '../../buttons/BigAdminButton/BigAdminButton'
 import classes from './AdminSliderListContainer.module.scss'
 import listIcon from '../../../images/icon/listGray.svg';
 import { sliderGet } from '../../../store/slider/actions/slider-get-actions';
+import AdminSliderList from '../../lists/AdminSliderList/AdminSliderList';
 
 const AdminSliderListContainer = () => {
   const dispatch = useDispatch();
@@ -20,21 +21,34 @@ const AdminSliderListContainer = () => {
   }, [isListActive, dispatch])
 
   const setListActive = () => {
-    setIsButtonActive(false)
+    setIsButtonActive(false);
     setTimeout(() => {
       setIsListActive(true);
+    }, timeout)
+  }
+
+  const setListInactive = () => {
+    setIsListActive(false);
+    
+    setTimeout(() => {
+      setIsButtonActive(true);
     }, timeout)
   }
   
   return (
     <section className={classes['slider-list-container']}>
       <BigAdminButton
-        title='Products'
+        title='Sliders'
         subtitle='list of'
         activate={isButtonActive}
         timeout={timeout}
         backgroundImage={listIcon}
         onClick={setListActive}
+      />
+      <AdminSliderList 
+        activate={isListActive}
+        timeout={timeout}
+        closeList={setListInactive}
       />
     </section>
   )

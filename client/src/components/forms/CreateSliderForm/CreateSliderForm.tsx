@@ -51,6 +51,7 @@ const CreateSliderForm = ({ activate, timeout, toggleForm }: IProps) => {
     dispatch(adminCreateSlider(
       token, 
       imageValue, {
+      _id: '',
       title: titleValue,
       description: descriptionValue,
       imageUrl: '',
