@@ -1,0 +1,23 @@
+@import '../../../style/variables/borders';
+
+.contact-form {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: .5rem;
+
+  .submit-button-container {
+    margin-top: 1rem;
+    width: 60%;
+  }
+
+  .image-preview {
+    width: auto;
+    height: 11rem;
+    border-radius: $border-radious;
+    border: 1px solid black;
+  }
+}

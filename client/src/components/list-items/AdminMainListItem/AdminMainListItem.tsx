@@ -4,7 +4,8 @@ import DeleteModal from '../../modals/DeleteModal/DeleteModal'
 import DeleteButton from '../../buttons/DeleteButton/DeleteButton'
 import EditButton from '../../buttons/EditButton/EditButton'
 import { addInfoMessage } from '../../../store/ui/actions/info-items-actions'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../../store'
 
 interface IProps {
   _id: string;
@@ -14,6 +15,7 @@ interface IProps {
   deleteItem: () => void;
   toggleItemEdit: () => void;
   children: ReactChild;
+  pcWidth: string;
 }
 
 const AdminMainListItem = ({
@@ -23,9 +25,12 @@ const AdminMainListItem = ({
   selectItemToDelete,
   deleteItem,
   toggleItemEdit,
-  children
+  children,
+  pcWidth
 }: IProps) => {
   const dispatch = useDispatch();
+
+  const isMobile = useSelector((state: RootState) => state.clientWindow.isWindowMobile);
 
   const [isDeleteWindow , setIsDeleteWindow] = useState<boolean>(false);
 
@@ -48,13 +53,15 @@ const AdminMainListItem = ({
     toggleDeleteWindow();
   }
 
+  const mainListInlineStyle = !isMobile ? {width: pcWidth} : {};
+
   const mainListItemClass = isReadonly 
   ? `${classes['admin-list-item']}`
   : `${classes['admin-list-item']} ${classes['admin-list-item--edit']}`;
 
   return (
     <>
-      <li className={mainListItemClass}>
+      <li className={mainListItemClass} style={mainListInlineStyle}>
         {children}
         <div className={classes['manage-buttons']}>
           <DeleteButton onClick={selectItemToDeleteHandler} />

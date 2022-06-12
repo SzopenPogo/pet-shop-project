@@ -29,3 +29,6 @@ export const BACKEND_PRODUCT_IMAGE_ROUTER = `${BACKEND_URL}/product/image`;
 
 //SLIDER
 export const BACKEND_SLIDER_ROUTER = `${BACKEND_URL}/slider`;
+
+//CONTACT
+export const BACKEND_CONTACT_ROUTER = `${BACKEND_URL}/contactData`;

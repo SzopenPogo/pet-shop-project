@@ -14,11 +14,6 @@
   justify-content: center;
   flex-direction: column;
 
-  @media (min-width: $mobile-width) {
-    min-width: 50rem;
-    max-width: 90%;
-  }
-
   .manage-buttons {
     @include list-manage-container();
   }

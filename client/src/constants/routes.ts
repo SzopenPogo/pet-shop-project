@@ -10,3 +10,4 @@ export const PROFILE_ADMIN_EDIT_CATEGORY_ROUTE = '/profile/a/category';
 export const PROFILE_ADMIN_EDIT_SUBCATEGORY_ROUTE = '/profile/a/subcategory';
 export const PROFILE_ADMIN_EDIT_PRODUCT_ROUTE = '/profile/a/product';
 export const PROFILE_ADMIN_EDIT_SLIDER_ROUTE = '/profile/a/slider';
+export const PROFILE_ADMIN_EDIT_CONTACTDATA_ROUTE = '/profile/a/contactData';

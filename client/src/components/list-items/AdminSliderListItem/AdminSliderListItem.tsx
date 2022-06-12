@@ -48,6 +48,7 @@ const AdminSliderListItem = ({
       deleteItem={deleteSliderHandler}
       selectItemToDelete={sliderSelectToDeleteHandler}
       toggleItemEdit={toggleSliderEdit}
+      pcWidth='50rem'
     >
       <SliderForm 
         index={index}

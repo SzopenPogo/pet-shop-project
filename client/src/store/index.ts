@@ -3,6 +3,7 @@ import addressSlice from "./address/address-slice";
 import adminSlice from "./admin/admin-slice";
 import categorySlice from "./category/category-slice";
 import clientWindowSlice from "./clientWindow/clientWindow-slice";
+import contactSlice from "./contact/contact-slice";
 import productSlice from "./product/product-slice";
 import sliderSlice from "./slider/slider-slice.ts";
 import subcategorySlice from "./subcategory/subcategory-slice";
@@ -19,7 +20,8 @@ const store = configureStore({
     admin: adminSlice.reducer,
     subcategory: subcategorySlice.reducer,
     product: productSlice.reducer,
-    slider: sliderSlice.reducer
+    slider: sliderSlice.reducer,
+    contact: contactSlice.reducer
   }
 });
 

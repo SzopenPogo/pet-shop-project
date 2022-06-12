@@ -1,0 +1,44 @@
+@import '../../../style/variables/forms';
+
+.create-contact {
+  @include main-form(30rem);
+  position: relative;
+
+  transition: linear 200ms;
+
+  .close-button-container {
+    position: absolute;
+    top: .25rem;
+    right: .25rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .submit-button-container {
+    width: 60%;
+    margin-top: .75rem;
+  }
+}
+
+.enter {
+  opacity: 0;
+  transform: translate(50%, 0);
+}
+
+.enter-active {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.exit {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.exit-active {
+  opacity: 0;
+  transform: translate(25%, 0) !important;
+}
