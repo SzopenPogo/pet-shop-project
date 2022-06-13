@@ -1,0 +1,38 @@
+@import '../../../style/variables/dimensions';
+@import '../../../style/variables/colors';
+@import '../../../style/variables/shadows';
+
+.cart-container {
+  overflow: hidden;
+  cursor: pointer;
+
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+
+  width: 3rem;
+  height: 3rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  border: 1px solid $light-green-color;
+  background-color: white;
+
+  transition: linear 100ms;
+
+  @media (min-width: $mobile-width) {
+    top: .2rem;
+    right: .2rem;
+
+    width: 2.5rem;
+    height: 2.5rem;
+
+    &:hover {
+      border: 1px solid $main-green-color;
+      @include super-light-shadow();
+    }
+  }
+}

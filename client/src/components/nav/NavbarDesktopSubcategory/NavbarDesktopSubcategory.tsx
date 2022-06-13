@@ -19,12 +19,7 @@ const NavbarDesktopSubcategory = ({subcategories, isActive}: IProps) => {
       image={subcategory.imageUrl}
     />
   ))
-
-  // const huj = subcategories.map(subcategory => {
-  //   console.log(subcategory._id);
-    
-  // })
-
+  
   const nodeRef = React.useRef(null);
   return (
     <CSSTransition

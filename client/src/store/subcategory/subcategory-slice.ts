@@ -14,7 +14,12 @@ const subcategorySlice = createSlice({
     },
     selectedSubcategoryId: '',
     subcategoryUrl: BACKEND_SUBCATEGORY_ROUTER,
-    subcategoryLastUpdate: ''
+    subcategoryLastUpdate: '',
+    subcategory: {
+      loading: false,
+      error: null,
+      data: {} as ISubcategory
+    }
   },
   reducers: {
     create(state, action) {
@@ -101,6 +106,25 @@ const subcategorySlice = createSlice({
     },
     subcategoryUrl(state, action) {
       state.subcategoryUrl = action.payload;
+    },
+    getById(state, action) {
+      const { type, payload } = action.payload;
+      
+      switch (type) {
+        case SUBCATEGORY_REQUEST:
+          state.subcategory.loading = true;
+          state.subcategory.error = null;
+          break;
+        case SUBCATEGORY_SUCCESS:
+          state.subcategory.loading = false;
+          state.subcategory.error = null;
+          state.subcategory.data = payload;
+          break;
+        case SUBCATEGORY_FAIL:
+          state.subcategory.loading = false;
+          state.subcategory.error = payload;
+          break;
+      }
     }
   }
 });

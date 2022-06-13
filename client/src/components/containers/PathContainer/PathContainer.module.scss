@@ -1,0 +1,47 @@
+@import '../../../style/variables/dimensions';
+
+$link-color: rgb(80, 80, 80);
+
+.path-container {
+  overflow-x: scroll;
+
+  height: 2rem;
+  width: 100%;
+  padding: 0 .5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: .25rem;
+
+  color: $link-color;
+  white-space: nowrap;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  
+
+  @media (min-width: $mobile-width) {
+    margin-left: 8%;
+    margin-bottom: 1rem;
+  }
+  
+  .path-item {
+    span {
+      margin-left: .25rem;
+    }
+
+    .path-link {
+      text-decoration: none;
+      color: $link-color;
+
+      &:hover {
+        color: black;
+      }
+    }
+  }
+}

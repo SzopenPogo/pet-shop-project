@@ -12,7 +12,7 @@ const AdminProductFilterBar = () => {
       <div className={classes['filter-bar-main-options-container']}>
         <div className={classes['filter-bar-searchbar']}>
         <ProductSearchbar 
-          isSearchProductWindow={true}
+          isSearchProductWindow={false}
         />
         </div>
         <ProductSubcategory />

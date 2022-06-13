@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IInfoMessage } from "../../interfaces/IInfoMessage";
+import { IPatch } from "../../interfaces/IPath";
 
 const uiSlice = createSlice({
   name: 'ui',
@@ -7,7 +8,11 @@ const uiSlice = createSlice({
     isHamburgerActive: false,
     isDeleteModalActive: false,
     infoMessages: [] as Array<IInfoMessage>,
-    isFormContainerActive: false
+    isFormContainerActive: false,
+    pathes: [{
+      title: 'Pet Shop',
+      route: '/'
+    }] as Array<IPatch>
   },
   reducers: {
     toggleHamburgerMenu(state) {
@@ -26,6 +31,15 @@ const uiSlice = createSlice({
     },
     toggleFormContainer(state) {
       state.isFormContainerActive = !state.isFormContainerActive;
+    },
+    resetPath(state) {
+      state.pathes = [{
+        title: 'Pet Shop',
+        route: '/'
+      }];
+    },
+    addToPath(state, action) {
+      state.pathes.push(action.payload);
     }
   }
 });

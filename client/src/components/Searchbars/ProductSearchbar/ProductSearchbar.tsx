@@ -28,6 +28,7 @@ const ProductSearchbar = ({isSearchProductWindow}: IProps) => {
       title={'Find product by name'}
       searchTime={650}
       searchFunction={searchProductHandler}
+      isSearchWindow={isSearchProductWindow}
     />
   )
 }
