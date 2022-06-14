@@ -16,12 +16,17 @@ const ImagePreviewList = ({images, title, selectImage, toggleGallery}: IProps) =
     gridTemplateColumns: `repeat(${gridColumns}, 6rem)`
   }
 
+  const clickImageHandler = (image: string) => {
+    selectImage(image);
+    toggleGallery();
+  }
+
   const renderImages = imagesToRender.map((image, index) => (
     <li 
       className={classes['image-preview-image-container']}
       key={index}
       onMouseEnter={selectImage.bind(this, image)}
-      onClick={toggleGallery}
+      onClick={clickImageHandler.bind(this, image)}
     >
       <img
         alt={generateImageAlt(title, index)} 

@@ -11,6 +11,8 @@ interface IProps {
   isLabel: boolean;
   value: number;
   validateInput?: (value: string) => boolean;
+  min?: number;
+  max?: number;
 }
 
 const NumberInput = React.forwardRef<HTMLInputElement, IProps>(({
@@ -20,7 +22,10 @@ const NumberInput = React.forwardRef<HTMLInputElement, IProps>(({
   isRequired,
   isLabel,
   value,
-  validateInput}, ref) => {
+  validateInput,
+  min,
+  max
+}, ref) => {
   
   const [inputValue, setInputValue] = useState<number>(value);
   const [isInputValid, setIsInputValid] = useState<boolean>(isValid);
@@ -56,6 +61,8 @@ const NumberInput = React.forwardRef<HTMLInputElement, IProps>(({
         required={isRequired}
         value={inputValue}
         onChange={controllInputValue}
+        min={min}
+        max={max}
       />
     </div>
   )

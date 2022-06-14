@@ -24,10 +24,10 @@ const SubcategoryPage = () => {
 
   useEffect(() => {
     dispatch(resetPath());
-    dispatch(addToPath({
+    dispatch(addToPath([{
       title: data.title,
       route: `${SUBCATEGORY_ROUTE}/${subcategoryId}`
-    }));
+    }]));
   }, [data.title, dispatch, subcategoryId])
   
   useEffect(() => {

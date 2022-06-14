@@ -11,15 +11,20 @@ const ProductItemImageContainer = ({images, title}: IImage) => {
 
   const [activeImage, setActiveImage] = useState<string>(images[0] ? images[0] : '');
   const [isGalleryActive, setIsGalleryActive] = useState<boolean>(false);
+  const [isEmptyImage, setisEmptyImage] = useState<boolean>(false);
 
   useEffect(() => {
     //Update activeImage when images array contains at least 1 image
     //It's used in useEffect to prevent empty imageUrl after
     //adding new images, where images.length was 0
-    if(images.length >  0) {
-      selectImageHandler(images[0])
+    if(!isEmptyImage && images.length > 0) {
+      selectImageHandler(images[0]);
+      setisEmptyImage(true);
     }
-  }, [activeImage, images])
+    if(isEmptyImage && images.length <= 0) {
+      setisEmptyImage(false);
+    }
+  }, [activeImage, images, isEmptyImage])
   
 
   const selectImageHandler = (image: string) => {

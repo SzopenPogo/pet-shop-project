@@ -6,6 +6,6 @@ export const resetPath = () => (dispath: Dispatch) => {
   dispath(uiActions.resetPath());
 }
 
-export const addToPath = ({title, route}: IPatch) => (dispath: Dispatch) => {
-  dispath(uiActions.addToPath({ title, route}));
+export const addToPath = (pathes: Array<IPatch>) => (dispath: Dispatch) => {
+  dispath(uiActions.addToPath(pathes));
 }

@@ -13,7 +13,12 @@ const productSlice = createSlice({
     productUrl: '',
     productUrlOptions: [] as Array<string>,
     productPages: 0,
-    selectedProduct: {} as ISelectedProduct
+    selectedProduct: {} as ISelectedProduct,
+    product: {
+      loading: false,
+      error: null,
+      data: {} as IProduct
+    }
   },
   reducers: {
     create(state, action) {
@@ -136,6 +141,25 @@ const productSlice = createSlice({
         case PRODUCT_FAIL:
           state.products.loading = false;
           state.products.error = payload;
+          break;
+      }
+    },
+    getById(state, action) {
+      const { type, payload } = action.payload;
+      
+      switch (type) {
+        case PRODUCT_REQUEST:
+          state.product.loading = true;
+          state.product.error = null;
+          break;
+        case PRODUCT_SUCCESS:
+          state.product.loading = false;
+          state.product.error = null;
+          state.product.data = payload;
+          break;
+        case PRODUCT_FAIL:
+          state.product.loading = false;
+          state.product.error = payload;
           break;
       }
     }

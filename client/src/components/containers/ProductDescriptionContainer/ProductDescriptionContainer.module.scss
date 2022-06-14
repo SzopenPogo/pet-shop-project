@@ -1,0 +1,19 @@
+.product-description {
+  padding: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: .5rem;
+
+  .product-description-title {
+    margin: 0;
+    text-align: center;
+    background-color: white;
+  }
+
+  .product-description-description {
+    margin: 0;
+  }
+}

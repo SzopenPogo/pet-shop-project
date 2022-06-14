@@ -28,6 +28,11 @@ const GalleryModal = ({isActive, images, activeImage, galleryClose, title}: IPro
     setMainImage(image)
   }
 
+  useEffect(() => {
+    setMainImage(activeImage);
+  }, [activeImage])
+  
+
   const findMainImageIndexInImages = useCallback(() => {
     if(images.includes(mainImage)) {
       return images.findIndex(image => image === mainImage);

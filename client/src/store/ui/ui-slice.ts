@@ -39,7 +39,7 @@ const uiSlice = createSlice({
       }];
     },
     addToPath(state, action) {
-      state.pathes.push(action.payload);
+      action.payload.map((path: IPatch) => state.pathes.push(path))
     }
   }
 });
