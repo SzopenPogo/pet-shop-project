@@ -1,3 +1,5 @@
+@import '../../../style/variables/dimensions';
+
 .product-details {
   width: 100%;
   padding: 1.75rem;
@@ -10,6 +12,11 @@
   gap: 1.25rem;
 
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+
+  @media (min-width: $mobile-width) {
+    width: 30rem;
+    border-left: 1px solid rgba(0, 0, 0, 0.3);
+  }
 
   .product-title {
     margin: 0;

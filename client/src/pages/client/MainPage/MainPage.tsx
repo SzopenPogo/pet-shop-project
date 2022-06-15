@@ -1,9 +1,12 @@
 import MainLayout from "../../../components/layout/MainLayout/MainLayout";
+import MobileSlider from "../../../components/Sliders/MobileSlider/MobileSlider";
 
 const MainPage = () => {
+  
+
   return (
     <MainLayout>
-      <h1>Main Page</h1>
+      <MobileSlider />
     </MainLayout>
   )
 }

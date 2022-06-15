@@ -20,12 +20,16 @@ const ProductPresentationContainer = ({
 }: IProps) => {
   return (
     <div className={classes['product-presentation']}>
-      {images && <ProductItemImageContainer images={images} title={title} />}
-      <ProductDetailsContainer
-        _id={_id}
-        title={title}
-        price={price}
-      />
+      <div className={classes['product-main-presentation']}>
+        {images && <div className={classes['product-images-container']}>
+          <ProductItemImageContainer images={images} title={title} />
+        </div>}
+        <ProductDetailsContainer
+          _id={_id}
+          title={title}
+          price={price}
+        />
+      </div>
       <ProductDescriptionContainer description={description} />
     </div>
   )
