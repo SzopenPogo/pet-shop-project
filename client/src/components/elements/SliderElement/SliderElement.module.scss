@@ -74,8 +74,8 @@ $text-border: 2px solid rgba(0, 0, 0, 0.3);
 }
 
 .enter {
-  opacity: 0;
-  transform: translate(50%, 0);
+  //opacity: 0;
+  transform: translate(150%, 0);
 }
 
 .enter-active {
@@ -89,6 +89,6 @@ $text-border: 2px solid rgba(0, 0, 0, 0.3);
 }
 
 .exit-active {
-  opacity: 0;
-  //transform: translate(50%, 0);
+  //opacity: 0;
+  transform: translate(-150%, 0);
 }

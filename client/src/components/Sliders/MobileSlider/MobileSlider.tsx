@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../store';
 import { sliderGet } from '../../../store/slider/actions/slider-get-actions';
+import QueueBox from '../../elements/QueueBox/QueueBox';
 import SliderElement from '../../elements/SliderElement/SliderElement';
 import classes from './MobileSlider.module.scss';
 
@@ -21,30 +22,43 @@ const MobileSlider = () => {
     dispatch(sliderGet());
   }, [dispatch]);
 
+  const setSlide = useCallback((slideNumber: number) => {
+    if(slideNumber >= data.length) {
+      return;
+    }
 
-  const changeActiveSlide = useCallback(() => {
-    //setIsSlideActive(false);
-    const activeSlideTimeout = setTimeout(() => {
-      setIsSlideActive(!isSlideActive);
-      const nextActiveSlide = activeSlide < data.length - 1
-      ? activeSlide + 1 : 0;
-      setActiveSlide(nextActiveSlide);  
-      clearTimeout(activeSlideTimeout);
-    }, slideTimeout);
+    setIsSlideActive(false)
+    setTimeout(() => {
+      setActiveSlide(slideNumber);
+      setIsSlideActive(true);
+    }, 50);
+  }, [data.length]);
 
-      
-  }, [activeSlide, data, isSlideActive])
+  const changeSlide = useCallback((isIncreasing: boolean) => {
+    if(activeSlide === data.length - 1 && isIncreasing) {
+      return setSlide(0);
+    }
 
+    if(isIncreasing && activeSlide < data.length) {
+      return setSlide(activeSlide + 1);
+    }
+
+    if(activeSlide - 1 < 0 && !isIncreasing) {
+      return setSlide(data.length - 1);
+    }
+
+    if(!isIncreasing) {
+      return setSlide(activeSlide - 1);
+    }
+
+  }, [activeSlide, data.length, setSlide])
 
   useEffect(() => {
     const interval = setInterval(() => {
-      changeActiveSlide();
-    }, 3000);
+      changeSlide(true);
+    }, 1000);
     return () => clearInterval(interval);
-  }, [activeSlide, data, changeActiveSlide]);
-
-  
-
+  }, [activeSlide, data, changeSlide]);
 
   const renderSlides = data.map(slider => (
     <SliderElement
@@ -57,11 +71,16 @@ const MobileSlider = () => {
       isActive={isSlideActive}
       timeout={slideTimeout}  
     />
-  ))
+  ));
   
   return (
     <div className={classes['main-slider']}>
       {renderSlides[activeSlide]}
+      <QueueBox
+        queueLength={data.length}
+        activeQueue={activeSlide}
+        setSlide={setSlide}
+      />
     </div>
   )
 }

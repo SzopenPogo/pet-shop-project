@@ -1,5 +1,6 @@
 .main-slider {
-  overflow-x: scroll;
+  overflow: hidden;
+  position: relative;
 
   width: 100vw;
   height: 12rem;
