@@ -1,12 +1,14 @@
 import MainLayout from "../../../components/layout/MainLayout/MainLayout";
-import MobileSlider from "../../../components/Sliders/MobileSlider/MobileSlider";
+import MobileSlider from "../../../components/Sliders/MainSlider/MainSlider";
 
 const MainPage = () => {
   
 
   return (
     <MainLayout>
-      <MobileSlider />
+      <>
+        <MobileSlider />
+      </>
     </MainLayout>
   )
 }

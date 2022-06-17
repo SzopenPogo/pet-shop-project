@@ -12,6 +12,7 @@ interface IProps {
   pageUrl: string;
   isActive: boolean;
   timeout: number;
+  isDirectionRight: boolean;
 }
 
 const SliderElement = ({
@@ -21,7 +22,8 @@ const SliderElement = ({
   imageUrl,
   pageUrl,
   isActive,
-  timeout
+  timeout,
+  isDirectionRight
 }:IProps) => {
 
   const nodeRef = useRef(null);
@@ -37,7 +39,10 @@ const SliderElement = ({
     classes['slider-element--text-bottom-right']
   ];
 
-  const sliderClass = `${classes['slider-element']} ${sliderTextClasses[getRandomNumber(0, 3)]}`
+  const enterClass = isDirectionRight ? `${classes['enter']}` : `${classes['enter--left']}`;
+  const exitActiveClass = isDirectionRight ? `${classes['exit-active']}` : `${classes['exit-active--left']}`;
+
+  const sliderClass = `${classes['slider-element']} ${sliderTextClasses[getRandomNumber(0, sliderTextClasses.length)]}`
 
   return (
     <CSSTransition
@@ -47,10 +52,10 @@ const SliderElement = ({
         mountOnEnter
         unmountOnExit
         classNames={{
-          enter: classes['enter'],
+          enter: enterClass,
           enterActive: classes['enter-active'],
           exit: classes['exit'],
-          exitActive: classes['exit-active']
+          exitActive: exitActiveClass
         }}
       >
       <a
