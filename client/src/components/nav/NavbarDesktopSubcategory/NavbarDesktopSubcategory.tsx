@@ -3,6 +3,7 @@ import { ISubcategory } from '../../../interfaces/ISubcategory';
 import NavbarDesktopLink from '../../links/NavbarDesktopLink/NavbarDesktopLink';
 import classes from './NavbarDesktopSubcategory.module.scss';
 import { CSSTransition } from 'react-transition-group';
+import { SUBCATEGORY_ROUTE } from '../../../constants/routes';
 
 interface IProps {
   subcategories: Array<ISubcategory>;
@@ -15,7 +16,7 @@ const NavbarDesktopSubcategory = ({subcategories, isActive}: IProps) => {
     <NavbarDesktopLink
       key={subcategory._id}
       title={subcategory.title}
-      route={`subcategory/${subcategory._id}`}
+      route={`${SUBCATEGORY_ROUTE}/${subcategory._id}`}
       image={subcategory.imageUrl}
     />
   ))

@@ -5,11 +5,16 @@ import { productActions } from "../product-slice";
 
 export const manageProductUrlAction = (
   productUrlOptions: Array<string>, 
-  option: string
+  option: string,
+  resetOptions?: boolean
   ) => (dispatch: Dispatch) => {
 
   if(!option) {
     return;
+  }
+
+  if(resetOptions) {
+    dispatch(productActions.resetProductUrlOptions());
   }
 
   const optionName = option.split('=')[0];

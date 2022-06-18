@@ -65,7 +65,7 @@ const MainSlider = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       changeSlide(true);
-    }, 2000);
+    }, 10000);
     return () => clearInterval(interval);
   }, [activeSlide, data, changeSlide]);
 

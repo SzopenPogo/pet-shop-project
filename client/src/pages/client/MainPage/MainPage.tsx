@@ -1,5 +1,7 @@
+import MainPageCategoryContainer from "../../../components/containers/MainPageCategoryContainer/MainPageCategoryContainer";
+import MainPageProductContainer from "../../../components/containers/MainPageProductContainer/MainPageProductContainer";
 import MainLayout from "../../../components/layout/MainLayout/MainLayout";
-import MobileSlider from "../../../components/Sliders/MainSlider/MainSlider";
+import MainSlider from "../../../components/Sliders/MainSlider/MainSlider";
 
 const MainPage = () => {
   
@@ -7,7 +9,9 @@ const MainPage = () => {
   return (
     <MainLayout>
       <>
-        <MobileSlider />
+        <MainSlider />
+        <MainPageProductContainer />
+        <MainPageCategoryContainer />
       </>
     </MainLayout>
   )

@@ -60,6 +60,9 @@ const productSlice = createSlice({
 
       state.productUrlOptions.push(option);
     },
+    resetProductUrlOptions(state) {
+      state.productUrlOptions = [];
+    },
     get(state, action) {
       const { type, payload } = action.payload;
       

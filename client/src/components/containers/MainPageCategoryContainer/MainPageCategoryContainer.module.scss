@@ -1,0 +1,21 @@
+@import '../.././../style/variables/colors';
+
+$category-border: 2px solid $main-yellow-color;
+
+.category {
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+
+  background-color: $main-brown-color;
+  color: $main-yellow-color;
+  border-top: $category-border;
+  border-bottom: $category-border;
+}
