@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import addressSlice from "./address/address-slice";
 import adminSlice from "./admin/admin-slice";
+import cartSlice from "./cart/cart-slice";
 import categorySlice from "./category/category-slice";
 import clientWindowSlice from "./clientWindow/clientWindow-slice";
 import contactSlice from "./contact/contact-slice";
@@ -21,7 +22,8 @@ const store = configureStore({
     subcategory: subcategorySlice.reducer,
     product: productSlice.reducer,
     slider: sliderSlice.reducer,
-    contact: contactSlice.reducer
+    contact: contactSlice.reducer,
+    cart: cartSlice.reducer
   }
 });
 

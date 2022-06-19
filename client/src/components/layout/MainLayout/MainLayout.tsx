@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { clientWindowActions } from "../../../store/clientWindow/clientWindow-slice";
+import Footer from "../../ui/Footer/Footer";
 import Header from "../../ui/Header/Header";
 import classes from './MainLayout.module.scss';
 
@@ -27,6 +28,7 @@ const MainLayout = ({ children }: IProps) => {
       <section className={classes.content}>
         {children}
       </section>
+      <Footer />
     </>
   )
 }

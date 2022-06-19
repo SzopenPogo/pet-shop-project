@@ -10,3 +10,12 @@ export interface IProduct extends Document {
   price: number;
   subcategoryId: mongoose.Schema.Types.ObjectId;
 }
+
+export interface IProductData {
+  _id: string;
+  title: string;
+  description?: string;
+  images: Array<string>;
+  price: number;
+  subcategoryId: mongoose.Schema.Types.ObjectId;
+}

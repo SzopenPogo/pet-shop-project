@@ -14,6 +14,7 @@ import sliderRouter from "./routes/sliderRouter";
 import contactDataRouter from "./routes/contactDataRouter";
 import contactFormRouter from "./routes/contactFormRouter";
 import routeNotFound from "./middleware/routeNotFound";
+import cartRouter from "./routes/cartRouter";
 
 const app = express();
 connectDatabase();
@@ -47,6 +48,9 @@ app.use('/contactData', contactDataRouter);
 
 // CONTACT FORM | create, get, getById, addAdminNote, toggleIsResolved
 app.use('/contactForm', contactFormRouter);
+
+// CART | calculate
+app.use('/cart', cartRouter);
 
 
 //Serve images to frontend (SERVER_URL/images/...)

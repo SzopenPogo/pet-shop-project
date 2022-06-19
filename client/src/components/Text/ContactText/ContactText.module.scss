@@ -1,0 +1,16 @@
+.contact-text {
+  margin: .25rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .contact-title {
+    font-size: 1.1rem;
+  }
+
+  .contact-data {
+    margin: 0;
+    font-size: 1.4rem;
+  }
+}

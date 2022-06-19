@@ -6,7 +6,7 @@
   margin-top: calc(#{$header-height});
 
   @media (min-width: $mobile-width) {
-    min-height: 65vh;
+    min-height: 85vh;
     margin-top: calc(#{$header-desktop-content-height} + #{$navbar-desktop-height});
   }
 }

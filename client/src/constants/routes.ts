@@ -14,3 +14,7 @@ export const PROFILE_ADMIN_EDIT_CONTACTDATA_ROUTE = '/profile/a/contactData';
 
 export const SUBCATEGORY_ROUTE = '/subcategory';
 export const PRODUCT_ROUTE = '/product';
+
+export const CART_ROUTE = '/cart';
+
+export const CONTACT_ROUTE = '/contact';

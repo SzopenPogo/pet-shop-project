@@ -1,4 +1,6 @@
 import { useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { addItemToCart } from '../../../store/cart/actions/cart-add-to-actions';
 import AddToCartBigButton from '../../buttons/AddToCartBigButton/AddToCartBigButton';
 import NumberInput from '../../inputs/NumberInput/NumberInput';
 import classes from './AddManyToCartContainer.module.scss';
@@ -8,12 +10,14 @@ interface IProps {
 }
 
 const AddManyToCartContainer = ({_id}: IProps) => {
+  const dispatch = useDispatch();
+
   const ammountRef = useRef<HTMLInputElement>(null);
 
   const addToCartHandler = () => {
-    const ammountValue = ammountRef.current?.value;
-    console.log(`${ammountValue} x ${_id} added to the cart`);
+    const ammountValue = ammountRef.current?.value ? ammountRef.current?.value :  1;
     
+    dispatch(addItemToCart({_id, ammount: +ammountValue}))
   }
 
   const setMinimumValue = (value: string) => {

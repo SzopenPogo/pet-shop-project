@@ -1,0 +1,45 @@
+@import '../../../style/variables/dimensions';
+
+.contact {
+  width: 100%;
+  padding: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: .5rem;
+
+  @media (min-width: $mobile-width) {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .animal {
+    width: 80%;
+    order: 2;
+
+    @media (min-width: $mobile-width) {
+      width: 30%;
+      margin-top: 5%;
+      order: 1;
+    }
+  }
+
+  .contacts {
+    width: 100%;
+    order: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: .75rem;
+
+    @media (min-width: $mobile-width) {
+      width: auto;
+      order: 2;
+    }
+  }
+}

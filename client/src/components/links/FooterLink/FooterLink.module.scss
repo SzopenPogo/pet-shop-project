@@ -1,0 +1,19 @@
+@import '../../../style/variables/dimensions';
+
+.footer-link {
+  padding: .25rem .5rem;
+
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+
+  transition: linear 100ms;
+
+  @media (min-width: $mobile-width) {
+    color: rgb(200, 200, 200);
+
+    &:hover {
+      color: white;
+    }
+  }
+}

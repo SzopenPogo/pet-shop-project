@@ -1,0 +1,41 @@
+@import '../../../style/variables/colors';
+
+.footer {
+  width: 100%;
+  padding: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: .5rem;
+
+  background-color: $main-gray-color;
+
+  .petshop-logo {
+    width: 8rem;
+    height: 3.5rem;
+
+    display: block;
+
+    background-image: url('../../../images/logo/petShopLogo.webp');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .links {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .copyright {
+    font-size: .8rem;
+    color: rgb(81, 80, 80);
+  }
+}

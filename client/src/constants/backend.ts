@@ -32,3 +32,6 @@ export const BACKEND_SLIDER_ROUTER = `${BACKEND_URL}/slider`;
 
 //CONTACT
 export const BACKEND_CONTACT_ROUTER = `${BACKEND_URL}/contactData`;
+
+//CART
+export const BACKEND_CART_ROUTER = `${BACKEND_URL}/cart`;
