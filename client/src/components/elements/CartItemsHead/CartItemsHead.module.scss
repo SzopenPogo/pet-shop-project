@@ -1,0 +1,23 @@
+@import '../../../style/variables/colors';
+@import '../../../style/variables/dimensions';
+
+.cart-items-head {
+  width: 100%;
+  padding: .5rem .75rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .cart-title {
+    font-size: 1.5rem;
+
+    @media (min-width: $mobile-width) {
+      margin: 0;
+    }
+  
+    .cart-ammount {
+      color: $main-gray-color;
+    }
+  }
+}

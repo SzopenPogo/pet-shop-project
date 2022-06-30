@@ -1,0 +1,21 @@
+@import '../../../style/variables/dimensions';
+@import '../../../style/variables/borders';
+
+.cart-items {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  list-style: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+
+  @media (min-width: $mobile-width) {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: $border-radious;
+  }
+}

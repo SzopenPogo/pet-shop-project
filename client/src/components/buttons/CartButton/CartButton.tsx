@@ -1,5 +1,8 @@
-import cartIcon from '../../../images/icon/bag.svg';
-import ImageButton from '../ImageButton/ImageButton';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { CART_ROUTE } from '../../../constants/routes';
+import { RootState } from '../../../store';
+import classes from './CartButton.module.scss';
 
 interface IProps {
   size: string;
@@ -7,18 +10,23 @@ interface IProps {
 
 const CartButton = ({ size }: IProps) => {
   
-  const cartButtonHandler = () => {
+  const cartProductsLength = useSelector((state: RootState) => state.cart.cart.data.cartProducts.length);
 
+  const cartStyle = {
+    width: size,
+    height: size
   }
 
   return (
-    <ImageButton
-      width={size}
-      height={size}
-      image={cartIcon}
-      isSubmit={false}
-      onClick={cartButtonHandler}
-    />
+    <Link
+      to={CART_ROUTE}
+      style={cartStyle}
+      className={classes.cart}
+    >
+      {cartProductsLength > 0 && <span className={classes['cart-ammount']}>
+        {cartProductsLength}
+      </span>}
+    </Link>
   )
 }
 

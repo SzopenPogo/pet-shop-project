@@ -37,11 +37,13 @@ const cartCalculate = async (req: Request, res: Response) => {
     });
 
     let totalPrice = 0;
+    let totalAmmount = 0;
     cartProducts.map(product => {
+      totalAmmount += product.ammount;
       return totalPrice = +((totalPrice*100 + (product.price * 100)*product.ammount)/100).toFixed(2)
     });
 
-    res.status(200).send({cartProducts, totalPrice})
+    res.status(200).send({cartProducts, totalPrice, totalAmmount})
   } catch (error) {
     const errorMessage = createErrorMessage(500, 'Calculate cart failed', error);
     res.status(errorMessage.status).send(errorMessage);

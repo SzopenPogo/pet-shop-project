@@ -1,0 +1,26 @@
+@import '../../../style/variables/borders';
+@import '../../../style/variables/colors';
+
+.cart {
+  position: relative;
+
+  background-image: url('../../../images/icon/bag.svg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  text-decoration: none;
+
+  .cart-ammount {
+    position: absolute;
+    bottom: -0.75rem;
+    right: 0;
+
+    padding: 0 .35rem;
+
+    background-color: $main-green-color;
+    border-radius: $border-radious;
+    color: white;
+    font-size: .8rem;
+  }
+}

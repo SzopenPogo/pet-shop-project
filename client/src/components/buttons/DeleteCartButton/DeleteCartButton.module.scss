@@ -1,0 +1,16 @@
+@import '../../../style/variables/buttons';
+
+.delete-cart-item {
+  @include reset-button();
+
+  width: 1.75rem;
+  height: 1.75rem;
+
+  background-color: transparent;
+  border: none;
+
+  background-image: url('../../../images/icon/binIconRed.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}

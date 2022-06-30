@@ -13,6 +13,7 @@ interface IProps {
   validateInput?: (value: string) => boolean;
   min?: number;
   max?: number;
+  onValueChange?: (value: number) => void;
 }
 
 const NumberInput = React.forwardRef<HTMLInputElement, IProps>(({
@@ -24,10 +25,11 @@ const NumberInput = React.forwardRef<HTMLInputElement, IProps>(({
   value,
   validateInput,
   min,
-  max
+  max,
+  onValueChange
 }, ref) => {
   
-  const [inputValue, setInputValue] = useState<number>(value);
+  const [inputValue, setInputValue] = useState<string>(value.toString());
   const [isInputValid, setIsInputValid] = useState<boolean>(isValid);
 
   useEffect(() => {
@@ -38,7 +40,11 @@ const NumberInput = React.forwardRef<HTMLInputElement, IProps>(({
   }, [validateInput, inputValue]);
 
   const controllInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(+event.currentTarget.value);
+    setInputValue(event.currentTarget.value);
+
+    if(onValueChange) {
+      onValueChange(+event.currentTarget.value);
+    }
   }
   
   const inputClass = isInputValid
