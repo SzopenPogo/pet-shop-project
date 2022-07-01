@@ -16,5 +16,6 @@ export const SUBCATEGORY_ROUTE = '/subcategory';
 export const PRODUCT_ROUTE = '/product';
 
 export const CART_ROUTE = '/cart';
+export const CHECKOUT_ROUTE = '/checkout';
 
 export const CONTACT_ROUTE = '/contact';

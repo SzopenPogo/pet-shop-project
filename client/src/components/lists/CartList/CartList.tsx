@@ -21,9 +21,10 @@ const CartList = () => {
   ))
   return (
     <ul className={classes['cart-items']}>
-      {!loading && !error && renderProducts}
+      {!loading && !error && cartProducts.length > 0 && renderProducts}
       {error && <h1>{error}</h1>}
       {loading && <Spinner size={'4rem'} borderSize={'.35rem'} color={'gray'} />}
+      {cartProducts.length <= 0 && <h1>You don't have any items in your cart</h1>}
     </ul>
   )
 }

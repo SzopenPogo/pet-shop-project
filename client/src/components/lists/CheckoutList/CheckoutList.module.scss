@@ -1,0 +1,78 @@
+@import '../../../style/variables/dimensions';
+
+.checkout-items {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  list-style: none;
+
+  @media (min-width: $mobile-width) {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .checkout-items {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    @media (min-width: $mobile-width) {
+      width: clamp(25%, 35%, 50%);
+      border-right: 1px solid black;
+      border-bottom: 1px solid black;
+    }
+  }
+
+  .checkout-summary {
+    width: 100%;
+    padding: .5rem;
+
+    border-top: 1px solid black;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (min-width: $mobile-width) {
+      width: clamp(10%, 15%, 25%);
+      padding: .5rem 2.5%;
+      border-right: 1px solid black;
+    }
+
+    span {
+      position: relative;
+      margin-top: 1.25rem;
+      font-size: 1.1rem;
+
+      &::before {
+        width: 6rem;
+        position: absolute;
+        top: -1.1rem;
+        font-size: .75rem;
+      }
+    }
+
+    .checkout-total-amount {
+      &::before {
+        content: 'Total amount:';
+        left: 0;
+      }
+    }
+
+    .checkout-total-price {
+      &::before {
+        content: 'Total price:';
+        right: 0;
+        text-align: end;
+      }
+    }
+  }
+}

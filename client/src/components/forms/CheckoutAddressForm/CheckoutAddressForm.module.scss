@@ -1,15 +1,19 @@
 @import '../../../style/variables/dimensions';
 
-.cart-items {
+.checkout-addres {
+  overflow: hidden;
   width: 100%;
+  padding: 2rem .5rem;
+
+  position: relative;
 
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: .5rem;
+  gap: .2rem;
 
   @media (min-width: $mobile-width) {
-    width: 35%;
+    width: 25rem;
   }
 }
