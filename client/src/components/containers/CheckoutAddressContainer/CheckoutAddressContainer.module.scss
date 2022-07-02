@@ -1,8 +1,54 @@
+@import '../../../style/variables/dimensions';
+
+$checkout-addres-border: 1px solid black;
+$checkout-pseudo-class-height: 15%;
+
 .checkout-address-container {
+  overflow: hidden;
   width: 100%;
+  padding: 2rem .5rem;
+
+  position: relative;
 
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  gap: .75rem;
+
+  @media (min-width: $mobile-width) {
+    position: relative;
+    width: 25rem;
+
+    border-bottom: $checkout-addres-border;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: $checkout-pseudo-class-height;
+
+      border-left: $checkout-addres-border;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: $checkout-pseudo-class-height;
+
+      border-right: $checkout-addres-border;
+    }
+  }
+
+  .checkout-address-title {
+    margin: 0;
+  }
+
+  .saved-address-button-container {
+    margin-top: 1rem;
+    width: 70%;
+  }
 }

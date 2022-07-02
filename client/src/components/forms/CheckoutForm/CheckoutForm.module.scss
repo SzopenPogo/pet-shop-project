@@ -1,0 +1,20 @@
+@import '../../../style/variables/dimensions';
+
+.checkout-data {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: .5rem;
+
+  .submit-button-container {
+    width: 90%;
+    margin-top: 1.5rem;
+
+    @media (min-width: $mobile-width) {
+      width: 12.5rem;
+    }
+  }
+}

@@ -16,3 +16,12 @@ export interface IAddressArray {
 export interface ISelectedAddress extends IAddressData {
   index: number;
 }
+
+export interface IDeliveryAddressData {
+  country: string;
+  postalCode: string;
+  city: string;
+  street: string;
+  homeNumber: string;
+  phoneNumber: string;
+}

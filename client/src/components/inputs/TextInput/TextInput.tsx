@@ -30,6 +30,11 @@ const TextInput = React.forwardRef<HTMLInputElement, IProps>(({
   const minValueLength = inputMinValueLenght ?  inputMinValueLenght : 0;
 
   useEffect(() => {
+    setInputValue(value)
+  }, [value])
+  
+
+  useEffect(() => {
     if (validateInput) {
       setIsInputValid(validateInput(inputValue, minValueLength));
     }

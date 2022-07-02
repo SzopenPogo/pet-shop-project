@@ -1,0 +1,25 @@
+$address-border: 1px solid rgba(0, 0, 0, 0.4);
+
+.address-item {
+  width: 100%;
+  padding: .5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: .5rem;
+
+  border: $address-border;
+
+  .address-conutry {
+    font-weight: bold;
+  }
+
+  .address-item-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+}

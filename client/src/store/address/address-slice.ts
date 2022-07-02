@@ -104,6 +104,20 @@ const addressSlice = createSlice({
     select(state, action) {
       const { payload } = action.payload;
       state.selectedAddressData = payload;
+    },
+    selectById(state, action) {
+      const _id = action.payload;
+
+      const isInArray = state.data.some(address => address._id === _id);
+      if(!isInArray) {
+        return;
+      }
+
+      const itemIndex = state.data.findIndex(address => address._id === _id);
+      state.selectedAddressData = {
+        index: itemIndex,
+        ...state.data[itemIndex]
+      };
     }
   }
 });

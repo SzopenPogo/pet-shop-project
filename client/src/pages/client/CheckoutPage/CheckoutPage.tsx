@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
-import CheckoutAddressContainer from '../../../components/containers/CheckoutAddressContainer/CheckoutAddressContainer';
+import CheckoutForm from '../../../components/forms/CheckoutForm/CheckoutForm';
 import MainLayout from '../../../components/layout/MainLayout/MainLayout';
 import MainLink from '../../../components/links/MainLink/MainLink';
 import CheckoutList from '../../../components/lists/CheckoutList/CheckoutList';
@@ -28,7 +28,7 @@ const CheckoutPage = () => {
           <MainLink route={CART_ROUTE} title='Back to cart' />
         </div>
         <CheckoutList />
-        <CheckoutAddressContainer />
+        <CheckoutForm />
       </section>
     </MainLayout>
   )
