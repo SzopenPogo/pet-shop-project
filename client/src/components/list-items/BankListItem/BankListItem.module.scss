@@ -1,0 +1,36 @@
+@import '../../../style/variables/borders';
+@import '../../../style/variables/dimensions';
+
+.bank-item {
+  cursor: pointer;
+
+  width: 8rem;
+  height: 6rem;
+  padding: .5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid black;
+  border-radius: $border-radious;
+
+  transition: linear 150ms;
+
+  @media (min-width: $mobile-width) {
+    border: none;
+
+    &:hover {
+      border: 1px solid black;
+
+      .bank-logo {
+        transform: scale(1.025);
+      }
+    }
+  }
+
+  .bank-logo {
+    max-width: 7rem;
+    max-height: 5rem;
+  }
+}

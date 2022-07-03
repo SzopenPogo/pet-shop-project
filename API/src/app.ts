@@ -15,6 +15,7 @@ import contactDataRouter from "./routes/contactDataRouter";
 import contactFormRouter from "./routes/contactFormRouter";
 import routeNotFound from "./middleware/routeNotFound";
 import cartRouter from "./routes/cartRouter";
+import orderRouter from "./routes/orderRouter";
 
 const app = express();
 connectDatabase();
@@ -51,6 +52,9 @@ app.use('/contactForm', contactFormRouter);
 
 // CART | calculate
 app.use('/cart', cartRouter);
+
+// ORDER | create, get, getById, changeStatus
+app.use('/order', orderRouter);
 
 
 //Serve images to frontend (SERVER_URL/images/...)

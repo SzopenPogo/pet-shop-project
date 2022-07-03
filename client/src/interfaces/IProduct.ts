@@ -19,3 +19,10 @@ export interface ISelectedProduct {
   _id: string;
   index: number;
 }
+
+export interface IOrderProduct {
+  _id: string;
+  title: string;
+  price: number;
+  amount: number;
+}
