@@ -35,3 +35,6 @@ export const BACKEND_CONTACT_ROUTER = `${BACKEND_URL}/contactData`;
 
 //CART
 export const BACKEND_CART_ROUTER = `${BACKEND_URL}/cart`;
+
+//ORDER
+export const BACKEND_ORDER_ROUTER = `${BACKEND_URL}/order`;

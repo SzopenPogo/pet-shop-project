@@ -4,6 +4,7 @@ export const REGISTER_ROUTE = '/register';
 export const PROFILE_ROUTE = '/profile';
 export const PROFILE_EDIT_ADDRESS_ROUTE = '/profile/address';
 export const PROFILE_EDIT_DATA_ROUTE = '/profile/data';
+export const PROFILE_ORDERS_ROUTE = '/profile/orders';
 
 export const PROFILE_ADMIN_EDIT_USERS_ROUTE = '/profile/a/users';
 export const PROFILE_ADMIN_EDIT_CATEGORY_ROUTE = '/profile/a/category';
@@ -17,5 +18,6 @@ export const PRODUCT_ROUTE = '/product';
 
 export const CART_ROUTE = '/cart';
 export const CHECKOUT_ROUTE = '/checkout';
+export const CHECKOUT_SUCCESS_ROUTE = '/checkout-success';
 
 export const CONTACT_ROUTE = '/contact';

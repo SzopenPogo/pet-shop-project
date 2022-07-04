@@ -5,6 +5,7 @@ import cartSlice from "./cart/cart-slice";
 import categorySlice from "./category/category-slice";
 import clientWindowSlice from "./clientWindow/clientWindow-slice";
 import contactSlice from "./contact/contact-slice";
+import orderSlice from "./order/order-slice";
 import productSlice from "./product/product-slice";
 import sliderSlice from "./slider/slider-slice.ts";
 import subcategorySlice from "./subcategory/subcategory-slice";
@@ -23,7 +24,8 @@ const store = configureStore({
     product: productSlice.reducer,
     slider: sliderSlice.reducer,
     contact: contactSlice.reducer,
-    cart: cartSlice.reducer
+    cart: cartSlice.reducer,
+    order: orderSlice.reducer
   }
 });
 

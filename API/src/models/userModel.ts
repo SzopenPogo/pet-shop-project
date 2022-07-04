@@ -103,6 +103,14 @@ userSchema.virtual('addressRef', {
   ref: 'Address',
   localField: '_id',
   foreignField: 'userId'
+});
+
+//VIRTUAL
+//Order
+userSchema.virtual('orderRef', {
+  ref: 'Order',
+  localField: '_id',
+  foreignField: 'userId'
 })
 
 //STATICS
