@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../store';
 import { deleteItemFromCart } from '../../../store/cart/actions/cart-delete-item-acions';
+import CheckoutSummary from '../../elements/CheckoutSummary/CheckoutSummary';
 import CheckoutListItem from '../../list-items/CheckoutListItem/CheckoutListItem';
 import classes from './CheckoutList.module.scss';
 
@@ -29,9 +30,8 @@ const CheckoutList = () => {
       <div className={classes['checkout-items']}>
         {renderItems}
       </div>
-      <div className={classes['checkout-summary']}>
-        <span className={classes['checkout-total-amount']}>{totalAmmount}</span>
-        <span className={classes['checkout-total-price']}>{totalPrice}$</span>
+      <div className={classes['checkout-summary-container']}>
+        <CheckoutSummary totalAmount={totalAmmount} totalPrice={totalPrice} />
       </div>
     </ul>
   )

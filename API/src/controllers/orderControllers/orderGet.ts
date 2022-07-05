@@ -9,8 +9,8 @@ const orderGet = async (req: Request, res: Response) => {
     const match: IMatchObject = {};
     const sort: ISortObject = {};
 
-    if (req.query.userId) {
-      match.userId = req.query.userId;
+    if (req.query.orderId) {
+      match._id = req.query.orderId;
     }
 
     if (req.query.status) {
@@ -22,6 +22,11 @@ const orderGet = async (req: Request, res: Response) => {
     }
 
     const order = await Order.find(match).sort(sort);
+
+    if(!order) {
+      const errorMessage = createErrorMessage(404, 'Order not found');
+      return res.status(errorMessage.status).send(errorMessage);
+    }
 
     res.status(200).send(order);
     

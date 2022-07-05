@@ -23,7 +23,7 @@ const CheckoutSuccessPage = () => {
         </div>
         <div className={classes['checkout-success-button-container']}>
           <MainLink route='/' title={'Main page'} />
-          <MainLink route={PROFILE_ORDERS_ROUTE} title={'Your orders'} />
+          {token && <MainLink route={PROFILE_ORDERS_ROUTE} title={'Your orders'} />}
         </div>
       </section>
     </MainLayout>

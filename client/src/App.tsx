@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router";
 import MasterLayout from "./components/layout/MasterLayout/MasterLayout";
-import { CART_ROUTE, CHECKOUT_ROUTE, CHECKOUT_SUCCESS_ROUTE, CONTACT_ROUTE, LOGIN_ROUTE, PRODUCT_ROUTE, PROFILE_ADMIN_EDIT_CATEGORY_ROUTE, PROFILE_ADMIN_EDIT_CONTACTDATA_ROUTE, PROFILE_ADMIN_EDIT_PRODUCT_ROUTE, PROFILE_ADMIN_EDIT_SLIDER_ROUTE, PROFILE_ADMIN_EDIT_SUBCATEGORY_ROUTE, PROFILE_ADMIN_EDIT_USERS_ROUTE, PROFILE_EDIT_ADDRESS_ROUTE, PROFILE_EDIT_DATA_ROUTE, PROFILE_ROUTE, REGISTER_ROUTE, SUBCATEGORY_ROUTE } from "./constants/routes";
+import { CART_ROUTE, CHECKOUT_ROUTE, CHECKOUT_SUCCESS_ROUTE, CONTACT_ROUTE, LOGIN_ROUTE, PRODUCT_ROUTE, PROFILE_ADMIN_EDIT_CATEGORY_ROUTE, PROFILE_ADMIN_EDIT_CONTACTDATA_ROUTE, PROFILE_ADMIN_EDIT_ORDER_ROUTE, PROFILE_ADMIN_EDIT_PRODUCT_ROUTE, PROFILE_ADMIN_EDIT_SLIDER_ROUTE, PROFILE_ADMIN_EDIT_SUBCATEGORY_ROUTE, PROFILE_ADMIN_EDIT_USERS_ROUTE, PROFILE_EDIT_ADDRESS_ROUTE, PROFILE_EDIT_DATA_ROUTE, PROFILE_ORDERS_ROUTE, PROFILE_ROUTE, REGISTER_ROUTE, SUBCATEGORY_ROUTE } from "./constants/routes";
 import LoginPage from "./pages/client/LoginPage/LoginPage";
 import MainPage from "./pages/client/MainPage/MainPage";
 import RegisterPage from "./pages/client/RegisterPage/RegisterPage";
@@ -19,6 +19,8 @@ import ContactPage from "./pages/client/ContactPage/ContactPage";
 import CartPage from "./pages/client/CartPage/CartPage";
 import CheckoutPage from "./pages/client/CheckoutPage/CheckoutPage";
 import CheckoutSuccessPage from "./pages/client/CheckoutSuccessPage/CheckoutSuccessPage";
+import UserOrderPage from "./pages/user/UserOrderPage/UserOrderPage";
+import AdminOrderPage from "./pages/admin/AdminOrderPage/AdminOrderPage";
 
 const App = () => {
   return (
@@ -31,6 +33,7 @@ const App = () => {
         <Route path={`${PROFILE_ROUTE}/:id`} element={<UserProfilePage />} />
         <Route path={PROFILE_EDIT_ADDRESS_ROUTE} element={<UserAddressPage />} />
         <Route path={PROFILE_EDIT_DATA_ROUTE} element={<UserEditDataPage />} />
+        <Route path={PROFILE_ORDERS_ROUTE} element={<UserOrderPage />} />
 
         <Route path={PROFILE_ADMIN_EDIT_USERS_ROUTE} element={<AdminUsersPage />} />
         <Route path={PROFILE_ADMIN_EDIT_CATEGORY_ROUTE} element={<AdminCategoryPage />} />
@@ -38,6 +41,7 @@ const App = () => {
         <Route path={PROFILE_ADMIN_EDIT_PRODUCT_ROUTE} element={<AdminProductPage />} />
         <Route path={PROFILE_ADMIN_EDIT_SLIDER_ROUTE} element={<AdminSliderPage />} />
         <Route path={PROFILE_ADMIN_EDIT_CONTACTDATA_ROUTE} element={<AdminContactPage />} />
+        <Route path={PROFILE_ADMIN_EDIT_ORDER_ROUTE} element={<AdminOrderPage />} />
 
         <Route path={`${SUBCATEGORY_ROUTE}/:id`} element={<SubcategoryPage />} />
         <Route path={`${PRODUCT_ROUTE}/:id`} element={<ProductPage />} />

@@ -18,7 +18,6 @@ const UserAddressPage = () => {
 
   useEffect(() => {
     dispatch(getAllAddresses(token));
-
     if(error) {
       dispatch(addInfoMessage({message: error, timeout: 3000, isPositive: false}));
     }

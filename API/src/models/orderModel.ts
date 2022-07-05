@@ -78,7 +78,19 @@ const orderSchema = new mongoose.Schema<IOrder>({
       required: true,
       trim: true
     }
-  }]
+  }],
+
+  totalPrice: {
+    type: Number,
+    required: true,
+    trim: true
+  },
+
+  totalAmount: {
+    type: Number,
+    required: true,
+    trim: true
+  }
 }, {
   timestamps: true
 });

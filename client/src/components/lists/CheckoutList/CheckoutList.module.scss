@@ -31,48 +31,14 @@
     }
   }
 
-  .checkout-summary {
+  .checkout-summary-container {
     width: 100%;
-    padding: .5rem;
-
     border-top: 1px solid black;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
     @media (min-width: $mobile-width) {
-      width: clamp(10%, 15%, 25%);
+      width: clamp(10%, 22.5%, 35%);
       padding: .5rem 2.5%;
       border-right: 1px solid black;
-    }
-
-    span {
-      position: relative;
-      margin-top: 1.25rem;
-      font-size: 1.1rem;
-
-      &::before {
-        width: 6rem;
-        position: absolute;
-        top: -1.1rem;
-        font-size: .75rem;
-      }
-    }
-
-    .checkout-total-amount {
-      &::before {
-        content: 'Total amount:';
-        left: 0;
-      }
-    }
-
-    .checkout-total-price {
-      &::before {
-        content: 'Total price:';
-        right: 0;
-        text-align: end;
-      }
     }
   }
 }

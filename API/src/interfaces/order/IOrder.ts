@@ -9,5 +9,7 @@ export interface IOrder extends Document, IAddressData  {
   userId: mongoose.Schema.Types.ObjectId;
   paymentMethod: string;
   status: string;
-  products: Array<IOrderProduct>
+  products: Array<IOrderProduct>;
+  totalPrice: number;
+  totalAmount: number;
 }

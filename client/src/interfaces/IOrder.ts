@@ -6,5 +6,7 @@ export interface IOrder extends IDeliveryAddressData {
   userId?: string;
   paymentMethod: string;
   status?: string;
-  products: Array<IOrderProduct>
+  products: Array<IOrderProduct>;
+  totalPrice: number;
+  totalAmount: number;
 }

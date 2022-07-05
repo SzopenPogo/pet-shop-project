@@ -1,0 +1,28 @@
+@import '../../../style/variables/colors';
+@import '../../../style/variables/dimensions';
+
+.admin-order-filter-bar {
+  width: 100vw;
+  padding: 1rem;
+
+  background-color: $main-gray-color;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: .5rem;
+
+  @media (min-width: $mobile-width) {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+
+  .order-searchbar-container {
+    @media (min-width: $mobile-width) {
+      width: 20rem;
+    }
+  }
+  
+}

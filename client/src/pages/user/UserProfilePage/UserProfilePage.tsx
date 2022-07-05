@@ -3,7 +3,7 @@ import UserDataContainer from '../../../components/containers/UserDataContainer/
 import UserLayout from '../../../components/layout/UserLayout/UserLayout';
 import ProfileAdminLink from '../../../components/links/ProfileAdminLink/ProfileAdminLink';
 import ProfileLink from '../../../components/links/ProfileLink/ProfileLink';
-import { PROFILE_ADMIN_EDIT_CATEGORY_ROUTE, PROFILE_ADMIN_EDIT_CONTACTDATA_ROUTE, PROFILE_ADMIN_EDIT_PRODUCT_ROUTE, PROFILE_ADMIN_EDIT_SLIDER_ROUTE, PROFILE_ADMIN_EDIT_SUBCATEGORY_ROUTE, PROFILE_ADMIN_EDIT_USERS_ROUTE, PROFILE_EDIT_ADDRESS_ROUTE, PROFILE_EDIT_DATA_ROUTE } from '../../../constants/routes';
+import { PROFILE_ADMIN_EDIT_CATEGORY_ROUTE, PROFILE_ADMIN_EDIT_CONTACTDATA_ROUTE, PROFILE_ADMIN_EDIT_ORDER_ROUTE, PROFILE_ADMIN_EDIT_PRODUCT_ROUTE, PROFILE_ADMIN_EDIT_SLIDER_ROUTE, PROFILE_ADMIN_EDIT_SUBCATEGORY_ROUTE, PROFILE_ADMIN_EDIT_USERS_ROUTE, PROFILE_EDIT_ADDRESS_ROUTE, PROFILE_EDIT_DATA_ROUTE, PROFILE_ORDERS_ROUTE } from '../../../constants/routes';
 import { RootState } from '../../../store';
 import classes from './UserProfilePage.module.scss';
 
@@ -20,6 +20,7 @@ const UserProfilePage = () => {
         <section className={classes['profile-page-options']}>
           <ProfileLink link={PROFILE_EDIT_ADDRESS_ROUTE} title='Address' />
           <ProfileLink link={PROFILE_EDIT_DATA_ROUTE} title='User Data' />
+          <ProfileLink link={PROFILE_ORDERS_ROUTE} title='User Orders' />
 
           <ProfileAdminLink link={PROFILE_ADMIN_EDIT_USERS_ROUTE} title='Users' isAdmin={isAdmin} />
           <ProfileAdminLink link={PROFILE_ADMIN_EDIT_CATEGORY_ROUTE} title='Category' isAdmin={isAdmin} />
@@ -27,6 +28,7 @@ const UserProfilePage = () => {
           <ProfileAdminLink link={PROFILE_ADMIN_EDIT_PRODUCT_ROUTE} title='Product' isAdmin={isAdmin} />
           <ProfileAdminLink link={PROFILE_ADMIN_EDIT_SLIDER_ROUTE} title='Slider' isAdmin={isAdmin} />
           <ProfileAdminLink link={PROFILE_ADMIN_EDIT_CONTACTDATA_ROUTE} title='Contact' isAdmin={isAdmin} />
+          <ProfileAdminLink link={PROFILE_ADMIN_EDIT_ORDER_ROUTE} title='Order' isAdmin={isAdmin} />
         </section>
       </>
     </UserLayout>

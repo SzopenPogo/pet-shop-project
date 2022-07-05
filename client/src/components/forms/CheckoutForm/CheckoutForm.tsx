@@ -19,7 +19,7 @@ const CheckoutForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const cartProducts = useSelector((state: RootState) => state.cart.cart.data.cartProducts);
+  const {cartProducts, totalAmmount, totalPrice} = useSelector((state: RootState) => state.cart.cart.data);
   const userId = useSelector((state: RootState) => state.user.data._id);
   const {loading: orderLoading, 
     actionType: orderActionType,
@@ -69,7 +69,9 @@ const CheckoutForm = () => {
       phoneNumber: addressData.phoneNumber,
       postalCode: addressData.postalCode,
       street: addressData.street,
-      products: convertedProducts
+      products: convertedProducts,
+      totalAmount: totalAmmount,
+      totalPrice
     }
     if(userId) {
       orderData['userId'] = userId

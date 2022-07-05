@@ -3,8 +3,6 @@ import Order from "../../models/orderModel";
 import { createErrorMessage } from "../../utils/messages/createErrorMessage";
 
 const orderCreate = async (req: Request, res: Response) => {
-  console.log((req.body));
-  
   try {
     const order = new Order({
       ...req.body

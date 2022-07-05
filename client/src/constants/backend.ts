@@ -38,3 +38,4 @@ export const BACKEND_CART_ROUTER = `${BACKEND_URL}/cart`;
 
 //ORDER
 export const BACKEND_ORDER_ROUTER = `${BACKEND_URL}/order`;
+export const BACKEND_ORDER_ME_ROUTER = `${BACKEND_ORDER_ROUTER}/me`;
