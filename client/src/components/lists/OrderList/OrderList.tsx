@@ -29,6 +29,8 @@ const OrderList = ({isEditable}: IProps) => {
       isEditable={isEditable}
       totalAmount={order.totalAmount}
       totalPrice={order.totalPrice}
+      createdAt={order.createdAt}
+      updatedAt={order.updatedAt}
     />
   ));
 

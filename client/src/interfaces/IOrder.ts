@@ -9,4 +9,6 @@ export interface IOrder extends IDeliveryAddressData {
   products: Array<IOrderProduct>;
   totalPrice: number;
   totalAmount: number;
+  createdAt?: string;
+  updatedAt?: string;
 }

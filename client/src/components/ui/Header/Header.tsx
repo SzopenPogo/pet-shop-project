@@ -9,26 +9,36 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../store';
 import NavbarDesktop from '../../nav/NavbarDesktop/NavbarDesktop';
 import NavbarMobile from '../../nav/NavbarMobile/NavbarMobile';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { categoriesFetch } from '../../../store/category/actions/category-get-actions';
+import { getSearchbarProducts } from '../../../store/product/actions/product-get-searchbar';
 
 const Header = () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(categoriesFetch());
-  }, [dispatch]);
-
   const isWindowScrolled = useSelector((state: RootState) => state.clientWindow.isWindowScrolled);
   const isMobile = useSelector((state: RootState) => state.clientWindow.isWindowMobile);
+  const {loading, data} = useSelector((state: RootState) => state.product.searchbarProducts);
+
+  const [searchBarValue, setSearchBarValue] = useState<string>('');
 
   const iconSize = '2.25rem';
   const headerClass = isWindowScrolled && !isMobile
     ? `${classes.header} ${classes['header--active']}`
     : classes.header;
-  
-  const searchProductHandler = () => {
 
+  useEffect(() => {
+    dispatch(categoriesFetch());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getSearchbarProducts(searchBarValue));
+  }, [dispatch, searchBarValue])
+  
+
+  const searchProductHandler = (value: string) => {
+    //dispatch(getSearchbarProducts(value));
+    setSearchBarValue(value)
   }
 
   return (
@@ -44,7 +54,13 @@ const Header = () => {
             <CartButton size={iconSize} />
           </div>
           <div className={classes.search}>
-            <SearchInput searchFunction={searchProductHandler} searchTime={800} title='Search our store' />
+            <SearchInput 
+              searchFunction={searchProductHandler}
+              searchTime={800}
+              title='Search our store'
+              isSearchWindow={true}
+              searchWindowData={{loading, data}}
+            />
           </div>
         </div>
         { !isMobile && <NavbarDesktop />}

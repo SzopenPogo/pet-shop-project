@@ -2,7 +2,7 @@
 @import '../../../style/variables/dimensions';
 
 .admin-order-filter-bar {
-  width: 100vw;
+  width: 100%;
   padding: 1rem;
 
   background-color: $main-gray-color;
@@ -15,11 +15,21 @@
 
   @media (min-width: $mobile-width) {
     flex-direction: row;
-    justify-content: space-evenly;
+    gap: 1rem;
   }
 
 
-  .order-searchbar-container {
+  .order-item-container {
+    width: 90%;
+
+    div {
+      width: 100% !important;
+    }
+
+    input {
+      text-align: center !important;
+    }
+
     @media (min-width: $mobile-width) {
       width: 20rem;
     }

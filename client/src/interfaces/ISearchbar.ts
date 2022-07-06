@@ -1,7 +1,7 @@
 export interface ISearchbarOption {
   _id: string;
   title: string;
-  imageUrl: string;
+  images: Array<string>;
 }
 
 export interface ISearchbarData {

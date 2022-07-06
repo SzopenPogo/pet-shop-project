@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { PRODUCT_FAIL, PRODUCT_REQUEST, PRODUCT_SUCCESS } from "../../constants/product";
+import { PRODUCT_FAIL, PRODUCT_REQUEST, PRODUCT_SEARCHBAR_FAIL, PRODUCT_SEARCHBAR_REQUEST, PRODUCT_SEARCHBAR_SUCCESS, PRODUCT_SUCCESS } from "../../constants/product";
 import { IProduct, ISelectedProduct } from "../../interfaces/IProduct";
+import { ISearchbarOption } from "../../interfaces/ISearchbar";
 
 const productSlice = createSlice({
   name: 'product',
@@ -18,6 +19,11 @@ const productSlice = createSlice({
       loading: false,
       error: null,
       data: {} as IProduct
+    },
+    searchbarProducts : {
+      loading: false,
+      error: null,
+      data: [] as Array<ISearchbarOption>
     }
   },
   reducers: {
@@ -163,6 +169,25 @@ const productSlice = createSlice({
         case PRODUCT_FAIL:
           state.product.loading = false;
           state.product.error = payload;
+          break;
+      }
+    },
+    getSearchbar(state, action) {
+      const { type, payload } = action.payload;
+      
+      switch (type) {
+        case PRODUCT_SEARCHBAR_REQUEST:
+          state.searchbarProducts.loading = true;
+          state.searchbarProducts.error = null;
+          break;
+        case PRODUCT_SEARCHBAR_SUCCESS:
+          state.searchbarProducts.loading = false;
+          state.searchbarProducts.error = null;
+          state.searchbarProducts.data = payload.product;
+          break;
+        case PRODUCT_SEARCHBAR_FAIL:
+          state.searchbarProducts.loading = false;
+          state.searchbarProducts.error = payload;
           break;
       }
     }

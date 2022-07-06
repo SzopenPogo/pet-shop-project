@@ -18,7 +18,7 @@ orderRouter.post('/', orderCreate);
 // DESCRIPTION: Get all orders
 // ACCESS: PRIVATE, ADMIN
 // FILTERING: orderId=string, status=string
-// SORTING: createdAt=('desc' or 'asc')
+// SORTING: sortDate=('desc' or 'asc')
 orderRouter.get('/', auth, authAdmin, orderGet);
 
 // TYPE: GET /order/id/:id

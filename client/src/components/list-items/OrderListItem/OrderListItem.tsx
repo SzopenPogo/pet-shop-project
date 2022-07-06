@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { FORMAT_TO_FULL_DATE } from '../../../constants/date';
 import { ORDER_CANCELED_STATUS } from '../../../constants/order';
 import { IOrder } from '../../../interfaces/IOrder';
 import { RootState } from '../../../store';
+import { formatBackendDate } from '../../../utils/date/formatBackendDate';
 import { setPaymentMethodName } from '../../../utils/naming/setPaymentMethodName';
 import CheckoutSummary from '../../elements/CheckoutSummary/CheckoutSummary';
 import OrderItemElement from '../../elements/OrderItemElement/OrderItemElement';
+import OrderListItemTimeElement from '../../elements/OrderListItemTimeElement/OrderListItemTimeElement';
 import OrderDataList from '../../lists/OrderDataList/OrderDataList';
 import OrderStatusSelect from '../../Select/OrderStatusSelect/OrderStatusSelect';
 import CheckoutListItem from '../CheckoutListItem/CheckoutListItem';
@@ -31,7 +34,9 @@ const OrderListItem = ({
   totalAmount,
   totalPrice,
   index,
-  isEditable
+  isEditable,
+  createdAt,
+  updatedAt
 }: IProps) => {
   const isAdmin = useSelector((state: RootState) => state.user.data.isAdmin);
 
@@ -78,11 +83,11 @@ const OrderListItem = ({
       price={product.price}
       title={product.title}
     />
-  ))
+  ));
 
   useEffect(() => {
     setPaymentMethodValue(setPaymentMethodName(paymentMethod));
-  }, [paymentMethod])
+  }, [paymentMethod]);
   
   return (
     <li className={classes['order-item']}>
@@ -115,6 +120,12 @@ const OrderListItem = ({
           </div>
         </>
       </OrderDataList>
+
+      {isAdmin && isEditable && 
+        <OrderListItemTimeElement 
+          createdAt={createdAt ? createdAt : ''} 
+          updatedAt={updatedAt ? updatedAt : ''} 
+        />}
     </li>
   )
 }
